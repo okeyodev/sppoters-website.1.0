@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Spotters Company  Technology that builds people and businesses</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ====================================================================
+       HEADER - Separate, sticky, reusable across all pages
+       Contains: logo + desktop nav + theme toggle + hamburger
+       Tablet downward: hamburger shows, desktop nav hides
+       ==================================================================== -->
+  <header class="header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <div class="logo-dot"></div>SPOTTERS
+      </a>
+
+      <!-- Right side: nav + actions -->
+      <nav class="nav-desktop" id="desktopNav">
+        <!-- SERVICES DROPDOWN - Desktop -->
+        <div class="nav-dropdown" id="servicesDropdown">
+          <button class="nav-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
+          <div class="dropdown-menu">
+            <a href="pages/digital-strategy.html">Digital Strategy</a>
+            <a href="pages/app-development.html">App Development</a>
+            <a href="pages/web-development.html">Web Development</a>
+            <a href="pages/software-training.html">StudyPod Training</a>
+            <a href="pages/internship.html">Internship Program</a>
+          </div>
+        </div>
+        <a class="nav-link" href="index.html#works">Works</a>
+        <a class="nav-link" href="index.html#academy">Academy</a>
+        <a class="nav-link" href="index.html#careers">Careers</a>
+        <a class="nav-link" href="index.html#industries">Industries</a>
+        <a class="nav-link" href="index.html#about">About</a>
+        <a class="nav-link" href="index.html#contact">Contact</a>
+        <a class="btn-primary blue" href="index.html#contact">Start a Project</a>
+
+        <!-- Theme toggle - always visible on desktop, also in drawer on mobile -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
+          <div class="toggle-thumb" id="toggleThumb">☾</div>
+        </button>
+      </nav>
+
+      <!-- Mobile actions: theme toggle + hamburger -->
+      <div style="display:flex; align-items:center; gap:10px;">
+        <!-- Duplicate toggle for mobile header (hidden on desktop via CSS) -->
+        <button class="theme-toggle" id="themeToggleMobile" style="display:none;" aria-label="Toggle theme">
+          <div class="toggle-thumb">☾</div>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       DRAWER - Mobile menu for tablet downward
+       Slides from right, contains nav links + CTA + theme row
+       Controlled by main.js PART 2
+       ==================================================================== -->
+  <div class="drawer-backdrop" id="backdrop"></div>
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <!-- SERVICES DROPDOWN - Mobile Drawer -->
+    <div class="drawer-dropdown" id="drawerServices">
+      <button class="drawer-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
+      <div class="drawer-submenu">
+        <a class="drawer-sublink" href="pages/digital-strategy.html">Digital Strategy</a>
+        <a class="drawer-sublink" href="pages/app-development.html">App Development</a>
+        <a class="drawer-sublink" href="pages/web-development.html">Web Development</a>
+        <a class="drawer-sublink" href="pages/software-training.html">StudyPod Training</a>
+        <a class="drawer-sublink" href="pages/internship.html">Internship Program</a>
+      </div>
+    </div>
+    <a class="drawer-link" href="index.html#works">Works</a>
+    <a class="drawer-link" href="index.html#academy">Academy</a>
+    <a class="drawer-link" href="index.html#careers">Careers</a>
+    <a class="drawer-link" href="index.html#industries">Industries</a>
+    <a class="drawer-link" href="index.html#about">About</a>
+    <a class="drawer-link" href="index.html#contact">Contact</a>
+
+    <div class="drawer-footer">
+      <div class="drawer-theme-row">
+        <span>Theme</span>
+        <button class="theme-toggle" id="drawerThemeToggle" aria-label="Toggle theme">
+          <div class="toggle-thumb" id="drawerToggleThumb">☾</div>
+        </button>
+      </div>
+      <a class="btn-primary blue" href="#contact" style="width:100%; justify-content:center;">Start a Project →</a>
+      <p style="font-size:11px; color:var(--muted-2); text-align:center; margin-top:12px;">Indigenous Nigerian • Since
+        2018</p>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       NEW HERO - Cinematic motion-first hero
+       Replaces old orb hero with particle network + transformation thread
+       Left 44% content, Right 56% animation
+       Story: problem → software → training → transformation
+       ==================================================================== -->
+  <section class="hero-new" id="hero">
+    <div class="hero-grid">
+
+      <!-- LEFT SIDE: Text content -->
+      <div class="hero-left">
+
+        <!-- Main headline - edit text here -->
+        <h1 class="hero-title-new reveal">Technology that<br><span class="accent-blue">builds people</span><br>and <span
+            class="accent-green">businesses</span><span class="accent-orange">.</span></h1>
+
+        <!-- Subheadline -->
+        <p class="hero-sub-new reveal">The Spotters Company is a distributed team of creative problem solvers. We help
+          organizations leverage digital solutions while training the next generation of software professionals through
+          StudyPod.</p>
+
+        <!-- CTAs - change href to your real links -->
+        <div class="hero-ctas-new reveal">
+          <a class="btn-primary blue" href="#contact">Start a Project →</a>
+          <a class="btn-secondary" href="#academy">Explore studyPod</a>
+        </div>
+
+        <!-- Stats - credibility strip, edit numbers here -->
+        <div class="hero-stats-new reveal">
+          <div>
+            <div class="stat-num">2018</div>
+            <div class="stat-label">Founded</div>
+          </div>
+          <div>
+            <div class="stat-num">100+</div>
+            <div class="stat-label">Projects Shipped</div>
+          </div>
+          <div>
+            <div class="stat-num">500+</div>
+            <div class="stat-label">Professionals Trained</div>
+          </div>
+          <div>
+            <div class="stat-num">5</div>
+            <div class="stat-label">Industries Served</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE: Visual animation area - particle network -->
+      <div class="visual-wrap" id="visualWrap">
+        <!-- Canvas - JS draws 140 particles + connections here -->
+        <canvas id="particleCanvas"></canvas>
+
+        <!-- SVG - Glowing thread that travels through cards -->
+        <svg id="threadSvg" viewBox="0 0 800 600" preserveAspectRatio="none">
+          <defs>
+            <!-- Gradient: blue -> green -> orange (matches brand) -->
+            <linearGradient id="threadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#0A66FF" />
+              <stop offset="50%" stop-color="#00C896" />
+              <stop offset="100%" stop-color="#FF6B1C" />
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <!-- Faint background thread -->
+          <path id="threadPathSolid"
+            d="M 170 150 C 280 90, 420 80, 620 125 C 500 200, 380 260, 260 330 C 380 400, 500 420, 560 475" fill="none"
+            stroke="url(#threadGrad)" stroke-width="1.2" stroke-linecap="round" opacity="0.22" />
+          <!-- Animated dashed thread -->
+          <path id="threadPath"
+            d="M 170 150 C 280 90, 420 80, 620 125 C 500 200, 380 260, 260 330 C 380 400, 500 420, 560 475" fill="none"
+            stroke="url(#threadGrad)" stroke-width="2.2" stroke-linecap="round" opacity="0.9" stroke-dasharray="8 14"
+            filter="url(#glow)" />
+          <!-- Traveling dot -->
+          <circle id="travelDot" r="5" fill="white" opacity="0" filter="url(#glow)"></circle>
+        </svg>
+
+        <!-- Floating cards - appear during animation timeline -->
+        <!-- Card 1: Code block - represents software dev -->
+        <div class="card-float card-float-1" id="card1">
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px">
+            <span style="font-size:11px; color:var(--muted)">software.ts</span>
+            <span style="width:8px;height:8px;border-radius:50%;background:#9722c5;display:inline-block"></span>
+          </div>
+          <div class="code-line blue"></div>
+          <div class="code-line" style="width:92%"></div>
+          <div class="code-line green"></div>
+          <div class="code-line" style="width:65%"></div>
+          <div class="card-label">code block</div>
+        </div>
+
+        <!-- Card 2: Mobile screen - represents app dev -->
+        <div class="card-float card-float-2" id="card2">
+          <div
+            style="height:78px; border-radius:8px; background:rgba(128,128,128,0.08); border:1px solid var(--border); padding:8px">
+            <div
+              style="height:6px; width:36%; background:rgba(128,128,128,0.22); border-radius:99px; margin-bottom:8px">
+            </div>
+            <div style="display:flex; gap:6px">
+              <div style="flex:1;height:28px;background:rgba(10,102,255,0.18);border-radius:6px"></div>
+              <div style="flex:1;height:28px;background:rgba(128,128,128,0.12);border-radius:6px"></div>
+            </div>
+          </div>
+          <div class="card-label">mobile screen</div>
+        </div>
+
+        <!-- Card 3: Dashboard - represents digital transformation -->
+        <div class="card-float card-float-3" id="card3">
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px">
+            <span style="font-size:11px; color:var(--muted)">Revenue</span>
+            <span style="font-size:10px; color:#22c55e">+12.4%</span>
+          </div>
+          <div style="display:flex; align-items:end; gap:3px; height:36px">
+            <div style="flex:1; height:40%; background:rgba(10,102,255,0.5); border-radius:3px"></div>
+            <div style="flex:1; height:72%; background:rgba(10,102,255,0.8); border-radius:3px"></div>
+            <div style="flex:1; height:55%; background:rgba(0,200,150,0.6); border-radius:3px"></div>
+            <div style="flex:1; height:88%; background:linear-gradient(180deg,#0A66FF,#00C896); border-radius:3px">
+            </div>
+            <div style="flex:1; height:62%; background:rgba(0,200,150,0.5); border-radius:3px"></div>
+          </div>
+          <div class="card-label">dashboard</div>
+        </div>
+
+        <!-- Card 4: Training module - represents academy -->
+        <div class="card-float card-float-4" id="card4">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px">
+            <div
+              style="width:22px;height:22px;border-radius:50%;background:rgba(255,107,28,0.2);display:grid;place-items:center;color:#FF6B1C;font-size:10px">
+              ◐</div>
+            <div>
+              <div style="font-size:11px; color:var(--text)">Frontend Mastery</div>
+              <div style="font-size:10px;color:var(--muted-2)">4 modules • 12h</div>
+            </div>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--muted); margin:3px 0">
+            <span>React Fundamentals</span><span style="color:#22c55e">✓</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--muted); margin:3px 0">
+            <span>Advanced Patterns</span><span style="color:#22c55e">✓</span>
+          </div>
+          <div class="bar">
+            <div class="bar-fill" style="width:68%; background:linear-gradient(90deg,#FF6B1C,#FB923C)"></div>
+          </div>
+          <div class="card-label">training module</div>
+        </div>
+
+        <!-- Legend - explains colors -->
+        <div class="legend">
+          <div class="legend-item"><span class="legend-dot" style="background:var(--blue)"></span>Ecosystem</div>
+          <div style="width:1px;height:12px;background:var(--border)"></div>
+          <div class="legend-item"><span class="legend-dot" style="background:var(--green)"></span>Software</div>
+          <div style="width:1px;height:12px;background:var(--border)"></div>
+          <div class="legend-item"><span class="legend-dot" style="background:var(--orange)"></span>Training</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll hint - hides on mobile -->
+    <div class="scroll-hint"><span>scroll to explore transformation</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       MARQUEE - Scrolling tech stack
+       Duplicate items for seamless loop
+       ==================================================================== -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="marquee-item">● React</span><span class="marquee-item">● Next.js</span><span class="marquee-item">●
+        Flutter</span><span class="marquee-item">● Node.js</span><span class="marquee-item">● Python</span><span
+        class="marquee-item">● Blockchain</span><span class="marquee-item">● AR/VR</span><span class="marquee-item">●
+        Cloud & Data</span>
+      <span class="marquee-item">● React</span><span class="marquee-item">● Next.js</span><span class="marquee-item">●
+        Flutter</span><span class="marquee-item">● Node.js</span><span class="marquee-item">● Python</span><span
+        class="marquee-item">● Blockchain</span><span class="marquee-item">● AR/VR</span><span class="marquee-item">●
+        Cloud & Data</span>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       SERVICES - Bento grid of 5 core offerings
+       Each card links to pages/*.html
+       ==================================================================== -->
+  <section class="section" id="services">
+    <div class="section-label reveal">Services</div>
+    <h2 class="section-title reveal">Services that build businesses.</h2>
+    <p class="section-desc reveal">Five core offerings, one mission: improve efficiency, engagement and transformation.
+    </p>
+    <div class="bento">
+      <a href="pages/digital-strategy.html" class="card reveal" style="grid-column: span 4;">
+        <div class="card-icon" style="background: var(--blue-light); color: var(--blue);">◐</div>
+        <h3>Digital Strategy</h3>
+        <p>From audit to roadmap, we turn your vision into a measurable growth plan.</p><span
+          style="color: var(--blue); font-weight:600; font-size:14px;">Explore →</span>
+      </a> 
+      <a href="pages/app-development.html" class="card reveal" style="grid-column: span 4;">
+        <div class="card-icon" style="background: var(--green-light); color: var(--green);">◑</div>
+        <h3>App Development</h3>
+        <p>High-performance mobile apps for iOS & Android that users love.</p><span
+          style="color: var(--green); font-weight:600; font-size:14px;">Explore →</span>
+      </a>
+      <a href="pages/web-development.html" class="card reveal" style="grid-column: span 4;">
+        <div class="card-icon" style="background: var(--orange-light); color: var(--orange);">◒</div>
+        <h3>Web Development</h3>
+        <p>Premium, animation-driven web experiences like Stripe & Linear.</p><span
+          style="color: var(--orange); font-weight:600; font-size:14px;">Explore →</span>
+      </a>
+      <a href="pages/software-training.html" class="card reveal" style="grid-column: span 6;">
+        <div class="card-icon" style="background: var(--blue-light); color: var(--blue);">◓</div>
+        <h3>Software Training  StudyPod</h3>
+        <p>Learn by building. Frontend, Backend, Mobile, Design paths with mentorship.</p><span
+          style="color: var(--blue); font-weight:600; font-size:14px;">Explore →</span>
+      </a>
+      <a href="pages/internship.html" class="card reveal" style="grid-column: span 6;">
+        <div class="card-icon" style="background: var(--green-light); color: var(--green);">◔</div>
+        <h3>Internship Program</h3>
+        <p>Real client projects, mentorship, and a path to employment.</p><span
+          style="color: var(--green); font-weight:600; font-size:14px;">Explore →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       WORKS - Featured projects
+       ==================================================================== -->
+  <section class="section" id="works">
+    <div class="section-label reveal">Works</div>
+    <h2 class="section-title reveal">Selected works that shipped.</h2>
+    <div class="works-grid">
+      <a href="./pages/works.html" class="work-card reveal">
+        <div class="work-media">
+          <div class="work-media-bg" style="background: var(--gradient-blue);"></div>
+        </div>
+        <div class="work-content">
+          <div class="work-meta">Fintech • 2024</div>
+          <h3>PayFlow  Banking App</h3> 
+          <span style="color: var(--blue); font-weight:600; font-size:14px;">Explore →</span>
+        </div>
+      </a>
+      <a href="./pages/works.html" class="work-card reveal">
+        <div class="work-media">
+          <div class="work-media-bg" style="background: var(--gradient-green);"></div>
+        </div>
+        <div class="work-content">
+          <div class="work-meta">Sports • 2024</div>
+          <h3>StatZone  Analytics</h3>
+          <span style="color: var(--green); font-weight:600; font-size:14px;">Explore →</span>
+        </div>
+      </a>
+      <a href="./pages/works.html" class="work-card reveal">
+        <div class="work-media">
+          <div class="work-media-bg" style="background: var(--gradient-orange);"></div>
+        </div>
+        <div class="work-content">
+          <div class="work-meta">Healthcare • 2023</div>
+          <h3>MediCare  Portal</h3>
+          <span style="color: var(--orange); font-weight:600; font-size:14px;">Explore →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       ACADEMY - StudyPod training
+       ==================================================================== -->
+  <section class="section" id="academy"
+    style="background: var(--black); color: white; border-radius: 32px; max-width: 1280px;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px;">
+      <div>
+        <div class="section-label reveal" style="color: var(--green);">Academy</div>
+        <h2 class="section-title reveal" style="color:white;">StudyPod  Learn by building.</h2>
+        <p class="section-desc reveal" style="color: rgba(255,255,255,0.7);">Practical paths: Frontend, Backend, Mobile,
+          UI/UX. Mentorship, real projects, portfolio.</p>
+        <a class="btn-primary" style="background: white; color: black; margin-top:20px; display:inline-flex;"
+          href="pages/software-training.html">View Learning Paths →</a>
+      </div>
+      <div style="background: rgba(255,255,255,0.06); border-radius:16px; padding:20px;">
+        <p style="font-size:14px; opacity:0.8;">Enrollment: 1) Choose path 2) Build real projects 3) Weekly mentorship
+          4) Ship portfolio & get hired.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       INDUSTRIES - Sectors served
+       ==================================================================== -->
+  <section class="section" id="industries">
+    <div class="section-label reveal">Industries</div>
+    <h2 class="section-title reveal">Experience across sectors that matter.</h2>
+    <div class="industries">
+      <a href="./pages/industries.html" class="industry reveal">
+        <h3>Financial</h3>
+        <p style="font-size:13px; opacity:0.7; margin-top:8px;">Fintech, banking, payments</p>
+      </a>
+      <a href="./pages/industries.html" class="industry reveal">
+        <h3>Sports</h3>
+        <p style="font-size:13px; opacity:0.7; margin-top:8px;">Analytics, fan engagement</p>
+      </a>
+      <a href="./pages/industries.html" class="industry reveal">
+        <h3>Healthcare</h3>
+        <p style="font-size:13px; opacity:0.7; margin-top:8px;">Portals, telemedicine</p>
+      </a>
+      <a href="./pages/industries.html" class="industry reveal">
+        <h3>Government</h3>
+        <p style="font-size:13px; opacity:0.7; margin-top:8px;">E-services, digitization</p>
+      </a>
+      <a href="./pages/industries.html" class="industry reveal">
+        <h3>Gaming</h3>
+        <p style="font-size:13px; opacity:0.7; margin-top:8px;">Platforms, AR/VR</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       ABOUT - Company story
+       ==================================================================== -->
+  <section class="section" id="about">
+    <div class="section-label reveal">About</div>
+    <h2 class="section-title reveal">An indigenous Nigerian company building for Africa and the world.</h2>
+    <p class="section-desc reveal" style="max-width:720px;">Incorporated under the laws of the Federal Republic of
+      Nigeria, founded in 2018. Focused on software application development and technology training. We operate as a
+      distributed team of creative and passionate problem solvers improving efficiency, engagement and transformation. <a href="./pages/about.html">Learn more about us</a>
+    </p>
+  </section>
+
+  <!-- ====================================================================
+       CAREERS - Open positions
+       ==================================================================== -->
+  <section class="section" id="careers">
+    <div class="section-label reveal">Careers</div>
+    <h2 class="section-title reveal">Grow your career with us.</h2>
+    <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:16px; margin-top:32px;">
+      <a href="./pages/careers.html" class="card reveal">
+        <h3>React Developer</h3>
+        <p>Remote • Full-time</p>
+      </a>
+      <a href="./pages/careers.html" class="card reveal">
+        <h3>App Developer</h3>
+        <p>Remote • Full-time</p>
+      </a>
+      <a href="./pages/careers.html" class="card reveal">
+        <h3>Project Manager</h3>
+        <p>Katsina / Remote • Full-time</p>
+      </a>
+      <a href="./pages/careers.html" class="card reveal">
+        <h3>UI/UX Designer</h3>
+        <p>Remote • Contract</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       CONTACT - Form + details
+       ==================================================================== -->
+  <section class="section contact-section" id="contact">
+    <div class="section-label reveal">Contact</div>
+    <h2 class="section-title reveal">Let's build something exceptional.</h2>
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <p>Inquiry form, office details, consultation booking, social links — built for
+          businesses and students alike.</p>
+        <div class="contact-meta">
+          <p><strong>Email:</strong> hello@spotters.company</p>
+          <p><strong>Location:</strong> Nigeria (Distributed) — Katsina, Lagos, Abuja</p>
+        </div>
+      </div>
+      <form class="card contact-form reveal">
+        <input type="text" name="name" placeholder="Your name">
+        <input type="email" name="email" placeholder="Business email">
+        <select name="service">
+          <option>Digital Strategy</option>
+          <option>App Development</option>
+          <option>Web Development</option>
+          <option>Software Training</option>
+          <option>Internship</option>
+        </select>
+        <textarea name="message" placeholder="Tell us about your project" rows="4"></textarea>
+        <button class="btn-primary blue" type="submit">Send Inquiry →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       CTA SECTION - Final call to action
+       ==================================================================== -->
+  <div class="cta-section reveal">
+    <h2 class="cta-title">Ready to build people<br>and businesses?</h2>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;"><a class="btn-primary"
+        style="background:white; color:black;" href="#contact">Start a Project</a><a class="btn-secondary"
+        style="background:transparent; border-color: rgba(255,255,255,0.3); color:white;"
+        href="pages/software-training.html">Join StudyPod</a></div>
+  </div>
+
+  <!-- ====================================================================
+       FOOTER - Links, contact, copyright
+       ==================================================================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="color:white;">
+            <div class="logo-dot"></div>SPOTTERS.
+          </div>
+          <p style="opacity:0.6; font-size:14px; margin-top:16px; max-width:300px;">Technology that builds people and
+            businesses. Indigenous Nigerian IT company since 2018.</p>
+        </div>
+        <div>
+          <h4>Services</h4><a href="pages/digital-strategy.html">Digital Strategy</a><a
+            href="pages/app-development.html">App Development</a><a href="pages/web-development.html">Web
+            Development</a><a href="pages/software-training.html">Software Training</a><a
+            href="pages/internship.html">Internship</a>
+        </div>
+        <div>
+          <h4>Company</h4><a href="#works">Works</a><a href="#academy">Academy</a><a href="#industries">Industries</a><a
+            href="#about">About</a><a href="#careers">Careers</a>
+        </div>
+        <div>
+          <h4>Connect</h4><a>hello@spotters.company</a><a>Katsina, Nigeria</a><a>LinkedIn / Twitter / GitHub</a>
+        </div>
+      </div>
+      <p
+        style="margin-top:64px; opacity:0.4; font-size:12px; border-top:1px solid rgba(255,255,255,0.1); padding-top:24px;">
+        © 2026 The Spotters Company. Incorporated under the laws of the Federal Republic of Nigeria.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button - Blue dominant, shared across pages -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6" />
+    </svg>
+  </button>
+
+  <!-- Toast for demo - remove if you link buttons directly -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

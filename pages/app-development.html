@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Development  The Spotters Company | Build an app users love</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/app-development.css">
+</head>
+
+<body>
+  <header class="header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <div class="logo-dot"></div>SPOTTERS
+      </a>
+
+      <!-- Right side: nav + actions -->
+      <nav class="nav-desktop" id="desktopNav">
+        <!-- SERVICES DROPDOWN - Desktop -->
+        <div class="nav-dropdown" id="servicesDropdown">
+          <button class="nav-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
+          <div class="dropdown-menu">
+            <a href="../pages/digital-strategy.html">Digital Strategy</a>
+            <a href="../pages/app-development.html">App Development</a>
+            <a href="../pages/web-development.html">Web Development</a>
+            <a href="../pages/software-training.html">StudyPod Training</a>
+            <a href="../pages/internship.html">Internship Program</a>
+          </div>
+        </div>
+        <a class="nav-link" href="../index.html#works">Works</a>
+        <a class="nav-link" href="../index.html#academy">Academy</a>
+        <a class="nav-link" href="../index.html#careers">Careers</a>
+        <a class="nav-link" href="../index.html#industries">Industries</a>
+        <a class="nav-link" href="../index.html#about">About</a>
+        <a class="nav-link" href="../index.html#contact">Contact</a>
+        <a class="btn-primary blue" href="../index.html#contact">Start a Project</a>
+
+        <!-- Theme toggle - always visible on desktop, also in drawer on mobile -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
+          <div class="toggle-thumb" id="toggleThumb">☾</div>
+        </button>
+      </nav>
+
+      <!-- Mobile actions: theme toggle + hamburger -->
+      <div style="display:flex; align-items:center; gap:10px;">
+        <!-- Duplicate toggle for mobile header (hidden on desktop via CSS) -->
+        <button class="theme-toggle" id="themeToggleMobile" style="display:none;" aria-label="Toggle theme">
+          <div class="toggle-thumb">☾</div>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+             DRAWER - Mobile menu for tablet downward
+             Slides from right, contains nav links + CTA + theme row
+             Controlled by main.js PART 2
+             ==================================================================== -->
+  <div class="drawer-backdrop" id="backdrop"></div>
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-dropdown" id="drawerServices">
+      <button class="drawer-link dropdown-trigger">Services <span>▾</span></button>
+      <div class="drawer-submenu">
+        <a class="drawer-sublink" href="../pages/digital-strategy.html">Digital Strategy</a>
+        <a class="drawer-sublink" href="../pages/app-development.html" style="color:var(--blue);">App Development</a>
+        <a class="drawer-sublink" href="../pages/web-development.html">Web Development</a>
+        <a class="drawer-sublink" href="../pages/software-training.html">StudyPod Training</a>
+        <a class="drawer-sublink" href="../pages/internship.html">Internship Program</a>
+      </div>
+    </div>
+    <a class="drawer-link" href="../index.html#works">Works</a>
+    <a class="drawer-link" href="../index.html#academy">Academy</a>
+    <a class="drawer-link" href="../index.html#careers">Careers</a>
+    <a class="drawer-link" href="../index.html#industries">Industries</a>
+    <a class="drawer-link" href="../index.html#about">About</a>
+    <a class="drawer-link" href="../index.html#contact">Contact</a>
+    <div class="drawer-footer">
+      <div class="drawer-theme-row"><span>Theme</span><button class="theme-toggle" id="drawerThemeToggle">
+          <div class="toggle-thumb" id="drawerToggleThumb">☾</div>
+        </button></div>
+      <a class="btn-primary blue" href="../index.html#contact" style="width:100%; justify-content:center;">Start a
+        Project →</a>
+      <p style="font-size:11px; color:var(--muted-2); text-align:center; margin-top:12px;">Indigenous Nigerian • Since
+        2018</p>
+    </div>
+  </div>
+  
+  <!-- ====================================================================
+           APP HERO SECTION
+           ==================================================================== -->
+  <section class="app-hero">
+    <div class="hero-background"><canvas id="particleCanvasApp"></canvas><canvas id="particleCanvas"></canvas>
+      <div class="gradient-orb blue"></div>
+      <div class="gradient-orb green"></div>
+      <div class="gradient-orb orange"></div>
+    </div>
+    <div class="hero-container">
+      <div class="hero-content">
+        <!-- <span class="hero-badge">Mobile App Development</span> -->
+        <h1>Build an app your users will love</h1>
+        <p>We design and develop exceptional iOS, Android, web, and hybrid applications with stunning user experiences,
+          scalable architecture, and performance that grows with your business.</p>
+        <div class="hero-actions"><a class="btn-primary blue" href="../index.html#contact">I want to build an app</a><a
+            class="btn-secondary" href="../index.html#works">View case studies</a></div>
+        <div class="hero-stats">
+          <div class="stat"><strong>Platforms</strong><span>iOS • Android • Web • Hybrid</span></div>
+          <div class="stat"><strong>Delivery</strong><span>MVP • Enterprise • Scale</span></div>
+          <div class="stat"><strong>Approach</strong><span>UX-first development</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="device-stack">
+          <svg class="connection-svg" viewBox="0 0 400 600" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="ad-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#0A66FF" />
+                <stop offset="50%" stop-color="#00C896" />
+                <stop offset="100%" stop-color="#FF6B1C" />
+              </linearGradient>
+            </defs>
+            <path class="connection-line" d="M 60 80 Q 200 120 320 90 T 300 280 T 80 420 T 340 500" />
+            <path class="connection-pulse" d="M 60 80 Q 200 120 320 90 T 300 280 T 80 420 T 340 500" />
+          </svg>
+          <div class="phone phone-back">
+            <div class="screen screen-2">
+              <div class="screen-inner">
+                <div class="mock-status"><span>9:41</span><span>●●●</span></div>
+                <div class="mock-header">
+                  <div
+                    style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ad-muted-2); font-weight:700;">
+                    Analytics</div>
+                  <h3 style="font-size:16px; font-weight:800; margin-top:4px;">Growth Overview</h3>
+                </div>
+                <div class="mock-card green">
+                  <div style="font-size:11px; color:var(--ad-muted-2);">Weekly Active</div>
+                  <div style="font-size:20px; font-weight:800; margin-top:2px;">8.2k ↑</div>
+                  <div class="chart-bars">
+                    <div class="chart-bar green" style="height:40%"></div>
+                    <div class="chart-bar green" style="height:65%"></div>
+                    <div class="chart-bar green" style="height:50%"></div>
+                    <div class="chart-bar green" style="height:80%"></div>
+                  </div>
+                </div>
+                <div class="mock-card">
+                  <div style="font-size:12px; font-weight:600;">Notifications</div>
+                  <div style="font-size:11px; color:var(--ad-muted); margin-top:6px;">🔔 New user signed up<br>💳
+                    Payment received</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="phone phone-front">
+            <div class="screen screen-1">
+              <div class="screen-inner">
+                <div class="mock-status"><span>9:41</span><span>●●●</span></div>
+                <div class="mock-header">
+                  <div class="mock-avatar-row">
+                    <div class="mock-avatar">A</div>
+                    <div>
+                      <div style="font-weight:700; font-size:14px;">Alex Morgan</div>
+                      <div style="font-size:11px; color:var(--ad-muted);">Premium • iOS</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mock-card blue">
+                  <div
+                    style="font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--ad-muted-2); font-weight:600;">
+                    Total Revenue</div>
+                  <div style="font-size:22px; font-weight:800; margin-top:4px;">$42,389</div>
+                  <div style="font-size:12px; color:#16A34A;">↑ 12.4% this week</div>
+                  <div class="chart-bars">
+                    <div class="chart-bar" style="height:40%"></div>
+                    <div class="chart-bar" style="height:72%"></div>
+                    <div class="chart-bar green" style="height:55%"></div>
+                    <div class="chart-bar"
+                      style="height:88%; background:linear-gradient(180deg,var(--ad-blue),var(--ad-green));"></div>
+                    <div class="chart-bar green" style="height:62%"></div>
+                  </div>
+                </div>
+                <div class="mock-card">
+                  <div style="font-size:12px; font-weight:600; margin-bottom:8px;">Recent Transactions</div>
+                  <div class="transaction"><span>☕ Coffee Shop</span><span style="font-weight:600;">-$4.20</span></div>
+                  <div class="transaction"><span>💳 Salary</span><span
+                      style="font-weight:600; color:var(--ad-green);">+$3,200</span></div>
+                  <div class="transaction"><span>🛒 Groceries</span><span style="font-weight:600;">-$84.30</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="floating-card analytics"><strong>Analytics</strong><span>↑ 34% retention</span></div>
+          <div class="floating-card payment"><strong>Payment</strong><span>$1,240 secured</span></div>
+          <div class="floating-card notification"><strong>Live</strong><span>Push delivered</span></div>
+          <div class="platforms">
+            <div class="platform-pill active">iOS</div>
+            <div class="platform-pill">Android</div>
+            <div class="platform-pill green">Web</div>
+            <div class="platform-pill">Hybrid</div>
+            <div class="platform-pill orange">MVP</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       STACK SECTION 
+       ==================================================================== -->
+  <section class="stack-section" id="stack">
+    <!-- Section header  -->
+    <div class="stack-header">
+      <h2>From idea to App Store  end-to-end product studio.</h2>
+      <p>We ship native performance with cross-platform speed. Each layer is production-ready, so founders move from MVP
+        to scale without rebuilding.</p>
+    </div>
+
+    <!-- Grid - 3 columns desktop, 2 tablet, 1 mobile -->
+    <div class="stack-grid">
+      <!-- Card 1 - Blue dominant - Native -->
+      <div class="stack-card native" data-stack="native">
+        <div class="stack-card-num">
+          <span>01  Native</span>
+          <span class="dot blue">●</span>
+        </div>
+        <h3>Native iOS & Android</h3>
+        <p>Swift, Kotlin, 120fps animations, offline-first, push, biometrics.</p>
+        <ul>
+          <li>Swift & Kotlin native builds</li>
+          <li>Offline-first + biometric auth</li>
+          <li>120fps micro-interactions</li>
+        </ul>
+      </div>
+
+      <!-- Card 2 - Green secondary - Cross-platform -->
+      <div class="stack-card cross" data-stack="cross">
+        <div class="stack-card-num">
+          <span>02  Cross-platform</span>
+          <span class="dot green">●</span>
+        </div>
+        <h3>Cross-platform</h3>
+        <p>Flutter, React Native, one codebase, native performance, 40% faster ship.</p>
+        <ul>
+          <li>Flutter & React Native</li>
+          <li>One codebase, native feel</li>
+          <li>40% faster time-to-market</li>
+        </ul>
+      </div>
+
+      <!-- Card 3 - Orange accent - MVP to Scale -->
+      <div class="stack-card scale" data-stack="scale">
+        <div class="stack-card-num">
+          <span>03  Scale</span>
+          <span class="dot orange">●</span>
+        </div>
+        <h3>MVP to Scale</h3>
+        <p>Weeks to MVP, months to scale. Analytics, payments, auth built-in.</p>
+        <ul>
+          <li>Weeks to MVP, months to scale</li>
+          <li>Analytics, payments, auth built-in</li>
+          <li>Enterprise-ready architecture</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+         CONTACT - Form + details
+         ==================================================================== -->
+  <section class="section contact-section" id="contact">
+    <div class="section-label reveal">Contact</div>
+    <h2 class="section-title reveal">Let's build something exceptional.</h2>
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <p>Inquiry form, office details, consultation booking, social links — built for
+          businesses and students alike.</p>
+        <div class="contact-meta">
+          <p><strong>Email:</strong> hello@spotters.company</p>
+          <p><strong>Location:</strong> Nigeria (Distributed) — Katsina, Lagos, Abuja</p>
+        </div>
+      </div>
+      <form class="card contact-form reveal">
+        <input type="text" name="name" placeholder="Your name">
+        <input type="email" name="email" placeholder="Business email">
+        <select name="service">
+          <option>Digital Strategy</option>
+          <option>App Development</option>
+          <option>Web Development</option>
+          <option>Software Training</option>
+          <option>Internship</option>
+        </select>
+        <textarea name="message" placeholder="Tell us about your project" rows="4"></textarea>
+        <button class="btn-primary blue" type="submit">Send Inquiry →</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="color:white;">
+            <div class="logo-dot"></div>SPOTTERS.
+          </div>
+          <p style="opacity:0.6; font-size:14px; margin-top:16px; max-width:300px;">Technology that builds people and
+            businesses. Indigenous Nigerian IT company since 2018.</p>
+        </div>
+        <div>
+          <h4>Services</h4><a href="digital-strategy.html">Digital Strategy</a><a href="app-development.html">App
+            Development</a><a href="web-development.html">Web Development</a><a href="software-training.html">Software
+            Training</a><a href="internship.html">Internship</a>
+        </div>
+        <div>
+          <h4>Company</h4><a href="../index.html#works">Works</a><a href="../index.html#academy">Academy</a><a
+            href="../index.html#industries">Industries</a><a href="../index.html#about">About</a><a
+            href="../index.html#careers">Careers</a>
+        </div>
+        <div>
+          <h4>Connect</h4><a>hello@spotters.company</a><a>Katsina, Nigeria</a><a>LinkedIn / Twitter / GitHub</a>
+        </div>
+      </div>
+      <p
+        style="margin-top:64px; opacity:0.4; font-size:12px; border-top:1px solid rgba(255,255,255,0.1); padding-top:24px;">
+        © 2026 The Spotters Company. Incorporated under the laws of the Federal Republic of Nigeria.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6" />
+    </svg></button>
+  <div class="toast" id="toast"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/app-development.js"></script>
+</body>
+
+</html>

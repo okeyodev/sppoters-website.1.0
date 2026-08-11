@@ -1,0 +1,94 @@
+/* ==========================================================================
+   FILE: css/web-animations.css + animations.css
+   PURPOSE: All keyframes for Web Development hero - premium subtle motion
+   Storyboard from brief:
+   Scene 1 Grid init 0-1s
+   Scene 2 Browser construction 1-2.5s
+   Scene 3 System integration 2.5-4.5s
+   Scene 4 Automation 4.5-6.5s
+   Scene 5 Idle premium motion 6.5-8s loop
+
+   All animations are subtle and premium, not flashy - per brief
+   ========================================================================== */
+
+/* Orb float - slow premium drift */
+@keyframes wd-orb-float {
+  0% { transform: translate3d(0,0,0) scale(1); }
+  100% { transform: translate3d(24px,-18px,0) scale(1.06); }
+}
+
+/* Pulse dot - live system, badge */
+@keyframes wd-pulse-dot {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.82); }
+}
+
+/* Floating cards - gentle sine */
+@keyframes wd-float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+/* Scroll indicator line */
+@keyframes wd-scroll {
+  0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+/* Connection dash travel - system integration pulse */
+@keyframes wd-dash-move {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: -1000; }
+}
+
+/* Shimmer for workflow lines */
+@keyframes wd-shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* Browser assembly - slide down */
+@keyframes wd-browser-in {
+  0% { opacity: 0; transform: translateY(20px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Sidebar expand */
+@keyframes wd-sidebar-in {
+  0% { width: 0; opacity: 0; }
+  100% { width: 100%; opacity: 1; }
+}
+
+/* Card stagger */
+@keyframes wd-card-in {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Chart bar grow */
+@keyframes wd-bar-grow {
+  0% { height: 6px; }
+  100% { height: var(--h); }
+}
+
+/* Grid fade */
+@keyframes wd-grid-fade {
+  0% { opacity: 0; }
+  100% { opacity: 0.6; }
+}
+
+/* Node drift - background nodes */
+@keyframes wd-node-drift {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(6px,-6px); }
+  100% { transform: translate(0,0); }
+}
+
+/* Reduced motion - respects user preference */
+@media (prefers-reduced-motion: reduce) {
+  .gradient-orb, .floating-card, .scroll-line, .connection-pulse, .live-dot, .hero-badge::before {
+    animation: none !important;
+  }
+  .browser-window, .hero-content, .hero-visual { transition: none !important; }
+}

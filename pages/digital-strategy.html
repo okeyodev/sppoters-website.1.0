@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Strategy  The Spotters Company | Strategic Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Shared tokens + global header/footer + premium digital strategy hero -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/digital-strategy.css">
+</head>
+
+<body>
+  <!-- ====================================================================
+       HEADER - SECTION
+       ==================================================================== -->
+  <header class="header" id="siteHeader">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-dot"></div>SPOTTERS
+      </a>
+      <nav class="nav-desktop" id="desktopNav">
+        <div class="nav-dropdown open" id="servicesDropdown">
+          <button class="nav-link dropdown-trigger" aria-expanded="true">Services <span>▾</span></button>
+          <div class="dropdown-menu">
+            <a href="app-development.html">App Development</a>
+            <a href="web-development.html">Web Development</a>
+            <a href="software-training.html">StudyPod Training</a>
+            <a href="internship.html">Internship Program</a>
+          </div>
+        </div>
+        <a class="nav-link" href="../pages/works.html">Works</a>
+        <a class="nav-link" href="../pages/software-training.html">Academy</a>
+        <a class="nav-link" href="../pages/careers.html">Careers</a>
+        <a class="nav-link" href="../pages/industries.html">Industries</a>
+        <a class="nav-link" href="../pages/about.html">About</a>
+        <a class="nav-link" href="../index.html#contact">Contact</a>
+        <a class="btn-primary blue" href="#contact-us">Start a Project</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
+          <div class="toggle-thumb" id="toggleThumb">☾</div>
+        </button>
+      </nav>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Drawer - Mobile (synced with index.html) -->
+  <div class="drawer-backdrop" id="backdrop"></div>
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-dropdown open" id="drawerServices">
+      <button class="drawer-link dropdown-trigger" aria-expanded="true">Services <span>▾</span></button>
+      <div class="drawer-submenu">
+        <a class="drawer-sublink" href="digital-strategy.html">Digital Strategy</a>
+        <a class="drawer-sublink" href="app-development.html">App Development</a>
+        <a class="drawer-sublink" href="web-development.html">Web Development</a>
+        <a class="drawer-sublink" href="software-training.html">StudyPod Training</a>
+        <a class="drawer-sublink" href="internship.html">Internship Program</a>
+      </div>
+    </div>
+    <a class="nav-link" href="../pages/works.html">Works</a>
+    <a class="nav-link" href="../pages/software-training.html">Academy</a>
+    <a class="nav-link" href="../pages/careers.html">Careers</a>
+    <a class="nav-link" href="../pages/industries.html">Industries</a>
+    <a class="nav-link" href="../pages/about.html">About</a>
+    <a class="nav-link" href="../index.html#contact">Contact</a>
+    <div class="drawer-footer">
+      <div class="drawer-theme-row">
+        <span>Theme</span>
+        <button class="theme-toggle" id="drawerThemeToggle" aria-label="Toggle theme">
+          <div class="toggle-thumb" id="drawerToggleThumb">☾</div>
+        </button>
+      </div>
+      <a class="btn-primary blue" href="#contact" style="width:100%; justify-content:center;">Start a
+        Project →</a>
+      <p style="font-size:11px; color:var(--muted-2); text-align:center; margin-top:12px;">Indigenous Nigerian • Since
+        2018</p>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       STRATEGY HERO - SECTION
+       ==================================================================== -->
+  <section class="strategy-hero">
+    <div class="hero-background">
+      <canvas id="networkCanvas"></canvas>
+      <div class="grid-overlay"></div>
+      <div class="gradient-orb blue"></div>
+      <div class="gradient-orb green"></div>
+      <div class="gradient-orb orange"></div>
+    </div>
+
+    <div class="hero-container">
+      <!-- Left: Sells expertise -->
+      <div class="hero-content">
+        <h1>Bring your digital vision to life</h1>
+        <p>From strategy to design, architecture, and development, we help organizations define a clear digital vision
+          and build a roadmap that delivers measurable transformation.</p>
+
+        <div class="hero-actions">
+          <a class="btn-primary blue" href="../index.html#contact">Book a strategy session</a>
+          <a class="btn-secondary" href="#process">View our process</a>
+        </div>
+
+        <div class="hero-pillars">
+          <div class="pillar">
+            <strong>Research-led</strong>
+            <span>Data-driven insights</span>
+          </div>
+          <div class="pillar">
+            <strong>Collaborative</strong>
+            <span>Stakeholder alignment</span>
+          </div>
+          <div class="pillar">
+            <strong>Outcome focused</strong>
+            <span>Measurable growth</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Command center visual -->
+      <div class="hero-visual">
+        <div class="roadmap-board">
+          <div class="board-header">
+            <span class="board-title">Transformation roadmap</span>
+            <span class="live-badge"><i></i> Live strategy map</span>
+          </div>
+
+          <svg class="roadmap-svg" viewBox="0 0 600 80" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="ds-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#0A66FF" />
+                <stop offset="55%" stop-color="#00C896" />
+                <stop offset="100%" stop-color="#FF6B1C" />
+              </linearGradient>
+            </defs>
+            <path class="road-path" d="M 40 40 C 132 20, 168 60, 198 40 S 396 40, 408 40 S 570 20, 580 40" />
+            <path class="road-progress" d="M 40 40 C 132 20, 168 60, 198 40 S 396 40, 408 40 S 570 20, 580 40"
+              stroke="url(#ds-gradient)" />
+          </svg>
+
+          <div class="stages-row">
+            <div class="stage discovery">
+              <div class="stage-label">Phase 1</div>
+              <div class="stage-title">Discovery</div>
+              <div class="progress-mini"><i></i></div>
+            </div>
+            <div class="stage documentation">
+              <div class="stage-label">Phase 2</div>
+              <div class="stage-title">Documentation</div>
+              <div style="font-size:10px; color:var(--ds-muted); margin-top:4px;">Strategic alignment 72%</div>
+              <div class="progress-mini"><i></i></div>
+            </div>
+            <div class="stage planning">
+              <div class="stage-label">Phase 3</div>
+              <div class="stage-title">Planning</div>
+              <div class="progress-mini"><i></i></div>
+            </div>
+            <div class="stage roadmap">
+              <div class="stage-label">Phase 4</div>
+              <div class="stage-title">Roadmap</div>
+              <div class="progress-mini"><i></i></div>
+            </div>
+          </div>
+
+          <div class="floating-card analytics">
+            <strong>Clarity Score</strong>
+            <span>↑ 34% after workshop</span>
+          </div>
+          <div class="floating-card architecture">
+            <strong>Architecture</strong>
+            <span>12 systems mapped</span>
+          </div>
+          <div class="floating-card ux">
+            <strong>UX Flows</strong>
+            <span>8 journeys defined</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       BELOW-FOLD: Process sections that hero mirrors
+       This creates narrative continuity: hero animates → same 4 sections
+       ==================================================================== -->
+  <section class="ds-process" id="process">
+    <div class="ds-process-header">
+      <h2>From uncertainty to clarity to execution  a strategy-led transformation framework.</h2>
+      <p style="color:var(--muted); font-size:17px; max-width:640px; margin-top:16px; line-height:1.6;">The hero above
+        isn't decoration. It's a live map of how we work. Each phase activates below, so executives instantly see how we
+        move from vision to measurable outcomes.</p>
+    </div>
+
+    <div class="ds-steps">
+      <!-- Phase 1 - Discovery - Blue dominant -->
+      <div class="ds-step discovery" id="discovery">
+        <div class="ds-step-num"><span>Phase 01  Discovery</span><span style="color:var(--blue);">●</span></div>
+        <h3>Research-led discovery</h3>
+        <p>We interview stakeholders, audit existing systems, and map the business landscape. No assumptions  only
+          evidence.</p>
+        <ul>
+          <li>Stakeholder interviews & journey mapping</li>
+          <li>Tech stack & process audit</li>
+          <li>Competitor & market analysis</li>
+          <li>Clarity score baseline</li>
+        </ul>
+      </div>
+
+      <!-- Phase 2 - Documentation - Blue -->
+      <div class="ds-step documentation" id="documentation">
+        <div class="ds-step-num"><span>Phase 02  Documentation</span><span style="color:var(--blue);">●</span></div>
+        <h3>Strategic documentation</h3>
+        <p>We translate chaos into structured artifacts that align product, engineering, and business teams.</p>
+        <ul>
+          <li>PRD & technical requirements</li>
+          <li>System architecture blueprints</li>
+          <li>UX flows & service design</li>
+          <li>Strategic alignment dashboard (72% → 95%)</li>
+        </ul>
+      </div>
+
+      <!-- Phase 3 - Planning - Green secondary -->
+      <div class="ds-step planning" id="planning">
+        <div class="ds-step-num"><span>Phase 03  Planning</span><span style="color:var(--green);">●</span></div>
+        <h3>Collaborative planning</h3>
+        <p>Roadmap isn't a Gantt chart. It's a decision-making tool that sequences value and de-risks execution.</p>
+        <ul>
+          <li>Outcome-based roadmap (not output-based)</li>
+          <li>Resource & capability planning</li>
+          <li>MVP definition & phasing</li>
+          <li>Governance & stakeholder sign-off</li>
+        </ul>
+      </div>
+
+      <!-- Phase 4 - Roadmap - Orange accent -->
+      <div class="ds-step roadmap" id="roadmap-step">
+        <div class="ds-step-num"><span>Phase 04  Roadmap</span><span style="color:var(--orange);">●</span></div>
+        <h3>Execution-ready roadmap</h3>
+        <p>A glowing line from vision to delivery  with measurable KPIs, owners, and transformation metrics.</p>
+        <ul>
+          <li>Transformation roadmap with KPIs</li>
+          <li>Design → Architecture → Development handoff</li>
+          <li>Training & adoption via StudyPod</li>
+          <li>Measurable growth tracking</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+         CONTACT - Form + details
+         ==================================================================== -->
+  <section class="section contact-section" id="contact">
+    <div class="section-label reveal" id="contact-us">Contact</div>
+    <h2 class="section-title reveal">Let's build something exceptional.</h2>
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <p>Inquiry form, office details, consultation booking, social links — built for
+          businesses and students alike.</p>
+        <div class="contact-meta">
+          <p><strong>Email:</strong> hello@spotters.company</p>
+          <p><strong>Location:</strong> Nigeria (Distributed) — Katsina, Lagos, Abuja</p>
+        </div>
+      </div>
+      <form class="card contact-form reveal">
+        <input type="text" name="name" placeholder="Your name">
+        <input type="email" name="email" placeholder="Business email">
+        <select name="service">
+          <option>Digital Strategy</option>
+          <option>App Development</option>
+          <option>Web Development</option>
+          <option>Software Training</option>
+          <option>Internship</option>
+        </select>
+        <textarea name="message" placeholder="Tell us about your project" rows="4"></textarea>
+        <button class="btn-primary blue" type="submit">Send Inquiry →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer - SAME AS INDEX.HTML -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="color:white;">
+            <div class="logo-dot"></div>SPOTTERS.
+          </div>
+          <p style="opacity:0.6; font-size:14px; margin-top:16px; max-width:300px;">Technology that builds people and
+            businesses. Indigenous Nigerian IT company since 2018.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <a href="digital-strategy.html">Digital Strategy</a>
+          <a href="app-development.html">App Development</a>
+          <a href="web-development.html">Web Development</a>
+          <a href="software-training.html">Software Training</a>
+          <a href="internship.html">Internship</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="../index.html#works">Works</a>
+          <a href="../index.html#academy">Academy</a>
+          <a href="../index.html#industries">Industries</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#careers">Careers</a>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <a>hello@spotters.company</a>
+          <a>Katsina, Nigeria</a>
+          <a>LinkedIn / Twitter / GitHub</a>
+        </div>
+      </div>
+      <p
+        style="margin-top:64px; opacity:0.4; font-size:12px; border-top:1px solid rgba(255,255,255,0.1); padding-top:24px;">
+        © 2026 The Spotters Company. Incorporated under the laws of the Federal Republic of Nigeria.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button - Blue dominant -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6" />
+    </svg>
+  </button>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- Scripts - shared + page specific -->
+  <script src="../js/main.js"></script>
+  <script src="../js/digital-strategy.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — The Spotters Company | People connected by purpose</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Shared tokens + global header/footer (synced with home) -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <!-- Page-specific styles -->
+  <link rel="stylesheet" href="../css/about.css">
+</head>
+
+<body>
+  <!-- ====================================================================
+       HEADER SECTION
+       ==================================================================== -->
+  <header class="header" id="siteHeader">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-dot"></div>SPOTTERS
+      </a>
+      <nav class="nav-desktop" id="desktopNav">
+        <div class="nav-dropdown" id="servicesDropdown">
+          <button class="nav-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
+          <div class="dropdown-menu">
+            <a href="digital-strategy.html">Digital Strategy</a>
+            <a href="app-development.html">App Development</a>
+            <a href="web-development.html">Web Development</a>
+            <a href="software-training.html">StudyPod Training</a>
+            <a href="internship.html">Internship Program</a>
+            <a href="about.html">About Us</a>
+          </div>
+        </div>
+        <a class="nav-link" href="../index.html#works">Works</a>
+        <a class="nav-link" href="../index.html#academy">Academy</a>
+        <a class="nav-link" href="../index.html#careers">Careers</a>
+        <a class="nav-link" href="../index.html#industries">Industries</a>
+        <a class="nav-link" href="../index.html#about">About</a>
+        <a class="nav-link" href="../index.html#contact">Contact</a>
+        <a class="btn-primary blue" href="../index.html#contact">Start a Project</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
+          <div class="toggle-thumb" id="toggleThumb">☾</div>
+        </button>
+      </nav>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Drawer - Mobile  -->
+  <div class="drawer-backdrop" id="backdrop"></div>
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-dropdown open" id="drawerServices">
+      <button class="drawer-link dropdown-trigger" aria-expanded="true">Services <span>▾</span></button>
+      <div class="drawer-submenu">
+        <a class="drawer-sublink" href="digital-strategy.html">Digital Strategy</a>
+        <a class="drawer-sublink" href="app-development.html">App Development</a>
+        <a class="drawer-sublink" href="web-development.html">Web Development</a>
+        <a class="drawer-sublink" href="software-training.html">StudyPod Training</a>
+        <a class="drawer-sublink" href="internship.html">Internship Program</a>
+        <a class="drawer-sublink" href="about.html">About Us</a>
+      </div>
+    </div>
+    <a class="drawer-link" href="../index.html#works">Works</a>
+    <a class="drawer-link" href="../index.html#academy">Academy</a>
+    <a class="drawer-link" href="../index.html#careers">Careers</a>
+    <a class="drawer-link" href="../index.html#industries">Industries</a>
+    <a class="drawer-link" href="../index.html#about">About</a>
+    <a class="drawer-link" href="../index.html#contact">Contact</a>
+    <div class="drawer-footer">
+      <div class="drawer-theme-row">
+        <span>Theme</span>
+        <button class="theme-toggle" id="drawerThemeToggle" aria-label="Toggle theme">
+          <div class="toggle-thumb" id="drawerToggleThumb">☾</div>
+        </button>
+      </div>
+      <a class="btn-primary blue" href="../index.html#contact" style="width:100%; justify-content:center;">Start a
+        Project →</a>
+      <p style="font-size:11px; color:var(--muted-2); text-align:center; margin-top:12px;">Indigenous Nigerian • Since
+        2018</p>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       ABOUT HERO - People connected by purpose
+       Most emotional hero on site — trust, not service
+       ==================================================================== -->
+  <section class="about-hero" id="aboutHero">
+    <div class="hero-background">
+      <canvas id="aboutNetworkCanvas"></canvas>
+      <div class="grid-overlay"></div>
+      <div class="gradient-orb blue"></div>
+      <div class="gradient-orb green"></div>
+      <div class="gradient-orb orange"></div>
+    </div>
+
+    <div class="hero-container">
+      <!-- LEFT: Content — sells trust -->
+      <div class="hero-content">
+        <h1>We're a team of <em>creative, passionate,</em> problem solvers</h1>
+        <p>Founded in 2018, we help organizations leverage technology to improve efficiency, engagement, and long-term
+          growth through software development, digital transformation, and technical training.</p>
+
+        <div class="hero-actions">
+          <a class="btn-primary blue" href="#team">Meet our team</a>
+          <a class="btn-secondary" href="#mission">Our mission & vision</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>2018 <span class="dot" style="color:var(--ab-blue);">●</span></strong>
+            <span>Founded</span>
+          </div>
+          <div class="stat">
+            <strong>Distributed</strong>
+            <span>Across Nigeria</span>
+          </div>
+          <div class="stat">
+            <strong>Technology experts</strong>
+            <span>Software & digital solutions</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Visual — team connected by purpose -->
+      <div class="hero-visual">
+        <!-- TEAM BOARD — backdrop-filter 24px, border rgba(255,255,255,.08), shadow 0 30px 80px -->
+        <div class="team-board" id="teamBoard">
+          <div class="board-header">
+            <div class="board-dots"><span></span><span></span><span></span></div>
+            <span class="board-label">Connected by purpose</span>
+          </div>
+
+          <div class="team-image-wrap">
+            <div class="team-image" id="teamImage">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
+                alt="The Spotters Company — diverse team collaborating on technology solutions in Lagos"
+                loading="eager">
+              <div class="image-overlay"></div>
+              <div class="network-mini-overlay"></div>
+            </div>
+            <div class="team-caption">
+              <span class="caption-dot"></span>
+              <span>People + technology</span>
+            </div>
+          </div>
+
+          <!-- Floating cards — Mission / Vision / Values -->
+          <div class="floating-card mission" id="cardMission">
+            <div class="card-icon blue">✦</div>
+            <div>
+              <strong>Mission</strong>
+              <span>Excellence through service</span>
+            </div>
+          </div>
+
+          <div class="floating-card vision" id="cardVision">
+            <div class="card-icon green">◐</div>
+            <div>
+              <strong>Vision</strong>
+              <span>Innovation with impact</span>
+            </div>
+          </div>
+
+          <div class="floating-card values" id="cardValues">
+            <div class="card-icon orange">✧</div>
+            <div>
+              <strong>Values</strong>
+              <span>People first, always</span>
+            </div>
+          </div>
+
+          <!-- Connection SVG — glowing thread -->
+          <svg class="connection-svg" viewBox="0 0 520 520" preserveAspectRatio="none">
+            <path class="network-path" />
+            <path class="network-pulse" id="networkPulse" />
+          </svg>
+        </div>
+
+        <!-- Expertise pills — Scene 3 3-5s -->
+        <div class="expertise-layer" id="expertiseLayer">
+          <div class="expertise-pill software" data-pill="software"><span class="pill-dot"></span> Software Development
+          </div>
+          <div class="expertise-pill web" data-pill="web"><span class="pill-dot"></span> Web Platforms</div>
+          <div class="expertise-pill mobile" data-pill="mobile"><span class="pill-dot"></span> Mobile Apps</div>
+          <div class="expertise-pill digital" data-pill="digital"><span class="pill-dot"></span> Digital Strategy</div>
+          <div class="expertise-pill training" data-pill="training"><span class="pill-dot"></span> Training</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Scroll to explore</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       BELOW-FOLD — Story + Mission/Vision + Values
+       Narrative continuity from hero
+       ==================================================================== -->
+  <section class="about-section" id="mission">
+    <h2>An indigenous Nigerian company building for Africa and the world.</h2>
+    <p class="lead">Incorporated under the laws of the Federal Republic of Nigeria, founded in 2018. We operate as a
+      distributed team of creative and passionate problem solvers improving efficiency, engagement, and transformation —
+      not just shipping code, but building people.</p>
+
+    <div class="mv-grid">
+      <div class="mv-card">
+        <h3><span
+            style="width:28px; height:28px; background:var(--ab-blue-light); color:var(--ab-blue); border-radius:8px; display:grid; place-items:center; font-size:14px;">◐</span>
+          Mission — Excellence through service</h3>
+        <p>We exist to help organizations turn complex challenges into simple, scalable systems. Every line of code,
+          every training session, every strategy document is measured by one outcome: does it make our clients more
+          efficient, more engaged, and more ready for what's next?</p>
+        <ul>
+          <li>Research-led discovery, no assumptions</li>
+          <li>Human-centered design, tech-enabled delivery</li>
+          <li>Training and adoption via StudyPod — we build people, not just products</li>
+        </ul>
+      </div>
+      <div class="mv-card">
+        <h3><span
+            style="width:28px; height:28px; background:var(--ab-green-light); color:var(--ab-green); border-radius:8px; display:grid; place-items:center; font-size:14px;">✦</span>
+          Vision — Innovation with impact</h3>
+        <p>To be the most trusted technology partner for organizations across Africa — proving that world-class software
+          can be imagined, built, and scaled from Nigeria. A company where purpose and performance are not opposites,
+          but partners.</p>
+        <ul>
+          <li>Platforms that unify CRM, ERP, portals, automation</li>
+          <li>Distributed talent — Katsina, Lagos, Abuja, Remote</li>
+          <li>Long-term growth over short-term hacks</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section" id="team" style="padding-top:0;">
+    <div class="about-label">Connected by purpose</div>
+    <h2>People first, technology second — that's the order that scales.</h2>
+    <p class="lead">We are not an agency that rents developers. We are a product studio that builds teams. Designers,
+      engineers, product thinkers, and trainers who stay, ship, and support.</p>
+
+    <div class="values-grid">
+      <div class="value-card">
+        <h4><span style="color:var(--ab-blue);">●</span> Empathy</h4>
+        <p>We start by listening. Stakeholder interviews, journey mapping, and clarity scores before we propose a
+          solution.</p>
+      </div>
+      <div class="value-card">
+        <h4><span style="color:var(--ab-green);">●</span> Craft</h4>
+        <p>120fps micro-interactions, offline-first architecture, reusable UI systems. Quality is not a phase, it's our
+          default.</p>
+      </div>
+      <div class="value-card">
+        <h4><span style="color:var(--ab-orange);">●</span> Growth</h4>
+        <p>We train while we build. Every project includes knowledge transfer, documentation, and adoption playbooks.
+        </p>
+      </div>
+      <div class="value-card">
+        <h4><span style="color:var(--ab-blue);">●</span> Collaboration</h4>
+        <p>Agile sprints, open roadmaps, stakeholder alignment dashboards. No black boxes.</p>
+      </div>
+      <div class="value-card">
+        <h4><span style="color:var(--ab-green);">●</span> Ownership</h4>
+        <p>We ship, monitor, iterate. CI/CD, performance audits, and support that doesn't disappear after launch.</p>
+      </div>
+      <div class="value-card">
+        <h4><span style="color:var(--ab-orange);">●</span> Purpose</h4>
+        <p>Technology that builds people and businesses. Indigenous Nigerian, global standards, since 2018.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       CONTACT - SECTION
+       ==================================================================== -->
+  <section class="section contact-section" id="contact">
+    <div class="section-label reveal">Contact</div>
+    <h2 class="section-title reveal">Let's build something exceptional.</h2>
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <p>Inquiry form, office details, consultation booking, social links — built for businesses and students alike.
+        </p>
+        <div class="contact-meta">
+          <p><strong>Email:</strong> hello@spotters.company</p>
+          <p><strong>Location:</strong> Nigeria (Distributed) — Katsina, Lagos, Abuja</p>
+        </div>
+      </div>
+      <form class="card contact-form reveal">
+        <input type="text" name="name" placeholder="Your name">
+        <input type="email" name="email" placeholder="Business email">
+        <select name="service">
+          <option>Digital Strategy</option>
+          <option>App Development</option>
+          <option>Web Development</option>
+          <option>Software Training</option>
+          <option>Internship</option>
+          <option>About / Partnership</option>
+        </select>
+        <textarea name="message" placeholder="Tell us about your project" rows="4"></textarea>
+        <button class="btn-primary blue" type="submit">Send Inquiry →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer - SECTION -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="color:white;">
+            <div class="logo-dot"></div>SPOTTERS.
+          </div>
+          <p style="opacity:0.6; font-size:14px; margin-top:16px; max-width:300px;">Technology that builds people and
+            businesses. Indigenous Nigerian IT company since 2018.</p>
+          \\\
+        </div>
+        <div>
+          <h4>Services</h4>
+          <a href="digital-strategy.html">Digital Strategy</a>
+          <a href="app-development.html">App Development</a>
+          <a href="web-development.html">Web Development</a>
+          <a href="software-training.html">Software Training</a>
+          <a href="internship.html">Internship</a>
+          <a href="about.html">About</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="../index.html#works">Works</a>
+          <a href="../index.html#academy">Academy</a>
+          <a href="../index.html#industries">Industries</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#careers">Careers</a>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <a>hello@spotters.company</a>
+          <a>Katsina, Nigeria</a>
+          <a>LinkedIn / Twitter / GitHub</a>
+        </div>
+      </div>
+      <p
+        style="margin-top:64px; opacity:0.4; font-size:12px; border-top:1px solid rgba(255,255,255,0.1); padding-top:24px;">
+        © 2026 The Spotters Company. Incorporated under the laws of the Federal Republic of Nigeria.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button - Blue dominant (synced with home) -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6" />
+    </svg>
+  </button>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/about.js"></script>
+</body>
+
+</html>

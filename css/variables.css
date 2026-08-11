@@ -1,0 +1,115 @@
+/* ==========================================================================
+   VARIABLES.CSS - Design tokens for The Spotters Company
+   This file holds all colors, shadows, radii, fonts.
+   Edit here to rebrand the entire site.
+   
+   Structure:
+   1. Core palette (white, black, grays)
+   2. Brand colors (blue, green, orange) - light/dark variants
+   3. Theme tokens (light = default, dark = [data-theme="dark"])
+   4. Gradients, shadows, radii, easing
+   ========================================================================== */
+
+:root {
+  /* ---------- 1. Core neutrals ---------- */
+  --white: #FFFFFF;
+  --off-white: #FAFBFD;
+  --ghost: #F6F7F9;
+  --black: #0A0A0F;
+  --gray-900: #111827;
+  --gray-700: #374151;
+  --gray-500: #6B7280;
+  --gray-300: #D1D5DB;
+  --gray-100: #F3F4F6;
+  
+  /* ---------- 2. Brand colors ---------- */
+  --blue: #0A66FF;           /* Primary - Software / trust */
+  --blue-dark: #0549C0;
+  --blue-light: #E8EFFF;
+  --blue-glow: rgba(10, 102, 255, 0.15);
+  
+  --green: #00C896;          /* Secondary - Training / growth (used as purple in hero) */
+  --green-dark: #009975;
+  --green-light: #E6FFF6;
+  --green-glow: rgba(0, 200, 150, 0.15);
+  
+  --orange: #FF6B1C;          /* Accent - Human / transformation */
+  --orange-dark: #E05A12;
+  --orange-light: #FFF0E6;
+  --orange-glow: rgba(255, 107, 28, 0.15);
+
+  /* For hero animation - map purple to green for brand consistency */
+  --hero-blue: var(--blue);
+  --hero-purple: var(--green);
+  --hero-orange: var(--orange);
+
+  /* ---------- 3. Theme tokens - Light is default ---------- */
+  --bg: var(--white);
+  --bg-2: var(--off-white);
+  --text: var(--black);
+  --muted: var(--gray-700);
+  --muted-2: var(--gray-500);
+  --border: rgba(10,10,15,0.08);
+  --card-bg: rgba(255,255,255,0.84);
+  --visual-bg: rgba(248,249,252,0.72);
+  --header-bg: rgba(255,255,255,0.82);
+  --canvas-line: 10,10,15;
+
+  /* ---------- 4. Gradients ---------- */
+  --gradient-bgo: linear-gradient(135deg, var(--green) 0%, var(--blue) 80%, var(--orange) 100%);
+  --gradient-blue: linear-gradient(135deg, var(--blue) 0%, #3B82F6 100%);
+  --gradient-green: linear-gradient(135deg, var(--green) 0%, #10B981 100%);
+  --gradient-orange: linear-gradient(135deg, var(--orange) 0%, #FB923C 100%);
+
+  /* ---------- 5. Typography ---------- */
+  --font-display: 'Geist', 'Inter', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  
+  /* ---------- 6. Radii & Shadows ---------- */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+  
+  --shadow-sm: 0 1px 2px rgba(10,10,15,0.04), 0 4px 12px rgba(10,10,15,0.04);
+  --shadow-md: 0 8px 24px rgba(10,10,15,0.06), 0 2px 8px rgba(10,10,15,0.04);
+  --shadow-lg: 0 16px 48px rgba(10,10,15,0.08), 0 4px 16px rgba(10,10,15,0.04);
+  --shadow-glow-blue: 0 8px 32px var(--blue-glow);
+  --shadow-glow-green: 0 8px 32px var(--green-glow);
+  --shadow-glow-orange: 0 8px 32px var(--orange-glow);
+
+  /* ---------- 7. Easing - for premium motion ---------- */
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+[data-theme="dark"] {
+  --bg: #050816;
+  --bg-2: #0B1020;
+  --text: #E6E8EF;
+  --muted: rgba(255,255,255,0.68);
+  --muted-2: rgba(255,255,255,0.42);
+  --border: rgba(255,255,255,0.10);
+  --card-bg: rgba(11,16,32,0.84);
+  --visual-bg: rgba(8,12,26,0.62);
+  --header-bg: rgba(5,8,22,0.78);
+  --canvas-line: 255,255,255;
+  --ghost: #12131A;
+  --gray-100: rgba(255,255,255,0.08);
+  --gray-300: rgba(255,255,255,0.14);
+  --off-white: #0B1020;
+}
+body.dark {
+  --bg: #050816;
+  --bg-2: #0B1020;
+  --text: #E6E8EF;
+  --muted: rgba(255,255,255,0.68);
+  --muted-2: rgba(255,255,255,0.42);
+  --border: rgba(255,255,255,0.10);
+  --card-bg: rgba(11,16,32,0.84);
+  --visual-bg: rgba(8,12,26,0.62);
+  --header-bg: rgba(5,8,22,0.78);
+  --canvas-line: 255,255,255;
+}

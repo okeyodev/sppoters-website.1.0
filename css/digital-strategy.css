@@ -1,0 +1,875 @@
+/* ==========================================================================
+   FILE: css/digital-strategy.css
+   PURPOSE: Premium "Strategic Command Center" hero for Digital Strategy page
+   SYNC: Uses same header, footer, theme toggle, hamburger as index.html
+   COLORS: Blue dominant (#0A66FF) -> Green (#00C896) -> Orange (#FF6B1C)
+           No purple — mapped to green per brand guideline
+   STRUCTURE:
+   1. Design tokens (light/dark adaptive)
+   2. Hero shell + background system (canvas + grid + orbs)
+   3. Hero content (48/52)
+   4. Roadmap board + stages (mirrors below-fold sections)
+   5. Floating cards + animations
+   6. Below-fold process sections (Discovery, Documentation, Planning, Roadmap)
+   7. Responsive
+   ========================================================================== */
+
+/* ---------- 1. Tokens - adaptive to site theme ---------- */
+:root {
+  /* Map to site brand - BLUE dominant */
+  --ds-blue: var(--blue);
+  /* #0A66FF - primary trust */
+  --ds-blue-light: #3B82F6;
+  --ds-blue-glow: rgba(10, 102, 255, 0.35);
+  --ds-blue-light-bg: var(--blue-light);
+
+  --ds-green: var(--green);
+  /* #00C896 - growth, replaces purple */
+  --ds-green-glow: rgba(0, 200, 150, 0.30);
+  --ds-green-light: var(--green-light);
+
+  --ds-orange: var(--orange);
+  /* #FF6B1C - transformation accent */
+  --ds-orange-glow: rgba(255, 107, 28, 0.35);
+  --ds-orange-light: var(--orange-light);
+
+  /* Surfaces - light default */
+  --ds-bg: #FBFDFF;
+  --ds-surface: #FFFFFF;
+  --ds-surface-2: #F6F7FB;
+  --ds-surface-3: #EEF1F8;
+  --ds-border: rgba(10, 10, 15, 0.08);
+  --ds-border-strong: rgba(10, 10, 15, 0.12);
+  --ds-text: var(--text);
+  --ds-muted: var(--muted);
+  --ds-muted-2: var(--muted-2);
+
+  --ds-shadow: 0 20px 60px rgba(10, 10, 15, 0.08);
+  --ds-shadow-card: 0 8px 32px rgba(10, 10, 15, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --ds-radius: 16px;
+  --ds-radius-lg: 24px;
+  --ds-radius-pill: 9999px;
+
+  --ds-grid-line: rgba(10, 10, 15, 0.06);
+  --ds-ease: var(--ease-smooth);
+}
+
+/* Dark theme override - cinematic command center */
+[data-theme="dark"] {
+  --ds-bg: #050816;
+  --ds-surface: #0B1020;
+  --ds-surface-2: #121A32;
+  --ds-surface-3: #1A2443;
+  --ds-border: rgba(255, 255, 255, 0.08);
+  --ds-border-strong: rgba(255, 255, 255, 0.14);
+  --ds-text: #E6E8EF;
+  --ds-muted: rgba(255, 255, 255, 0.68);
+  --ds-muted-2: rgba(255, 255, 255, 0.42);
+
+  --ds-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --ds-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --ds-grid-line: rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- 2. Hero Shell ---------- */
+.strategy-hero {
+  position: relative;
+  min-height: calc(100vh - 62px);
+  /* minus sticky header */
+  background: var(--ds-bg);
+  color: var(--ds-text);
+  overflow: hidden;
+  isolation: isolate;
+  transition: background .4s ease;
+}
+
+/* Background system */
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#networkCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+}
+
+[data-theme="dark"] #networkCanvas {
+  opacity: 0.75;
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--ds-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ds-grid-line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 42%, transparent 78%);
+  opacity: 0;
+  transition: opacity 1s var(--ds-ease);
+}
+
+.grid-overlay.is-visible {
+  opacity: 0.7;
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.45;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.gradient-orb.blue {
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, var(--ds-blue) 0%, transparent 70%);
+  top: -80px;
+  left: -80px;
+  animation: ds-orb-float 20s infinite alternate var(--ds-ease);
+}
+
+.gradient-orb.green {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, var(--ds-green) 0%, transparent 70%);
+  bottom: 8%;
+  right: 12%;
+  animation: ds-orb-float 24s infinite alternate-reverse var(--ds-ease);
+}
+
+.gradient-orb.orange {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--ds-orange) 0%, transparent 70%);
+  top: 38%;
+  right: 32%;
+  opacity: 0.18;
+}
+
+[data-theme="light"] .gradient-orb {
+  opacity: 0.22;
+  filter: blur(60px);
+}
+
+[data-theme="light"] .gradient-orb.orange {
+  opacity: 0.12;
+}
+
+/* ---------- 3. Hero Container 48/52 ---------- */
+.hero-container {
+  position: relative;
+  z-index: 5;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 72px 24px 90px;
+  display: grid;
+  grid-template-columns: 48% 52%;
+  gap: 40px;
+  align-items: center;
+  min-height: calc(100vh - 62px);
+}
+
+/* Left content */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* .hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  width:fit-content;
+  padding:6px 14px;
+  font-size:11px; letter-spacing:0.16em; text-transform:uppercase; font-weight:600;
+  color: var(--ds-blue);
+  background: var(--ds-blue-light-bg);
+  border:1px solid rgba(10,102,255,0.18);
+  border-radius: var(--ds-radius-pill);
+  backdrop-filter: blur(8px);
+}
+[data-theme="dark"] .hero-badge {
+  background: rgba(10,102,255,0.12);
+  border-color: rgba(10,102,255,0.28);
+  color: #6EA8FF;
+}
+.hero-badge::before {
+  content:''; width:6px; height:6px; background:var(--ds-blue); border-radius:50%;
+  box-shadow:0 0 10px var(--ds-blue-glow);
+  animation: ds-pulse-dot 2s infinite;
+}
+ */
+.hero-content h1 {
+  font-size: clamp(36px, 4.5vw, 56px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  color: var(--ds-text);
+  max-width: 520px;
+}
+
+.hero-content p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ds-muted);
+  max-width: 480px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.btn-primary.blue {
+  background: var(--ds-blue);
+}
+
+.btn-primary.blue:hover {
+  background: var(--blue-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-blue);
+}
+
+.hero-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--ds-border);
+}
+
+.pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pillar strong {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ds-text);
+}
+
+.pillar span {
+  font-size: 12.5px;
+  color: var(--ds-muted);
+  line-height: 1.4;
+}
+
+/* ---------- 4. Right Visual - Roadmap Board ---------- */
+.hero-visual {
+  position: relative;
+  perspective: 1200px;
+}
+
+.roadmap-board {
+  position: relative;
+  background: linear-gradient(180deg, var(--ds-surface) 0%, var(--ds-surface-2) 100%);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-lg);
+  padding: 22px;
+  box-shadow: var(--ds-shadow-card), var(--ds-shadow);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  transition: transform .6s var(--ds-ease), background .4s ease, border-color .4s ease;
+}
+
+[data-theme="dark"] .roadmap-board {
+  background: linear-gradient(180deg, rgba(18, 26, 50, 0.92) 0%, rgba(11, 16, 32, 0.92) 100%);
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.board-title {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ds-muted-2);
+  font-weight: 700;
+}
+
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #16A34A;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  padding: 4px 10px;
+  border-radius: var(--ds-radius-pill);
+}
+
+.live-badge i {
+  width: 6px;
+  height: 6px;
+  background: #22C55E;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.roadmap-svg {
+  position: absolute;
+  top: 72px;
+  left: 22px;
+  right: 22px;
+  width: calc(100% - 44px);
+  height: 80px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.road-path {
+  fill: none;
+  stroke: var(--ds-border-strong);
+  stroke-width: 2;
+  stroke-dasharray: 6 8;
+  opacity: 0.6;
+}
+
+.road-progress {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 8px var(--ds-blue-glow));
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.stages-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  position: relative;
+  z-index: 2;
+}
+
+.stage {
+  position: relative;
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-border);
+  border-radius: 14px;
+  padding: 16px 14px;
+  transition: all .6s var(--ds-ease);
+  opacity: 0.7;
+}
+
+.stage::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: var(--ds-surface-2);
+  border: 2px solid var(--ds-border);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--ds-bg);
+  transition: all .6s var(--ds-ease);
+  z-index: 3;
+}
+
+.stage.active {
+  background: var(--ds-blue-light-bg);
+  border-color: var(--ds-blue);
+  box-shadow: 0 0 0 1px rgba(10, 102, 255, 0.18), 0 8px 24px rgba(10, 102, 255, 0.12);
+  transform: translateY(-4px);
+  opacity: 1;
+}
+
+[data-theme="dark"] .stage.active {
+  background: rgba(10, 102, 255, 0.10);
+}
+
+.stage.active::before {
+  background: var(--ds-blue);
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 4px var(--ds-bg), 0 0 20px var(--ds-blue-glow);
+}
+
+.stage.roadmap.active {
+  border-color: var(--ds-orange);
+  background: var(--ds-orange-light);
+  box-shadow: 0 0 0 1px rgba(255, 107, 28, 0.18), 0 8px 24px rgba(255, 107, 28, 0.12);
+}
+
+[data-theme="dark"] .stage.roadmap.active {
+  background: rgba(255, 107, 28, 0.10);
+}
+
+.stage.roadmap.active::before {
+  background: var(--ds-orange);
+  border-color: #FB923C;
+  box-shadow: 0 0 0 4px var(--ds-bg), 0 0 20px var(--ds-orange-glow);
+}
+
+.stage-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ds-muted-2);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.stage-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ds-text);
+  margin-bottom: 10px;
+}
+
+.progress-mini {
+  height: 3px;
+  background: var(--ds-border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progress-mini i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--ds-blue);
+  border-radius: 99px;
+  transition: width 1.2s var(--ds-ease);
+}
+
+.stage.active .progress-mini i {
+  width: 72%;
+}
+
+.stage.roadmap.active .progress-mini i {
+  background: var(--ds-orange);
+  width: 100%;
+}
+
+/* Floating cards */
+.floating-card {
+  position: absolute;
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+  font-size: 11px;
+  color: var(--ds-muted);
+  z-index: 4;
+  will-change: transform;
+  animation: ds-float 5s ease-in-out infinite;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.floating-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all .8s var(--ds-ease);
+}
+
+.floating-card strong {
+  color: var(--ds-text);
+  display: block;
+  font-size: 12px;
+}
+
+.floating-card.analytics {
+  top: -18px;
+  right: 22%;
+  animation-delay: 0s;
+}
+
+.floating-card.architecture {
+  bottom: 18%;
+  left: -14px;
+  animation-delay: 1.5s;
+}
+
+.floating-card.ux {
+  bottom: -14px;
+  right: 12%;
+  animation-delay: 0.8s;
+}
+
+/* ---------- 5. Animations ---------- */
+@keyframes ds-orb-float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(20px, -20px, 0) scale(1.05);
+  }
+}
+
+@keyframes ds-pulse-dot {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes ds-float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes ds-scroll {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 0;
+  }
+
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+    opacity: 0;
+  }
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.6;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, var(--ds-muted), transparent);
+  animation: ds-scroll 2s infinite;
+}
+
+/* ---------- 6. Below-fold Process Sections (narrative continuity) ---------- */
+.ds-process {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 96px 24px;
+  border-top: 1px solid var(--ds-border);
+  background: var(--bg);
+}
+
+.ds-process-header {
+  margin-bottom: 48px;
+}
+
+/* .ds-process-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ds-process-label::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue);
+} */
+
+.ds-process h2 {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--text);
+  max-width: 720px;
+}
+
+.ds-steps {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.ds-step {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  transition: all .5s var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.ds-step:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(10, 102, 255, 0.18);
+}
+
+.ds-step-num {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ds-step h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.ds-step p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.ds-step ul {
+  margin-top: 16px;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* .ds-step.discovery {
+  border-top: 2px solid var(--blue);
+}
+
+.ds-step.documentation {
+  border-top: 2px solid var(--blue);
+}
+
+.ds-step.planning {
+  border-top: 2px solid var(--green);
+}
+
+.ds-step.roadmap {
+  border-top: 2px solid var(--orange);
+} */
+
+/* ---------- 7. Back to Top - shared ---------- */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: var(--blue);
+  color: white;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 24px rgba(10, 102, 255, 0.35), 0 2px 8px rgba(0, 0, 0, 0.12);
+  border: none;
+  cursor: pointer;
+  z-index: 80;
+  opacity: 0;
+  transform: translateY(12px) scale(0.9);
+  pointer-events: none;
+  transition: all .35s var(--ease-smooth);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  transform: translateY(-2px) scale(1.04);
+  background: var(--blue-dark);
+  box-shadow: 0 12px 32px rgba(10, 102, 255, 0.45);
+}
+
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ---------- 8. Responsive ---------- */
+@media (max-width:992px) {
+  .hero-container {
+    padding: 48px 24px 80px;
+    gap: 28px;
+  }
+
+  .roadmap-board {
+    padding: 18px;
+  }
+
+  .stages-row {
+    gap: 10px;
+  }
+
+  .stage {
+    padding: 12px 10px;
+  }
+
+  .ds-steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width:768px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    grid-template-areas: "visual" "content";
+    padding: 32px 20px 60px;
+  }
+
+  .hero-visual {
+    grid-area: visual;
+  }
+
+  .hero-content {
+    grid-area: content;
+  }
+
+  .hero-pillars {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .pillar {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .pillar strong {
+    min-width: 110px;
+  }
+}
+
+@media (max-width:480px) {
+  .strategy-hero {
+    min-height: auto;
+  }
+
+  .hero-container {
+    padding: 24px 18px 48px;
+  }
+
+  .hero-content h1 {
+    font-size: 30px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  .roadmap-svg {
+    top: 66px;
+    left: 36px;
+    width: 2px;
+    height: calc(100% - 88px);
+  }
+
+  .stages-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-left: 28px;
+    position: relative;
+  }
+
+  .stages-row::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    bottom: 10px;
+    width: 1px;
+    background: var(--ds-border);
+  }
+
+  .stage {
+    margin-bottom: 14px;
+    padding: 14px 16px 14px 20px;
+  }
+
+  .stage::before {
+    top: 50%;
+    left: -28px;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+  }
+
+  .floating-card {
+    display: none;
+  }
+
+  .floating-card.analytics {
+    display: block;
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-top: 14px;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+
+  .back-to-top {
+    bottom: 18px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
+  }
+}

@@ -1,0 +1,1325 @@
+/* ==========================================================================
+   FILE: css/app-development.css
+   PURPOSE: Premium product studio hero - Apple + Linear + Stripe depth
+   SYNC: Uses same header/footer/toggle/hamburger/back-to-top as index.html
+   COLORS: Blue #0A66FF dominant > Green #00C896 > Orange #FF6B1C (no purple)
+   ========================================================================== */
+:root {
+  --ad-blue: var(--blue);
+  --ad-blue-light: var(--blue-light);
+  --ad-blue-glow: rgba(10, 102, 255, 0.35);
+  --ad-green: var(--green);
+  --ad-green-glow: rgba(0, 200, 150, 0.32);
+  --ad-green-light: var(--green-light);
+  --ad-orange: var(--orange);
+  --ad-orange-glow: rgba(255, 107, 28, 0.35);
+  --ad-orange-light: var(--orange-light);
+  --ad-bg: #FBFDFF;
+  --ad-surface: #FFFFFF;
+  --ad-surface-2: #F6F7FB;
+  --ad-surface-3: #EEF1F8;
+  --ad-border: rgba(10, 10, 15, 0.08);
+  --ad-border-strong: rgba(10, 10, 15, 0.12);
+  --ad-text: var(--text);
+  --ad-muted: var(--muted);
+  --ad-muted-2: var(--muted-2);
+  --ad-radius: 28px;
+  --ad-radius-phone: 36px;
+  --ad-shadow-phone: 0 30px 80px rgba(10, 10, 15, 0.18), 0 8px 24px rgba(10, 10, 15, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  --ad-shadow-card: 0 10px 32px rgba(10, 10, 15, 0.08);
+  --ad-ease: var(--ease-smooth);
+}
+
+[data-theme="dark"] {
+  --ad-bg: #050816;
+  --ad-surface: #0B1228;
+  --ad-surface-2: #101935;
+  --ad-surface-3: #1A2443;
+  --ad-border: rgba(255, 255, 255, 0.08);
+  --ad-border-strong: rgba(255, 255, 255, 0.14);
+  --ad-text: #F8FAFC;
+  --ad-muted: rgba(255, 255, 255, 0.68);
+  --ad-muted-2: rgba(255, 255, 255, 0.42);
+  --ad-shadow-phone: 0 30px 80px rgba(0, 0, 0, 0.45), 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --ad-shadow-card: 0 10px 32px rgba(0, 0, 0, 0.22);
+}
+
+.app-hero {
+  position: relative;
+  min-height: calc(100vh - 62px);
+  background: var(--ad-bg);
+  color: var(--ad-text);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#particleCanvasApp,
+#particleCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.45;
+}
+
+[data-theme="dark"] #particleCanvasApp,
+[data-theme="dark"] #particleCanvas {
+  opacity: 0.65;
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.5;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.gradient-orb.blue {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--ad-blue) 0%, transparent 70%);
+  top: -120px;
+  left: -100px;
+  animation: ad-orb-float 20s infinite alternate var(--ad-ease);
+}
+
+.gradient-orb.green {
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, var(--ad-green) 0%, transparent 70%);
+  bottom: 5%;
+  right: 8%;
+  animation: ad-orb-float 24s infinite alternate-reverse var(--ad-ease);
+}
+
+.gradient-orb.orange {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, var(--ad-orange) 0%, transparent 70%);
+  top: 35%;
+  right: 30%;
+  opacity: 0.18;
+}
+
+[data-theme="light"] .gradient-orb {
+  opacity: 0.24;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 5;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 24px 80px;
+  display: grid;
+  grid-template-columns: 44% 56%;
+  gap: 40px;
+  align-items: center;
+  min-height: calc(100vh - 62px);
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* .hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 6px 14px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ad-blue);
+  background: var(--ad-blue-light);
+  border: 1px solid rgba(10, 102, 255, 0.18);
+  border-radius: 9999px;
+  backdrop-filter: blur(8px);
+}
+
+[data-theme="dark"] .hero-badge {
+  background: rgba(10, 102, 255, 0.12);
+  border-color: rgba(10, 102, 255, 0.28);
+  color: #6EA8FF;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--ad-blue);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--ad-blue-glow);
+  animation: ad-pulse-dot 2s infinite;
+}
+ */
+.hero-content h1 {
+  font-size: clamp(36px, 4.6vw, 56px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  max-width: 520px;
+}
+
+.hero-content p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ad-muted);
+  max-width: 480px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--ad-border);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat strong {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stat span {
+  font-size: 12.5px;
+  color: var(--ad-muted);
+}
+
+.hero-visual {
+  position: relative;
+  perspective: 1400px;
+}
+
+.device-stack {
+  position: relative;
+  width: 100%;
+  height: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+/* old stack-grid minimal rule removed - replaced by full responsive system below */
+
+.phone {
+  position: absolute;
+  width: 300px;
+  height: 620px;
+  background: linear-gradient(180deg, var(--ad-surface) 0%, var(--ad-surface-2) 100%);
+  border-radius: var(--ad-radius-phone);
+  border: 1px solid var(--ad-border-strong);
+  box-shadow: var(--ad-shadow-phone);
+  overflow: hidden;
+  backdrop-filter: blur(24px);
+  will-change: transform;
+  transform-style: preserve-3d;
+  opacity: 0;
+  transform: translateY(100px) rotateY(20deg) scale(0.92);
+}
+
+.phone::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 86px;
+  height: 22px;
+  background: #0A0A0F;
+  border-radius: 9999px;
+  z-index: 10;
+}
+
+.phone-back {
+  left: 8%;
+  top: 6%;
+  transform: translateY(100px) rotateY(20deg) scale(0.92) rotate(4deg);
+  z-index: 1;
+  width: 280px;
+  height: 580px;
+  animation: ad-device-reveal-back 1.2s 0.2s var(--ad-ease) forwards, ad-float-back 6s 1.5s ease-in-out infinite;
+}
+
+.phone-front {
+  right: 10%;
+  bottom: 4%;
+  transform: translateY(100px) rotateY(20deg) scale(0.92) rotate(-2deg);
+  z-index: 3;
+  animation: ad-device-reveal-front 1.2s 0.4s var(--ad-ease) forwards, ad-float-front 6s 1.5s ease-in-out infinite;
+  border: 1px solid rgba(10, 102, 255, 0.18);
+  box-shadow: 0 30px 80px rgba(10, 102, 255, 0.18), var(--ad-shadow-phone);
+}
+
+.screen {
+  position: absolute;
+  inset: 8px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: var(--ad-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.screen-1 {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F6F7FB 100%);
+}
+
+[data-theme="dark"] .screen-1 {
+  background: linear-gradient(180deg, #0B1228 0%, #080E20 100%);
+}
+
+.screen-2 {
+  background: linear-gradient(180deg, #F8FAFC 0%, #EEF1F8 100%);
+}
+
+[data-theme="dark"] .screen-2 {
+  background: linear-gradient(180deg, #0B1228 0%, #0A1020 100%);
+}
+
+.mock-status {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.mock-header {
+  padding: 16px 18px 12px;
+}
+
+.mock-avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mock-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--ad-blue), var(--ad-green));
+  display: grid;
+  place-items: center;
+  color: white;
+  font-weight: 700;
+}
+
+.mock-card {
+  background: var(--ad-surface);
+  border: 1px solid var(--ad-border);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: var(--ad-shadow-card);
+  margin: 10px 16px;
+}
+
+.mock-card.blue {
+  border-color: rgba(10, 102, 255, 0.15);
+  background: linear-gradient(135deg, var(--ad-surface) 0%, var(--ad-blue-light) 100%);
+}
+
+.mock-card.green {
+  border-color: rgba(0, 200, 150, 0.15);
+  background: linear-gradient(135deg, var(--ad-surface) 0%, var(--ad-green-light) 100%);
+}
+
+.mock-card.orange {
+  border-color: rgba(255, 107, 28, 0.15);
+  background: linear-gradient(135deg, var(--ad-surface) 0%, var(--ad-orange-light) 100%);
+}
+
+.chart-bars {
+  display: flex;
+  align-items: end;
+  gap: 4px;
+  height: 36px;
+  margin-top: 10px;
+}
+
+.chart-bar {
+  flex: 1;
+  background: var(--ad-blue);
+  border-radius: 4px;
+  transition: height .8s var(--ad-ease);
+}
+
+.chart-bar.green {
+  background: var(--ad-green);
+}
+
+.chart-bar.orange {
+  background: var(--ad-orange);
+}
+
+.payment-card {
+  height: 84px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #0A66FF 0%, #0052D6 100%);
+  color: white;
+  padding: 14px;
+  position: relative;
+  overflow: hidden;
+  transform: translateX(40px);
+  opacity: 0;
+}
+
+.transaction {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--ad-border);
+  font-size: 13px;
+}
+
+.platforms {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+.platform-pill {
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--ad-surface);
+  border: 1px solid var(--ad-border);
+  color: var(--ad-muted);
+  box-shadow: var(--ad-shadow-card);
+  backdrop-filter: blur(12px);
+  transition: all .4s var(--ad-ease);
+}
+
+.platform-pill.active {
+  background: var(--ad-blue);
+  color: white;
+  border-color: var(--ad-blue);
+  box-shadow: 0 8px 20px var(--ad-blue-glow);
+}
+
+.floating-card {
+  position: absolute;
+  background: var(--ad-surface);
+  border: 1px solid var(--ad-border);
+  border-radius: 14px;
+  padding: 10px 12px;
+  box-shadow: var(--ad-shadow-card);
+  backdrop-filter: blur(16px);
+  font-size: 11px;
+  color: var(--ad-muted);
+  z-index: 6;
+  opacity: 0;
+  transform: translateY(16px);
+  will-change: transform;
+}
+
+.floating-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all .7s var(--ad-ease);
+}
+
+.floating-card strong {
+  color: var(--ad-text);
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.floating-card.analytics {
+  top: 6%;
+  right: 18%;
+  animation: ad-float-card 5s ease-in-out infinite;
+}
+
+.floating-card.payment {
+  bottom: 28%;
+  left: -6%;
+  animation: ad-float-card 5s 1s ease-in-out infinite;
+}
+
+.floating-card.notification {
+  top: 48%;
+  right: -8%;
+  animation: ad-float-card 5s 0.6s ease-in-out infinite;
+}
+
+.connection-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.connection-line {
+  fill: none;
+  stroke: rgba(10, 102, 255, 0.18);
+  stroke-width: 1.2;
+  stroke-dasharray: 6 8;
+}
+
+.connection-pulse {
+  fill: none;
+  stroke: url(#ad-gradient);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  filter: drop-shadow(0 0 6px var(--ad-blue-glow));
+  opacity: 0.9;
+}
+
+@keyframes ad-device-reveal-front {
+  0% {
+    opacity: 0;
+    transform: translateY(100px) rotateY(20deg) scale(0.92) rotate(-2deg);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(-8px) rotateY(-2deg) scale(1.02) rotate(-2deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateY(0) scale(1) rotate(-2deg);
+  }
+}
+
+@keyframes ad-device-reveal-back {
+  0% {
+    opacity: 0;
+    transform: translateY(100px) rotateY(20deg) scale(0.92) rotate(4deg);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(-6px) rotateY(-2deg) scale(1.02) rotate(4deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateY(0) scale(1) rotate(4deg);
+  }
+}
+
+@keyframes ad-float-front {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(-1deg);
+  }
+}
+
+@keyframes ad-float-back {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(4deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+}
+
+@keyframes ad-float-card {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes ad-orb-float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(18px, -18px, 0) scale(1.05);
+  }
+}
+
+@keyframes ad-pulse-dot {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes ad-slide-in-right {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.payment-card.animate-in {
+  animation: ad-slide-in-right .7s var(--ad-ease) forwards;
+}
+
+
+/* ==========================================================================
+   6. STACK SECTION - Mirrors ds-process from digital-strategy.css
+   Purpose: Interactive, responsive cards - no inline styles
+   Structure: header + label + h2 + p + 3-column grid
+   Interaction: hover lift, active glow, scroll reveal (JS adds .in and .active)
+   Responsive: 3 cols > 2 cols (992px) > 1 col (768px) > 1 col compact (480px)
+   Colors: Blue dominant > Green > Orange (same as brand)
+   ========================================================================== */
+
+/* Section shell - same as .ds-process */
+.stack-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 96px 24px;
+  /* no inline style needed */
+  border-top: 1px solid var(--ad-border);
+  background: var(--bg);
+  position: relative;
+}
+
+/* Header - same pattern as .ds-process-header */
+.stack-header {
+  margin-bottom: 48px;
+}
+/* 
+.stack-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stack-label::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue);
+  display: inline-block;
+}
+ */
+.stack-header h2 {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--text);
+  max-width: 720px;
+}
+
+.stack-header p {
+  color: var(--muted);
+  font-size: 17px;
+  max-width: 640px;
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+/* Grid - 3 cols, equal height cards - FIX for first card grow */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+  align-items: stretch;
+  /* equal height rows */
+  width: 100%;
+}
+
+/* Card base - equal height, no auto grow */
+.stack-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all .5s var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  /* Scroll reveal initial state - JS will add .in */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Visible state - added by IntersectionObserver */
+.stack-card.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay for reveal - for collaboration readability */
+.stack-card:nth-child(1) {
+  transition-delay: 0.05s;
+}
+
+.stack-card:nth-child(2) {
+  transition-delay: 0.12s;
+}
+
+.stack-card:nth-child(3) {
+  transition-delay: 0.19s;
+}
+
+/* Hover - same lift as ds-step:hover */
+.stack-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(10, 102, 255, 0.18);
+}
+
+/* Active state - driven by JS loop like DSStages, also on focus */
+.stack-card.active,
+.stack-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(10, 102, 255, 0.12);
+  border-color: var(--blue);
+}
+
+/* Color variants - border-top like ds-step */
+.stack-card.native,
+.stack-card.cross,
+.stack-card.scale {
+  border-top: 1px solid var(--border);
+}
+
+/* Active glow uniform - no grow */
+.stack-card.native.active,
+.stack-card.cross.active,
+.stack-card.scale.active {
+  transform: none;
+  box-shadow: 0 8px 24px rgba(10, 10, 15, 0.06);
+}
+
+/* Card header - like ds-step-num */
+.stack-card-num {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stack-card-num .dot {
+  font-size: 14px;
+}
+
+.stack-card-num .dot.blue {
+  color: var(--blue);
+}
+
+.stack-card-num .dot.green {
+  color: var(--green);
+}
+
+.stack-card-num .dot.orange {
+  color: var(--orange);
+}
+
+/* Title and description - like ds-step h3/p */
+.stack-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.stack-card p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Feature list - like ds-step ul */
+.stack-card ul {
+  margin-top: 16px;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  list-style: disc;
+}
+
+.stack-card ul li {
+  margin-bottom: 4px;
+}
+
+.stack-card ul li::marker {
+  color: var(--muted-2);
+}
+
+/* Subtle inner gradient on hover - premium feel */
+.stack-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(600px circle at 0% 0%, rgba(10, 102, 255, 0.04), transparent 40%);
+  opacity: 0;
+  transition: opacity .5s var(--ease-smooth);
+  pointer-events: none;
+}
+
+.stack-card:hover::after,
+.stack-card.active::after {
+  opacity: 1;
+}
+
+.stack-card.cross::after {
+  background: radial-gradient(600px circle at 0% 0%, rgba(0, 200, 150, 0.05), transparent 40%);
+}
+
+.stack-card.scale::after {
+  background: radial-gradient(600px circle at 0% 0%, rgba(255, 107, 28, 0.05), transparent 40%);
+}
+
+
+/* ---------- FIXED RESPONSIVE - no header overlap, no excessive height ---------- */
+@media (max-width:1200px) {
+  .hero-container {
+    grid-template-columns: 44% 56%;
+  }
+
+  .phone {
+    width: 280px;
+    height: 580px;
+  }
+
+  .phone-back {
+    width: 260px;
+    height: 540px;
+  }
+}
+
+@media (max-width:992px) {
+
+  /* Tablet: reduce top space, prevent 100vh causing long scroll, scale devices */
+  .app-hero {
+    min-height: auto;
+  }
+
+  .hero-container {
+    grid-template-columns: 50% 50%;
+    gap: 20px;
+    padding: 28px 20px 32px;
+    min-height: auto;
+    align-items: start;
+  }
+
+  .hero-content {
+    gap: 16px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(32px, 4vw, 44px);
+  }
+
+  .hero-content p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .hero-stats {
+    margin-top: 14px;
+    padding-top: 14px;
+    gap: 10px;
+  }
+
+  .device-stack {
+    height: 480px;
+    transform: scale(0.86);
+    transform-origin: center top;
+    margin-top: -8px;
+  }
+
+  .phone {
+    width: 250px;
+    height: 520px;
+  }
+
+  .phone-back {
+    width: 230px;
+    height: 480px;
+    left: 0;
+  }
+
+  .phone-front {
+    right: 2%;
+  }
+
+  .hero-actions {
+    gap: 10px;
+    margin-top: 6px;
+  }
+}
+
+@media (max-width:768px) {
+
+  /* Tablet portrait & small tablet: stack content first, visual second, no header collision */
+  .app-hero {
+    min-height: auto;
+    overflow-x: hidden;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+    grid-template-areas: "content" "visual";
+    padding: 20px 20px 20px;
+    gap: 18px;
+    min-height: auto;
+    align-items: start;
+  }
+
+  .hero-visual {
+    grid-area: visual;
+    width: 100%;
+    overflow: visible;
+    margin-top: 4px;
+  }
+
+  .hero-content {
+    grid-area: content;
+    gap: 14px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(28px, 6vw, 38px);
+    line-height: 0.96;
+  }
+
+  .hero-content p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    padding: 11px 16px;
+    font-size: 13.5px;
+    flex: 1;
+    min-width: 140px;
+    justify-content: center;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .stat strong {
+    font-size: 10.5px;
+  }
+
+  .stat span {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  .device-stack {
+    height: auto;
+    min-height: 400px;
+    transform: none;
+    margin: 0 auto;
+    max-width: 360px;
+    display: block;
+    position: relative;
+    padding-bottom: 20px;
+  }
+
+  .phone {
+    position: relative !important;
+    transform: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    margin: 0 auto;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .phone-back {
+    display: block !important;
+    width: 190px;
+    height: 400px;
+    position: absolute !important;
+    left: 0;
+    top: 10px;
+    transform: rotate(4deg) !important;
+    z-index: 1;
+    opacity: 0.9 !important;
+  }
+
+  .phone-front {
+    width: 210px;
+    height: 440px;
+    position: relative !important;
+    left: auto;
+    right: auto;
+    margin: 0 0 0 auto;
+    transform: none !important;
+    z-index: 3;
+  }
+
+  .floating-card {
+    display: none !important;
+  }
+
+  .platforms {
+    position: relative !important;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    justify-content: center;
+    margin-top: 14px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .connection-svg {
+    display: none;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+}
+
+@media (max-width:480px) {
+  .app-hero {
+    min-height: auto;
+  }
+
+  .hero-container {
+    padding: 14px 16px 16px;
+    gap: 14px;
+  }
+
+  .hero-content {
+    gap: 12px;
+  }
+
+  /* .hero-badge {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+ */
+  .hero-content h1 {
+    font-size: 26px;
+    line-height: 0.95;
+  }
+
+  .hero-content p {
+    font-size: 13.5px;
+  }
+
+  .hero-actions {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .hero-actions a {
+    flex: 1;
+    min-width: 120px;
+    padding: 10px 12px;
+    font-size: 12.5px;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+
+  .stat {
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .stat strong {
+    min-width: 70px;
+  }
+
+  .device-stack {
+    min-height: 340px;
+    max-width: 260px;
+    padding-bottom: 12px;
+  }
+
+  .phone-back {
+    display: none !important;
+  }
+
+  .phone-front {
+    width: 190px;
+    height: 400px;
+    margin: 0 auto;
+    transform: none !important;
+  }
+
+  /* Stack responsive cleaned - no !important needed now */
+  .stack-section {
+    padding: 72px 20px;
+  }
+
+  .stack-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .stack-card {
+    border-radius: 16px;
+    padding: 22px;
+  }
+
+  .mock-card {
+    margin: 6px 10px;
+    padding: 10px;
+  }
+
+  .mock-status {
+    height: 36px;
+    padding: 0 14px;
+    font-size: 11px;
+  }
+
+  .platforms {
+    gap: 5px;
+    margin-top: 10px;
+  }
+
+  .platform-pill {
+    padding: 4px 8px;
+    font-size: 9px;
+  }
+}
+
+@media (max-width:360px) {
+  .device-stack {
+    min-height: 300px;
+    max-width: 220px;
+  }
+
+  .phone-front {
+    width: 170px;
+    height: 360px;
+  }
+
+  .hero-content h1 {
+    font-size: 24px;
+  }
+}
+
+/* ==========================================================================
+   7. STACK RESPONSIVE - Matches ds-process responsive behavior
+   - 1200px: 3 cols stays, slightly tighter gap
+   - 992px: 3 -> 2 cols (like ds-steps goes 2->1, we go 3->2)
+   - 768px: 2 -> 1 col, full width cards
+   - 480px: compact padding, 1 col
+   ========================================================================== */
+@media (max-width:1200px) {
+  .stack-grid {
+    gap: 20px;
+  }
+}
+
+@media (max-width:992px) {
+  .stack-section {
+    padding: 80px 20px;
+  }
+
+  .stack-grid {
+    grid-template-columns: 1fr;
+    /* FIX: 1 col for equal widths, was 2 cols causing uneven */
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .stack-card,
+  .stack-card.scale,
+  .stack-grid .stack-card:last-child {
+    grid-column: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width:768px) {
+  .stack-section {
+    padding: 64px 20px;
+  }
+
+  .stack-header h2 {
+    font-size: clamp(26px, 6vw, 36px);
+  }
+
+  .stack-header p {
+    font-size: 15px;
+  }
+
+  .stack-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .stack-grid .stack-card:last-child {
+    grid-column: auto;
+  }
+
+  .stack-card {
+    padding: 24px;
+    opacity: 1;
+    /* ensure visible if JS disabled on mobile */
+    transform: none;
+  }
+
+  .stack-card.in {
+    transform: none;
+  }
+}
+
+@media (max-width:480px) {
+  .stack-section {
+    padding: 56px 16px;
+  }
+
+  .stack-header {
+    margin-bottom: 32px;
+  }
+
+  .stack-header h2 {
+    font-size: 26px;
+  }
+
+  .stack-grid {
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .stack-card {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .stack-card h3 {
+    font-size: 18px;
+  }
+
+  .stack-card p,
+  .stack-card ul {
+    font-size: 14px;
+  }
+}
+
+/* FINAL FIX - First card grow + uneven content
+   - All cards same height, no transform grow, no border color change
+*/
+.stack-card,
+.stack-card.in,
+.stack-card.active,
+.stack-card:hover,
+.stack-card:focus-within {
+  transform: none !important;
+}
+
+.stack-card {
+  height: auto;
+  min-height: 220px;
+  /* ensure equal min height */
+  align-self: stretch;
+}
+
+@media (max-width: 992px) {
+  .stack-card {
+    min-height: auto;
+  }
+}

@@ -1,0 +1,1057 @@
+/* ==========================================================================
+   FILE: css/internship.css
+   PURPOSE: Internship Program page - premium journey narrative
+   SYNC: Uses same header, footer, theme toggle, hamburger, back-to-top
+         as index.html via global.css + main.js
+   COLORS: Blue #0A66FF dominant > Green #00C896 > Orange #FF6B1C
+           No purple - mapped to green per brand
+   STRUCTURE:
+   1. Tokens - mapped to variables.css
+   2. Intern hero - 48/52 grid, canvas particles, journey board
+   3. Journey board - header, SVG road, milestones, floating cards
+   4. Stack section - 4 cards (Foundations, Practice, Shipping, Career)
+   5. Contact / Apply section - grid + form
+   6. Responsive - 1200, 992, 768, 480
+   ========================================================================== */
+
+/* ---------- 1. Tokens - all reference variables.css ---------- */
+:root {
+  --in-blue: var(--blue);
+  --in-blue-dark: var(--blue-dark);
+  --in-blue-light: var(--blue-light);
+  --in-blue-glow: var(--blue-glow);
+  --in-green: var(--green);
+  --in-green-light: var(--green-light);
+  --in-green-glow: var(--green-glow);
+  --in-orange: var(--orange);
+  --in-orange-light: var(--orange-light);
+  --in-orange-glow: var(--orange-glow);
+
+  --in-bg: var(--bg);
+  --in-bg-2: var(--bg-2);
+  --in-text: var(--text);
+  --in-muted: var(--muted);
+  --in-muted-2: var(--muted-2);
+  --in-border: var(--border);
+  --in-card: var(--card-bg);
+  --in-ghost: var(--ghost);
+  --in-header: var(--header-bg);
+
+  --in-radius: 28px;
+  --in-radius-sm: 16px;
+  --in-radius-pill: var(--radius-full);
+  --in-ease: var(--ease-smooth);
+  --in-shadow: 0 20px 60px rgba(10,10,15,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+  --in-shadow-card: 0 8px 32px rgba(10,10,15,0.06);
+  --in-grid-line: var(--border);
+}
+
+[data-theme="dark"] {
+  --in-bg: var(--bg);
+  --in-bg-2: var(--bg-2);
+  --in-text: var(--text);
+  --in-muted: var(--muted);
+  --in-muted-2: var(--muted-2);
+  --in-border: var(--border);
+  --in-card: var(--card-bg);
+  --in-ghost: var(--ghost);
+  --in-shadow: 0 30px 80px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.06);
+  --in-shadow-card: 0 8px 32px rgba(0,0,0,0.35);
+  --in-grid-line: var(--border);
+}
+
+/* ---------- 2. Intern Hero Shell ---------- */
+.intern-hero {
+  position: relative;
+  min-height: calc(100vh - 62px);
+  background: var(--in-bg);
+  color: var(--in-text);
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  transition: background .4s ease;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#journeyCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+  display: block;
+}
+
+[data-theme="dark"] #journeyCanvas {
+  opacity: 0.75;
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--in-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--in-grid-line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, black 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, black 40%, transparent 85%);
+  opacity: 0.45;
+  transition: opacity .8s var(--in-ease);
+}
+
+.grid-overlay.is-visible {
+  opacity: 0.7;
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.gradient-orb.blue {
+  width: 520px;
+  height: 520px;
+  top: -60px;
+  left: -40px;
+  background: radial-gradient(circle at 50% 50%, rgba(10,102,255,0.22), transparent 68%);
+  animation: in-orb-float 20s ease-in-out infinite;
+}
+
+.gradient-orb.green {
+  width: 420px;
+  height: 420px;
+  bottom: 8%;
+  right: 8%;
+  background: radial-gradient(circle at 50% 50%, rgba(0,200,150,0.18), transparent 70%);
+  animation: in-orb-float 24s ease-in-out infinite reverse;
+}
+
+.gradient-orb.orange {
+  width: 260px;
+  height: 260px;
+  top: 38%;
+  right: 28%;
+  background: radial-gradient(circle at 50% 50%, rgba(255,107,28,0.20), transparent 70%);
+  opacity: 0.18;
+  animation: in-orb-float 18s ease-in-out infinite;
+}
+
+[data-theme="light"] .gradient-orb {
+  opacity: 0.24;
+}
+
+[data-theme="light"] .gradient-orb.orange {
+  opacity: 0.12;
+}
+
+@keyframes in-orb-float {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(20px, -18px) scale(1.06); }
+}
+
+/* Hero container 48/52 */
+.hero-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 72px 24px 90px;
+  display: grid;
+  grid-template-columns: 48% 52%;
+  gap: 40px;
+  min-height: calc(100vh - 62px);
+  align-items: center;
+  width: 100%;
+}
+
+/* Left content */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+@keyframes in-pulse-dot {
+  0% { box-shadow: 0 0 0 0 rgba(10,102,255,0.5); }
+  70% { box-shadow: 0 0 0 6px rgba(10,102,255,0); }
+  100% { box-shadow: 0 0 0 0 rgba(10,102,255,0); }
+}
+
+.hero-content h1 {
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  max-width: 520px;
+  margin: 0;
+  color: var(--in-text);
+}
+
+.hero-content p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--in-muted);
+  max-width: 480px;
+  margin: 0;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.hero-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--in-border);
+}
+
+.benefit {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.benefit strong {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--in-text);
+}
+
+.benefit span {
+  font-size: 12.5px;
+  color: var(--in-muted-2);
+  line-height: 1.4;
+}
+
+/* ---------- 3. Journey Board - Right Visual ---------- */
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 520px;
+  perspective: 1200px;
+}
+
+.journey-board {
+  position: relative;
+  width: 92%;
+  max-width: 560px;
+  background: color-mix(in srgb, var(--in-card) 92%, transparent);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--in-border);
+  border-radius: var(--in-radius);
+  box-shadow: var(--in-shadow);
+  padding: 20px;
+  transition: transform .6s var(--in-ease);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--in-muted-2);
+}
+
+.live {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--in-green);
+  font-weight: 700;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--in-green);
+  display: inline-block;
+  box-shadow: 0 0 0 0 rgba(0,200,150,0.5);
+  animation: in-pulse-green 1.8s infinite;
+}
+
+@keyframes in-pulse-green {
+  0% { box-shadow: 0 0 0 0 rgba(0,200,150,0.5); }
+  70% { box-shadow: 0 0 0 5px rgba(0,200,150,0); }
+  100% { box-shadow: 0 0 0 0 rgba(0,200,150,0); }
+}
+
+.journey-svg {
+  width: 100%;
+  height: 80px;
+  margin: 18px 0 14px;
+  overflow: visible;
+  display: block;
+}
+
+.journey-path {
+  fill: none;
+  stroke: var(--in-border);
+  stroke-width: 1.2;
+  stroke-dasharray: 6 6;
+  opacity: 0.9;
+}
+
+.journey-progress {
+  fill: none;
+  stroke: var(--in-blue);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 6px var(--in-blue-glow));
+  transition: stroke-dashoffset .1s linear;
+}
+
+.milestones {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.milestone {
+  position: relative;
+  padding: 12px 10px;
+  border: 1px solid var(--in-border);
+  border-radius: 12px;
+  background: var(--in-bg);
+  transition: all .5s var(--in-ease);
+}
+
+.milestone.active {
+  border-color: var(--in-blue);
+  background: var(--in-blue-light);
+  box-shadow: 0 6px 18px rgba(10,102,255,0.14);
+  transform: translateY(-2px);
+}
+
+.milestone.launch.active {
+  background: linear-gradient(135deg, var(--in-blue-light), var(--in-orange-light));
+  border-color: var(--in-blue);
+  box-shadow: 0 0 0 1px var(--in-blue), 0 0 0 3px rgba(255,107,28,0.12), 0 8px 22px rgba(10,102,255,0.16);
+}
+
+[data-theme="dark"] .milestone.launch.active {
+  background: linear-gradient(135deg, #10204D, #2A1A14);
+}
+
+.milestone-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--in-border);
+  margin-bottom: 8px;
+  transition: all .35s var(--in-ease);
+  position: relative;
+}
+
+.milestone.active .milestone-dot {
+  background: var(--in-blue);
+  box-shadow: 0 0 0 4px var(--in-blue-light);
+}
+
+.milestone-label {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--in-muted-2);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.milestone-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--in-text);
+}
+
+.progress-mini {
+  height: 3px;
+  background: var(--in-ghost);
+  border-radius: 9999px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.progress-mini i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--in-blue);
+  border-radius: 9999px;
+  transition: width .8s var(--in-ease);
+}
+
+.milestone.active .progress-mini i {
+  width: 100%;
+}
+
+.milestone.build.active .progress-mini i {
+  background: var(--in-green);
+}
+
+.milestone.deploy.active .progress-mini i {
+  background: var(--in-orange);
+}
+
+.milestone.launch.active .progress-mini i {
+  background: linear-gradient(90deg, var(--in-blue), var(--in-orange));
+  width: 100%;
+}
+
+/* Floating cards */
+.floating-card {
+  position: absolute;
+  background: var(--in-card);
+  border: 1px solid var(--in-border);
+  border-radius: 12px;
+  padding: 10px 14px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(10,10,15,0.08);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all .6s var(--in-ease);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.floating-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: in-float-card 5s ease-in-out infinite;
+}
+
+@keyframes in-float-card {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.floating-card strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--in-text);
+}
+
+.floating-card span {
+  font-size: 11px;
+  color: var(--in-muted-2);
+}
+
+.floating-card.code {
+  top: 2%;
+  right: 2%;
+  width: 150px;
+  animation-delay: 0.2s;
+}
+
+.code-lines {
+  margin-top: 8px;
+  display: grid;
+  gap: 4px;
+}
+
+.code-line {
+  height: 4px;
+  border-radius: 9999px;
+}
+
+.code-line.blue { width: 78%; background: var(--in-blue); opacity: 0.8; }
+.code-line.green { width: 52%; background: var(--in-green); opacity: 0.7; }
+.code-line.orange { width: 66%; background: var(--in-orange); opacity: 0.7; }
+
+.floating-card.ui {
+  bottom: 18%;
+  left: 2%;
+  width: 160px;
+  animation-delay: 0.8s;
+}
+
+.ui-preview {
+  margin-top: 8px;
+  height: 26px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--in-blue-light), var(--in-ghost));
+  border: 1px solid var(--in-border);
+}
+
+.floating-card.portfolio {
+  bottom: 2%;
+  right: 6%;
+  width: 170px;
+  animation-delay: 1.2s;
+}
+
+.bar {
+  height: 6px;
+  background: var(--in-ghost);
+  border-radius: 9999px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 1.2s var(--in-ease);
+}
+
+.floating-card.mentor {
+  top: 42%;
+  left: 2%;
+  width: 142px;
+  animation-delay: 1.6s;
+}
+
+.floating-card.team {
+  top: 2%;
+  left: 14%;
+  width: 148px;
+  animation-delay: 2s;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--in-muted-2);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(to bottom, var(--in-muted-2), transparent);
+  animation: in-scroll-pulse 2s ease-in-out infinite;
+}
+
+@keyframes in-scroll-pulse {
+  0%,100% { transform: scaleY(1); opacity: 0.6; }
+  50% { transform: scaleY(1.2); opacity: 1; }
+}
+
+/* ---------- 4. Stack Section - Program Overview ---------- */
+.stack-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 96px 24px;
+  border-top: 1px solid var(--in-border);
+  background: var(--in-bg);
+}
+
+.stack-header {
+  max-width: 720px;
+  margin-bottom: 48px;
+}
+
+.stack-header h2 {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--in-text);
+  max-width: 720px;
+}
+
+.stack-header p {
+  color: var(--in-muted);
+  font-size: 17px;
+  max-width: 640px;
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.stack-card {
+  background: var(--in-card);
+  border: 1px solid var(--in-border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  transition: all .5s var(--in-ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.stack-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(10,102,255,0.18);
+}
+
+
+.stack-card.launch {
+  /* border-top: 2px solid transparent; */
+  background: linear-gradient(var(--in-card), var(--in-card)) padding-box,
+              linear-gradient(90deg, var(--in-blue), var(--in-green), var(--in-orange)) border-box;
+  border-image: none;
+  /* border-top-color: var(--in-blue); */
+}
+
+.card-num {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--in-muted-2);
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-tag {
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: var(--in-ghost);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--in-muted);
+}
+
+.stack-card.native .card-tag {
+  background: var(--in-blue-light);
+  color: var(--in-blue);
+}
+
+.stack-card.cross .card-tag {
+  background: var(--in-green-light);
+  color: var(--in-green);
+}
+
+.stack-card.scale .card-tag {
+  background: var(--in-orange-light);
+  color: var(--in-orange);
+}
+
+.stack-card.launch .card-tag {
+  background: linear-gradient(135deg, var(--in-blue-light), var(--in-orange-light));
+  color: var(--in-blue);
+}
+
+.stack-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--in-text);
+  letter-spacing: -0.01em;
+}
+
+.stack-card p {
+  font-size: 15px;
+  color: var(--in-muted);
+  line-height: 1.6;
+}
+
+.stack-card ul {
+  margin-top: 16px;
+  padding-left: 18px;
+  color: var(--in-muted);
+  font-size: 14px;
+  line-height: 1.7;
+  display: grid;
+  gap: 6px;
+}
+
+.stack-card ul li::marker {
+  color: var(--in-blue);
+}
+
+/* Reveal animation for stack cards */
+.stack-card {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.stack-card.in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .6s var(--in-ease), transform .6s var(--in-ease);
+}
+
+/* ---------- 5. Contact / Apply Section ---------- */
+.contact-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 96px 24px;
+  border-top: 1px solid var(--in-border);
+  background: var(--in-bg-2);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.contact-info {
+  max-width: 480px;
+  position: sticky;
+  top: 88px;
+}
+
+.contact-info h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  margin-top: 12px;
+  color: var(--in-text);
+}
+
+.contact-info > p {
+  color: var(--in-muted);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-top: 16px;
+}
+
+.contact-meta {
+  margin-top: 28px;
+  display: grid;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--in-border);
+}
+
+.contact-meta div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-meta strong {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--in-muted-2);
+}
+
+.contact-meta span {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--in-text);
+}
+
+/* Form - matches global contact-form but extended */
+.contact-form {
+  width: 100%;
+  background: var(--in-card);
+  border: 1px solid var(--in-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--in-shadow-card);
+  display: grid;
+  gap: 18px;
+  padding: 28px;
+  backdrop-filter: blur(12px);
+  transition: all .5s var(--in-ease);
+}
+
+.contact-form:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+[data-theme="dark"] .contact-form {
+  background: rgba(14,19,48,0.9);
+  border-color: rgba(255,255,255,0.07);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-field {
+  display: grid;
+  gap: 8px;
+}
+
+.form-field label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--in-muted);
+  text-transform: uppercase;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--in-border);
+  background: var(--in-bg);
+  color: var(--in-text);
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--in-blue);
+  box-shadow: 0 0 0 3px var(--in-blue-light);
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.form-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.form-note {
+  font-size: 12px;
+  color: var(--in-muted-2);
+  text-align: center;
+}
+
+/* ---------- 6. Responsive ---------- */
+@media (max-width: 1200px) {
+  .hero-container { gap: 28px; }
+  .contact-grid { gap: 32px; }
+}
+
+@media (max-width: 992px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    grid-template-areas: "visual" "content";
+    padding: 48px 24px 80px;
+    gap: 28px;
+    min-height: auto;
+  }
+
+  .hero-visual {
+    grid-area: visual;
+    min-height: 460px;
+    order: -1;
+  }
+
+  .hero-content {
+    grid-area: content;
+  }
+
+  .stack-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info {
+    position: relative;
+    top: auto;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    padding: 40px 20px 48px;
+  }
+
+  .hero-content h1 {
+    max-width: 100%;
+  }
+
+  .hero-benefits {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .benefit {
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .benefit strong {
+    min-width: 110px;
+  }
+
+  .journey-board {
+    width: 100%;
+    max-width: 100%;
+    padding: 18px;
+  }
+
+  .floating-card.mentor,
+  .floating-card.team {
+    display: none;
+  }
+
+  .floating-card.code {
+    top: -10px;
+    right: 4%;
+    width: 132px;
+  }
+
+  .floating-card.ui {
+    bottom: 16%;
+    left: -8%;
+    width: 140px;
+  }
+
+  .floating-card.portfolio {
+    bottom: -8%;
+    right: 8%;
+    width: 150px;
+  }
+
+  .milestones {
+    gap: 6px;
+  }
+
+  .stack-section,
+  .contact-section {
+    padding: 64px 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .intern-hero {
+    min-height: auto;
+  }
+
+  .hero-container {
+    padding: 24px 18px 48px;
+    min-height: auto;
+  }
+
+  .hero-content h1 {
+    font-size: 30px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .milestones {
+    grid-template-columns: 1fr;
+    gap: 0;
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .milestones::before {
+    content: "";
+    position: absolute;
+    left: 11px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: var(--in-border);
+    border-radius: 9999px;
+  }
+
+  .journey-svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: calc(100% - 88px);
+  }
+
+  .journey-svg .journey-path,
+  .journey-svg .journey-progress {
+    display: none;
+  }
+
+  .milestone {
+    margin-bottom: 14px;
+    padding: 14px 16px 14px 20px;
+  }
+
+  .milestone-dot {
+    position: absolute;
+    left: -28px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+  }
+
+  .floating-card {
+    display: none !important;
+  }
+
+  .floating-card.portfolio {
+    display: block !important;
+    position: relative;
+    bottom: auto;
+    right: auto;
+    left: auto;
+    top: auto;
+    width: 100%;
+    margin-top: 14px;
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers  The Spotters Company | Build your next chapter with us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/careers.css">
+</head>
+
+<body>
+  <!-- HEADER - IDENTICAL TO index.html -->
+  <header class="header" id="siteHeader">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-dot"></div>SPOTTERS
+      </a>
+      <nav class="nav-desktop" id="desktopNav">
+        <div class="nav-dropdown" id="servicesDropdown">
+          <button class="nav-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
+          <div class="dropdown-menu">
+            <a href="digital-strategy.html">Digital Strategy</a>
+            <a href="app-development.html">App Development</a>
+            <a href="web-development.html">Web Development</a>
+            <a href="software-training.html">StudyPod Training</a>
+            <a href="internship.html">Internship Program</a>
+          </div>
+        </div>
+        <a class="nav-link" href="index.html#works">Works</a>
+        <a class="nav-link" href="index.html#academy">Academy</a>
+        <a class="nav-link" href="careers.html">Careers</a>
+        <a class="nav-link" href="index.html#industries">Industries</a>
+        <a class="nav-link" href="pages/about.html">About</a>
+        <a class="nav-link" href="index.html#contact">Contact</a>
+        <a class="btn-primary blue" href="#open-roles">Start a Project</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
+          <div class="toggle-thumb" id="toggleThumb">☾</div>
+        </button>
+      </nav>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button class="theme-toggle" id="themeToggleMobile" style="display:none;" aria-label="Toggle theme">
+          <div class="toggle-thumb">☾</div>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"
+          aria-controls="drawer"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Drawer - Mobile  -->
+  <div class="drawer-backdrop" id="backdrop"></div>
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-dropdown" id="drawerServices">
+      <button class="drawer-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
+      <div class="drawer-submenu">
+        <a class="drawer-sublink" href="digital-strategy.html">Digital Strategy</a>
+        <a class="drawer-sublink" href="app-development.html">App Development</a>
+        <a class="drawer-sublink" href="web-development.html">Web Development</a>
+        <a class="drawer-sublink" href="software-training.html">StudyPod Training</a>
+        <a class="drawer-sublink" href="internship.html">Internship Program</a>
+      </div>
+    </div>
+    <a class="drawer-link" href="index.html#works">Works</a>
+    <a class="drawer-link" href="index.html#academy">Academy</a>
+    <a class="drawer-link" href="careers.html">Careers</a>
+    <a class="drawer-link" href="index.html#industries">Industries</a>
+    <a class="drawer-link" href="pages/about.html">About</a>
+    <a class="drawer-link" href="index.html#contact">Contact</a>
+    <div class="drawer-footer">
+      <div class="drawer-theme-row"><span>Theme</span><button class="theme-toggle" id="drawerThemeToggle"
+          aria-label="Toggle theme">
+          <div class="toggle-thumb" id="drawerToggleThumb">☾</div>
+        </button></div>
+      <a class="btn-primary blue" href="#open-roles" style="width:100%; justify-content:center;">Start a Project →</a>
+      <p style="font-size:11px; color:var(--muted-2); text-align:center; margin-top:12px;">Indigenous Nigerian • Since
+        2018</p>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+         CAREERS HERO
+         ==================================================================== -->
+  <section class="careers-hero" id="hero">
+    <div class="hero-background"><canvas id="careerCanvas"></canvas>
+      <div class="grid-overlay"></div>
+      <div class="gradient-orb blue"></div>
+      <div class="gradient-orb green"></div>
+      <div class="gradient-orb orange"></div>
+    </div>
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>Build your <em>next chapter</em> with us</h1>
+        <p>Join a team of engineers, designers, and strategists building impactful digital products. We believe in
+          flexibility, continuous learning, meaningful collaboration, and creating opportunities for people to grow.</p>
+        <div class="hero-actions"><a class="btn-primary blue" href="#open-roles">View open positions</a><a
+            class="btn-secondary" href="#culture">Life at Spotters</a></div>
+        <div class="hero-benefits">
+          <div class="benefit"><strong>Hybrid work</strong><span>Flexible working culture</span></div>
+          <div class="benefit"><strong>Career growth</strong><span>Mentorship & development</span></div>
+          <div class="benefit"><strong>Real impact</strong><span>Meaningful product work</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="career-board">
+          <div class="board-header">
+            <div class="board-header-left">
+              <div class="dot-group"><span></span><span></span><span></span></div><span>Now hiring • 6 open roles</span>
+            </div>
+            <div class="live-dot"></div>
+          </div>
+          <svg class="career-svg" viewBox="0 0 4 420" preserveAspectRatio="none">
+            <path class="career-path" d="M2 0 L2 420"></path>
+            <path class="career-progress" d="M2 0 L2 420"></path>
+          </svg>
+          <div class="job-cards">
+            <div class="job-card react">
+              <div class="job-top"><span class="job-title">React Developer</span><span class="job-badge">Remote</span>
+              </div>
+              <div class="job-meta"><span>◍ Frontend</span><span>• React • TypeScript</span></div>
+              <div class="job-tags"><i>Next.js</i><i>Tailwind</i><i>Remote</i></div>
+            </div>
+            <div class="growth-connector"></div>
+            <div class="job-card web">
+              <div class="job-top"><span class="job-title">Web Developer</span><span class="job-badge">Hybrid</span>
+              </div>
+              <div class="job-meta"><span>◍ Full-stack</span><span>• Node • APIs</span></div>
+              <div class="job-tags"><i>Node.js</i><i>APIs</i><i>Postgres</i></div>
+            </div>
+            <div class="growth-connector"></div>
+            <div class="job-card app">
+              <div class="job-top"><span class="job-title">App Developer</span><span class="job-badge">Remote</span>
+              </div>
+              <div class="job-meta"><span>◍ Mobile</span><span>• iOS • Android</span></div>
+              <div class="job-tags"><i>React Native</i><i>Expo</i><i>Store</i></div>
+            </div>
+          </div>
+          <div class="floating-card mentorship">
+            <div class="fc-icon">◍</div>
+            <div>
+              <div style="font-size:12px; font-weight:700;">Mentorship</div>
+              <div style="font-size:11px; color:var(--c-muted-2);">1:1 growth sessions</div>
+            </div>
+          </div>
+          <div class="floating-card growth">
+            <div class="fc-icon">↗</div>
+            <div>
+              <div style="font-size:12px; font-weight:700;">Growth path</div>
+              <div style="font-size:11px; color:var(--c-muted-2);">Clear progression</div>
+            </div>
+          </div>
+          <div class="floating-card culture">
+            <div class="fc-icon">♥</div>
+            <div>
+              <div style="font-size:12px; font-weight:700;">Culture of care</div>
+              <div style="font-size:11px; color:var(--c-muted-2);">People first, always</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="culture-section" id="culture">
+    <div class="section-label reveal">Life at Spotters</div>
+    <h2 class="section-title reveal">We build products that matter, with people who care.</h2>
+    <p class="section-desc reveal">Thinking of a change? You'll love working with us. Flexible hours, remote-friendly,
+      real mentorship, and work that actually ships.</p>
+    <div class="culture-grid">
+      <div class="culture-card reveal">
+        <h3>Hybrid work, real flexibility</h3>
+        <p>Work from Katsina, Lagos, Abuja or remote. Async-friendly, no micromanagement.</p>
+      </div>
+      <div class="culture-card reveal">
+        <h3>Mentorship & development</h3>
+        <p>Every engineer gets a growth lead. Weekly 1:1s, career ladders, learning budget.</p>
+      </div>
+      <div class="culture-card reveal">
+        <h3>Impact over hours</h3>
+        <p>We ship portals, fintech, health tech used by thousands across Africa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+         ROLES - SECTION
+         ==================================================================== -->
+  <section class="roles-section" id="open-roles">
+    <div class="section-label reveal" >Open roles</div>
+    <h2 class="section-title reveal" style="max-width:520px;">6 roles open. Join us.</h2>
+    <div class="roles-grid"><a href="#contact" class="role-card reveal">
+        <h4>React Developer</h4>
+        <div class="role-loc">Remote • Full-time • Frontend</div>
+        <div class="role-tags"><span>React</span><span>TypeScript</span><span>Next.js</span></div>
+      </a><a href="#contact" class="role-card reveal">
+        <h4>Web Developer</h4>
+        <div class="role-loc">Hybrid • Full-time • Full-stack</div>
+        <div class="role-tags"><span>Node.js</span><span>APIs</span><span>Postgres</span></div>
+      </a><a href="#contact" class="role-card reveal">
+        <h4>App Developer</h4>
+        <div class="role-loc">Remote • Full-time • Mobile</div>
+        <div class="role-tags"><span>React Native</span><span>iOS</span><span>Android</span></div>
+      </a><a href="#contact" class="role-card reveal">
+        <h4>UI/UX Designer</h4>
+        <div class="role-loc">Remote • Contract • Design</div>
+        <div class="role-tags"><span>Figma</span><span>Systems</span><span>Research</span></div>
+      </a><a href="#contact" class="role-card reveal">
+        <h4>Product Strategist</h4>
+        <div class="role-loc">Lagos / Remote • Full-time</div>
+        <div class="role-tags"><span>Product</span><span>Growth</span><span>Analytics</span></div>
+      </a><a href="#contact" class="role-card reveal">
+        <h4>Project Manager</h4>
+        <div class="role-loc">Katsina / Remote • Full-time</div>
+        <div class="role-tags"><span>Agile</span><span>Delivery</span><span>Client</span></div>
+      </a></div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <div class="section-label">Apply in 60 seconds</div>
+        <h2 class="section-title" style="font-size:clamp(28px,4vw,44px);">This feels like a company people want to join.
+        </h2>
+        <p>Send us a short note, portfolio or GitHub, and which role excites you. We reply within 48 hours.</p>
+      </div>
+      <form class="card contact-form reveal" id="careerForm"><input type="text" required placeholder="Your name"><input
+          type="email" required placeholder="Business email"><select>
+          <option>React Developer — Remote</option>
+          <option>Web Developer — Hybrid</option>
+          <option>App Developer — Remote</option>
+          <option>UI/UX Designer — Remote</option>
+          <option>Product Strategist</option>
+          <option>Project Manager</option>
+        </select><input type="url" placeholder="Portfolio / GitHub / LinkedIn URL"><textarea rows="3"
+          placeholder="Why Spotters? (1-2 sentences)"></textarea><button class="btn-primary blue" type="submit"
+          style="justify-content:center;">Send application →</button></form>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+         FOOTER - SECTION
+         ==================================================================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="color:white;">
+            <div class="logo-dot"></div>SPOTTERS.
+          </div>
+          <p style="opacity:0.6; font-size:14px; margin-top:16px; max-width:300px;">Technology that builds people and
+            businesses. Indigenous Nigerian IT company since 2018.</p>
+        </div>
+        <div>
+          <h4>Services</h4><a href="digital-strategy.html">Digital Strategy</a><a href="app-development.html">App
+            Development</a><a href="web-development.html">Web Development</a><a href="software-training.html">Software
+            Training</a><a href="internship.html">Internship Program</a>
+        </div>
+        <div>
+          <h4>Company</h4><a href="index.html#works">Works</a><a href="index.html#academy">Academy</a><a
+            href="index.html#industries">Industries</a><a href="pages/about.html">About</a><a
+            href="careers.html">Careers</a>
+        </div>
+        <div>
+          <h4>Connect</h4><a>hello@spotters.company</a><a>Katsina, Nigeria</a><a>LinkedIn / Twitter / GitHub</a>
+        </div>
+      </div>
+      <p
+        style="margin-top:64px; opacity:0.4; font-size:12px; border-top:1px solid rgba(255,255,255,0.1); padding-top:24px;">
+        © 2026 The Spotters Company. Incorporated under the laws of the Federal Republic of Nigeria.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6" />
+    </svg>
+  </button>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/careers.js"></script>
+</body>
+
+</html>

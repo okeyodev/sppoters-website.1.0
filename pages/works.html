@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Works — The Spotters Company</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/digital-strategy.css">
+</head>
+
+<body>
+  <!-- ====================================================================
+           HEADER SECTION
+           ==================================================================== -->
+  <header class="header" id="siteHeader">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-dot"></div>SPOTTERS
+      </a>
+      <nav class="nav-desktop" id="desktopNav">
+        <div class="nav-dropdown" id="servicesDropdown">
+          <button class="nav-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
+          <div class="dropdown-menu">
+            <a href="digital-strategy.html">Digital Strategy</a>
+            <a href="app-development.html">App Development</a>
+            <a href="web-development.html">Web Development</a>
+            <a href="software-training.html">StudyPod Training</a>
+            <a href="internship.html">Internship Program</a>
+          </div>
+        </div>
+        <a class="nav-link" href="../index.html#works">Works</a>
+        <a class="nav-link" href="../index.html#academy">Academy</a>
+        <a class="nav-link" href="../index.html#careers">Careers</a>
+        <a class="nav-link" href="../index.html#industries">Industries</a>
+        <a class="nav-link" href="../index.html#about">About</a>
+        <a class="nav-link" href="../index.html#contact">Contact</a>
+        <a class="btn-primary blue" href="../index.html#contact">Start a Project</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <div class="toggle-thumb" id="toggleThumb">☾</div>
+        </button>
+      </nav>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+           DRAWER - Mobile menu for tablet downward
+           Slides from right, contains nav links + CTA + theme row
+           Controlled by main.js PART 2
+           ==================================================================== -->
+  <div class="drawer-backdrop" id="backdrop"></div>
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-dropdown" id="drawerServices">
+      <button class="drawer-link dropdown-trigger">Services <span>▾</span></button>
+      <div class="drawer-submenu">
+        <a class="drawer-sublink" href="digital-strategy.html">Digital Strategy</a>
+        <a class="drawer-sublink" href="app-development.html">App Development</a>
+        <a class="drawer-sublink" href="web-development.html">Web Development</a>
+        <a class="drawer-sublink" href="software-training.html">StudyPod Training</a>
+        <a class="drawer-sublink" href="internship.html">Internship Program</a>
+      </div>
+    </div>
+    <a class="drawer-link" href="../index.html#works">Works</a>
+    <a class="drawer-link" href="../index.html#academy">Academy</a>
+    <a class="drawer-link" href="../index.html#careers">Careers</a>
+    <a class="drawer-link" href="../index.html#industries">Industries</a>
+    <a class="drawer-link" href="../index.html#about">About</a>
+    <a class="drawer-link" href="../index.html#contact">Contact</a>
+    <div class="drawer-footer">
+      <div class="drawer-theme-row"><span>Theme</span><button class="theme-toggle" id="drawerThemeToggle">
+          <div class="toggle-thumb" id="drawerToggleThumb">☾</div>
+        </button></div>
+      <a class="btn-primary blue" href="../index.html#contact" style="width:100%; justify-content:center;">Start a
+        Project →</a>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+         MAIN CONTENT OF WORKS PAGE
+         ==================================================================== -->
+  <section style="min-height:60vh; display:grid; place-items:center; padding:80px 24px; text-align:center;">
+    <div>
+      <div
+        style="display:inline-flex; padding:6px 14px; border-radius:9999px; background:var(--blue-light); color:var(--blue); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; font-weight:600;">
+        Coming Soon</div>
+      <h1 style="font-size:clamp(32px,5vw,56px); font-weight:800; letter-spacing:-0.03em; margin-top:20px;">Works</h1>
+      <p style="color:var(--muted); max-width:480px; margin:16px auto 0; line-height:1.6;">This page is using the same
+      synced header, hamburger, light/dark toggle, footer, and back-to-top button as the homepage. Update real soon</p>
+      <a href="app-development.html"
+        style="display:inline-flex; margin-top:24px; padding:12px 20px; background:var(--blue); color:white; border-radius:9999px; font-weight:600; font-size:14px;">See
+        App Development — premium example →</a>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+         fOOTER SECTION
+         ==================================================================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="color:white;">
+            <div class="logo-dot"></div>SPOTTERS.
+          </div>
+          <p style="opacity:0.6; font-size:14px; margin-top:16px; max-width:300px;">Technology that builds people and
+            businesses. Indigenous Nigerian IT company since 2018.</p>
+        </div>
+        <div>
+          <h4>Services</h4><a href="digital-strategy.html">Digital Strategy</a><a href="app-development.html">App
+            Development</a><a href="web-development.html">Web Development</a><a href="software-training.html">Software
+            Training</a><a href="internship.html">Internship</a>
+        </div>
+        <div>
+          <h4>Company</h4><a href="../index.html#works">Works</a><a href="../index.html#academy">Academy</a><a
+            href="../index.html#industries">Industries</a><a href="../index.html#about">About</a><a
+            href="../index.html#careers">Careers</a>
+        </div>
+        <div>
+          <h4>Connect</h4><a>hello@spotters.company</a><a>Katsina, Nigeria</a><a>LinkedIn / Twitter / GitHub</a>
+        </div>
+      </div>
+      <p
+        style="margin-top:64px; opacity:0.4; font-size:12px; border-top:1px solid rgba(255,255,255,0.1); padding-top:24px;">
+        © 2026 The Spotters Company.</p>
+    </div>
+  </footer>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6" />
+    </svg></button>
+  <div class="toast" id="toast"></div>
+  <script src="../js/main.js"></script>
+</body>
+
+</html>
