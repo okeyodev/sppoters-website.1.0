@@ -111,7 +111,23 @@ button {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  will-change: transform;
 }
+
+/* .hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.hero-content.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.9s var(--ease-smooth, cubic-bezier(0.16, 1, 0.3, 1));
+    --wd-ease-spring: var(--ease-spring, cubic-bezier(0.175, 0.885, 0.32, 1.275));
+} */
 
 .hero-content h1 {
   font-size: clamp(40px, 4.5vw, 60px);
@@ -128,6 +144,20 @@ button {
   line-height: 1.7;
   color: #374151;
   max-width: 480px;
+}
+
+/* .hero-content h1 em {
+  font-style: normal;
+  color: var(--ab-blue);
+  position: relative;
+} */
+
+.hero-content h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-actions {

@@ -251,10 +251,10 @@
 .phone::before {
   content: '';
   position: absolute;
-  top: 10px;
+  top: 15px;
   left: 50%;
   transform: translateX(-50%);
-  width: 86px;
+  width: 78px;
   height: 22px;
   background: #0A0A0F;
   border-radius: 9999px;
@@ -289,6 +289,8 @@
   background: var(--ad-bg);
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  width: calc(100% - 16px);
 }
 
 .screen-1 {
@@ -328,14 +330,14 @@
 }
 
 .mock-avatar {
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--ad-blue), var(--ad-green));
   display: grid;
   place-items: center;
   color: white;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .mock-card {
@@ -345,6 +347,9 @@
   padding: 14px;
   box-shadow: var(--ad-shadow-card);
   margin: 10px 16px;
+  box-sizing: border-box;
+  width: calc(100% - 32px);
+  max-width: 100%;
 }
 
 .mock-card.blue {
@@ -386,6 +391,7 @@
 }
 
 .payment-card {
+  width: calc(100% - 32px);
   height: 84px;
   border-radius: 16px;
   background: linear-gradient(135deg, #0A66FF 0%, #0052D6 100%);
@@ -395,6 +401,11 @@
   overflow: hidden;
   transform: translateX(40px);
   opacity: 0;
+  margin: 0 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .transaction {
@@ -657,6 +668,7 @@
   align-items: center;
   gap: 8px;
 }
+
 /* 
 .stack-label::before {
   content: '';
@@ -955,7 +967,7 @@
     margin-top: 4px;
   }
 
- /*  .hero-content {
+  /*  .hero-content {
     grid-area: content;
     gap: 14px;
   }
@@ -987,6 +999,24 @@
     justify-content: center;
   }
  */
+  /* FIX: buttons sit well on tablet - keep row but balanced */
+  .hero-actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .hero-actions a,
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    flex: 1 1 140px;
+    min-width: 0;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
   .hero-stats {
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
@@ -1003,12 +1033,13 @@
     line-height: 1.3;
   }
 
+  /* FIX: phone too big on small screens - scaled down */
   .device-stack {
     height: auto;
-    min-height: 400px;
+    min-height: 360px;
     transform: none;
     margin: 0 auto;
-    max-width: 360px;
+    max-width: 300px;
     display: block;
     position: relative;
     padding-bottom: 20px;
@@ -1026,8 +1057,8 @@
 
   .phone-back {
     display: block !important;
-    width: 190px;
-    height: 400px;
+    width: 160px;
+    height: 340px;
     position: absolute !important;
     left: 0;
     top: 10px;
@@ -1037,14 +1068,36 @@
   }
 
   .phone-front {
-    width: 210px;
-    height: 440px;
+    width: 180px;
+    height: 380px;
     position: relative !important;
     left: auto;
     right: auto;
     margin: 0 0 0 auto;
     transform: none !important;
     z-index: 3;
+  }
+
+  /* Scale down inner content slightly on tablet */
+  .mock-status {
+    height: 36px;
+    font-size: 10px;
+    padding: 0 14px;
+  }
+
+  .mock-card {
+    padding: 10px;
+    margin: 8px 12px;
+  }
+
+  .payment-card {
+    height: 70px;
+    padding: 10px;
+  }
+
+  .transaction {
+    font-size: 11px;
+    padding: 7px 0;
   }
 
   .floating-card {
@@ -1080,7 +1133,8 @@
     padding: 14px 16px 16px;
     gap: 14px;
   }
-/* 
+
+  /* 
   .hero-content {
     gap: 12px;
   } */
@@ -1099,16 +1153,25 @@
     font-size: 13.5px;
   } */
 
+  /* FIX: buttons side-by-side on small screen - not stacked */
   .hero-actions {
     flex-direction: row;
     gap: 8px;
+    width: 100%;
   }
 
-  .hero-actions a {
+  .hero-actions a,
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
     flex: 1;
-    min-width: 120px;
+    width: auto;
+    min-width: 0;
     padding: 10px 12px;
-    font-size: 12.5px;
+    font-size: 13px;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    white-space: nowrap;
   }
 
   .hero-stats {
@@ -1128,9 +1191,10 @@
     min-width: 70px;
   }
 
+  /* FIX: even smaller on phones + hide back phone */
   .device-stack {
-    min-height: 340px;
-    max-width: 260px;
+    min-height: 300px;
+    max-width: 220px;
     padding-bottom: 12px;
   }
 
@@ -1139,10 +1203,89 @@
   }
 
   .phone-front {
-    width: 190px;
-    height: 400px;
+    width: 165px;
+    height: 345px;
     margin: 0 auto;
     transform: none !important;
+  }
+
+  .screen {
+    inset: 6px;
+    border-radius: 22px;
+    width: calc(100% - 12px);
+  }
+
+  /* FIX: content inside phone too big on small screen - scale down */
+  .mock-status {
+    height: 28px;
+    padding: 0 10px;
+    font-size: 9px;
+  }
+
+  .mock-header {
+    padding: 8px 10px 6px;
+  }
+
+  .mock-avatar-row {
+    gap: 6px;
+  }
+
+  .mock-avatar {
+    width: 22px;
+    height: 22px;
+    font-size: 10px;
+  }
+
+  .payment-card {
+    width: calc(100% - 20px);
+    margin: 0 10px;
+    height: auto;
+    min-height: 56px;
+    padding: 8px 10px;
+    border-radius: 12px;
+  }
+
+  .payment-card div {
+    font-size: 10px !important;
+  }
+
+  .payment-card div:nth-child(2) {
+    font-size: 13px !important;
+    margin-top: 4px !important;
+  }
+
+  .mock-card {
+    width: calc(100% - 20px);
+    margin: 6px 10px;
+    padding: 8px;
+    border-radius: 10px;
+  }
+
+  .mock-card div {
+    font-size: 10px !important;
+  }
+
+  .mock-card div[style*="font-size:22px"] {
+    font-size: 15px !important;
+  }
+
+  .mock-card div[style*="font-size:18px"] {
+    font-size: 13px !important;
+  }
+
+  .chart-bars {
+    height: 24px !important;
+    margin-top: 6px !important;
+    gap: 3px;
+  }
+
+  .transaction {
+    padding: 6px 0;
+    font-size: 10px;
+  }
+
+  .transaction span {
+    font-size: 10px !important;
   }
 
   /* Stack responsive cleaned - no !important needed now */
@@ -1185,13 +1328,51 @@
 
 @media (max-width:360px) {
   .device-stack {
-    min-height: 300px;
-    max-width: 220px;
+    min-height: 260px;
+    max-width: 190px;
   }
 
   .phone-front {
-    width: 170px;
-    height: 360px;
+    width: 150px;
+    height: 315px;
+  }
+
+  .hero-actions {
+    gap: 6px;
+  }
+
+  .hero-actions a,
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    padding: 8px 10px;
+    font-size: 11.5px;
+  }
+
+  /* Extra small phone inner content */
+  .mock-status {
+    height: 24px;
+    font-size: 8px;
+    padding: 0 8px;
+  }
+
+  .mock-card {
+    padding: 6px;
+    margin: 5px 8px;
+    border-radius: 8px;
+  }
+
+  .payment-card {
+    min-height: 48px;
+    padding: 6px 8px;
+  }
+
+  .chart-bars {
+    height: 20px !important;
+  }
+
+  .transaction {
+    padding: 4px 0;
+    font-size: 9px;
   }
 
   /* .hero-content h1 {
@@ -1264,6 +1445,23 @@
 
   .stack-card.in {
     transform: none;
+  }
+
+  .phone::before {
+    content: '';
+    position: absolute;
+    top: 13px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 68px;
+    height: 19px;
+    background: #0A0A0F;
+    border-radius: 9999px;
+    z-index: 10;
+  }
+
+  .mock-avatar-row {
+    font-size: 10px;
   }
 }
 
