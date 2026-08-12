@@ -1,0 +1,1359 @@
+/* ==========================================================================
+   FILE: css/industries.css
+   PURPOSE: Industries Page - "One intelligence platform powering multiple industries"
+   Premium enterprise-grade hero with living industry network.
+
+   DESIGN SYSTEM:
+   - Brand tokens: Blue #0A66FF dominant > Green #00C896 > Orange #FF6B1C
+   - Purple mapped to Green for consistency, but kept as --in-purple for accent
+   - Reuses variables.css + global.css for header/footer/drawer/back-to-top
+   - This file ONLY handles hero + sectors + animations (no header/footer override)
+
+   HERO STORYBOARD 10s loop (enterprise command center):
+   Scene1 0-1s   : Network initialization - grid fade + central core glow + lines drawing
+   Scene2 1-3s   : Industry activation - 8 nodes appear sequentially FinTech->Retail
+   Scene3 3-5.5s : Data flow - blue pulses center->nodes, dashboard metrics update
+   Scene4 5.5-8s  : Intelligence sync - all nodes glow, charts animate, ring rotates
+   Scene5 8-10s   : Executive idle - subtle float, soft pulse, drift, loop
+
+   LAYOUT:
+   Desktop 1200px+ : 44% / 56% split
+   992px           : 48% / 52%
+   768px           : Stacked (visual first, content second)
+   480px           : Simplified network (4 primary sectors)
+
+   COMMENTS: Added for easy collaboration - search INDUSTRY to find sections
+   ========================================================================== */
+
+/* ---------- 0. Industries Tokens - extends variables.css ---------- */
+:root {
+  /* Industry specific - mapped to brand for consistency */
+  --in-bg: #06111F;
+  /* Deep enterprise navy - dark mode base */
+  --in-surface: #0B1228;
+  --in-surface-2: #101935;
+  --in-surface-3: #162040;
+  --in-border: #243055;
+  --in-border-light: rgba(36, 48, 85, 0.5);
+
+  --in-blue: var(--blue);
+  /* #0A66FF dominant */
+  --in-blue-dark: #0549C0;
+  --in-blue-light: #E8EFFF;
+  --in-blue-glow: rgba(10, 102, 255, 0.35);
+  --in-blue-soft: rgba(10, 102, 255, 0.08);
+
+  --in-purple: #7C3AED;
+  /* Brief purple - mapped to green accent visually */
+  --in-purple-glow: rgba(124, 58, 237, 0.28);
+  --in-purple-light: #EDE9FE;
+
+  --in-green: var(--green);
+  /* #00C896 secondary */
+  --in-green-glow: rgba(0, 200, 150, 0.26);
+
+  --in-orange: var(--orange);
+  /* #FF6B1C accent */
+  --in-orange-glow: rgba(255, 107, 28, 0.28);
+  --in-orange-light: #FFF0E6;
+
+  --in-text: #F8FAFC;
+  --in-muted: #94A3B8;
+  --in-muted-2: #64748B;
+
+  --in-radius: 28px;
+  --in-radius-lg: 20px;
+  --in-radius-pill: 9999px;
+
+  --in-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --in-ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* Light mode overrides for hero */
+  --in-hero-bg: #FBFDFF;
+  --in-hero-surface: #FFFFFF;
+  --in-hero-border: rgba(10, 10, 15, 0.08);
+  --in-hero-text: #0A0A0F;
+  --in-hero-muted: #374151;
+  --in-hero-grid: rgba(10, 10, 15, 0.05);
+}
+
+/* Dark mode tokens - when html[data-theme="dark"] */
+[data-theme="dark"] {
+  --in-hero-bg: #050816;
+  --in-hero-surface: #0B1020;
+  --in-hero-border: rgba(255, 255, 255, 0.08);
+  --in-hero-text: #E6E8EF;
+  --in-hero-muted: rgba(255, 255, 255, 0.68);
+  --in-hero-grid: rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   1. INDUSTRIES HERO - Enterprise command center
+   ========================================================================== */
+.industries-hero {
+  position: relative;
+  min-height: calc(100vh - 62px);
+  background: var(--in-hero-bg);
+  color: var(--in-hero-text);
+  overflow: hidden;
+  isolation: isolate;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ---------- Background System - grid + orbs + canvas ---------- */
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#industryCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s var(--in-ease);
+}
+
+#industryCanvas.is-visible {
+  opacity: 0.62;
+}
+
+[data-theme="dark"] #industryCanvas.is-visible {
+  opacity: 0.82;
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--in-hero-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--in-hero-grid) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse at center, black 38%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 38%, transparent 78%);
+  opacity: 0;
+  transition: opacity 1s var(--in-ease);
+}
+
+.grid-overlay.is-visible {
+  opacity: 0.72;
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  mix-blend-mode: screen;
+  will-change: transform;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.gradient-orb.blue {
+  width: 680px;
+  height: 680px;
+  background: radial-gradient(circle at center, var(--in-blue) 0%, transparent 70%);
+  top: -140px;
+  left: -120px;
+  opacity: 0.42;
+  animation: in-orb-float 24s infinite alternate var(--in-ease);
+}
+
+.gradient-orb.purple {
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle at center, var(--in-purple) 0%, transparent 70%);
+  bottom: 2%;
+  right: 8%;
+  opacity: 0.34;
+  animation: in-orb-float 28s infinite alternate-reverse var(--in-ease);
+}
+
+.gradient-orb.orange {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle at center, var(--in-orange) 0%, transparent 70%);
+  top: 42%;
+  right: 30%;
+  opacity: 0.22;
+  animation: in-orb-float 22s infinite alternate var(--in-ease);
+}
+
+[data-theme="light"] .gradient-orb {
+  opacity: 0.22;
+  filter: blur(64px);
+}
+
+[data-theme="light"] .gradient-orb.orange {
+  opacity: 0.12;
+}
+
+[data-theme="dark"] .gradient-orb {
+  opacity: 0.44;
+}
+
+[data-theme="dark"] .gradient-orb.orange {
+  opacity: 0.24;
+}
+
+/* ---------- Hero Container - 44/56 split ---------- */
+.hero-container {
+  position: relative;
+  z-index: 5;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 72px 24px 88px;
+  display: grid;
+  grid-template-columns: 44% 56%;
+  gap: 48px;
+  align-items: center;
+  min-height: calc(100vh - 62px);
+}
+
+/* ---------- Left: Content - sells enterprise trust ---------- */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  will-change: transform;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 6px 14px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--in-blue);
+  background: var(--in-blue-light);
+  border: 1px solid rgba(10, 102, 255, 0.18);
+  border-radius: var(--in-radius-pill);
+  backdrop-filter: blur(8px);
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--in-blue);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--in-blue-glow);
+  animation: in-pulse-dot 2s infinite;
+}
+
+[data-theme="dark"] .hero-badge {
+  background: rgba(10, 102, 255, 0.12);
+  border-color: rgba(10, 102, 255, 0.28);
+  color: #6EA8FF;
+}
+
+.hero-content h1 {
+  font-size: clamp(36px, 4.6vw, 56px);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  color: var(--in-hero-text);
+  max-width: 560px;
+  transition: color 0.4s ease;
+}
+
+.hero-content h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--in-blue) 0%, var(--in-purple) 55%, var(--in-green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-content p {
+  font-size: 17px;
+  line-height: 1.72;
+  color: var(--in-hero-muted);
+  max-width: 500px;
+  transition: color 0.4s ease;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.hero-actions .btn-primary.blue {
+  background: var(--in-blue);
+  color: white;
+  padding: 13px 24px;
+  border-radius: var(--in-radius-pill);
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.32s var(--in-ease);
+  text-decoration: none;
+  will-change: transform;
+}
+
+.hero-actions .btn-primary.blue:hover {
+  background: var(--in-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px var(--in-blue-glow);
+}
+
+.hero-actions .btn-secondary {
+  background: var(--in-hero-surface);
+  color: var(--in-hero-text);
+  border: 1px solid var(--in-hero-border);
+  padding: 13px 24px;
+  border-radius: var(--in-radius-pill);
+  font-weight: 600;
+  font-size: 14px;
+  backdrop-filter: blur(12px);
+  transition: all 0.32s var(--in-ease);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  will-change: transform;
+}
+
+.hero-actions .btn-secondary:hover {
+  border-color: rgba(10, 102, 255, 0.22);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(10, 10, 15, 0.06);
+}
+
+/* Hero stats - enterprise credibility */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 18px;
+  padding-top: 28px;
+  border-top: 1px solid var(--in-hero-border);
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-stat strong {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--in-hero-text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-stat strong::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--in-blue);
+  flex-shrink: 0;
+}
+
+.hero-stat:nth-child(2) strong::before {
+  background: var(--in-green);
+}
+
+.hero-stat:nth-child(3) strong::before {
+  background: var(--in-orange);
+}
+
+.hero-stat span {
+  font-size: 12px;
+  color: var(--in-hero-muted);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   2. HERO VISUAL - Living Industry Network (right 56%)
+   This is NOT decoration - it IS the product architecture preview
+   ========================================================================== */
+.hero-visual {
+  position: relative;
+  width: 100%;
+  min-height: 640px;
+  display: grid;
+  place-items: center;
+  will-change: transform;
+}
+
+.industry-network {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  height: 620px;
+  border-radius: var(--in-radius);
+  border: 1px solid var(--in-hero-border);
+  background: linear-gradient(180deg, var(--in-hero-surface) 0%, rgba(248, 249, 252, 0.86) 100%);
+  backdrop-filter: blur(24px) saturate(180%);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.10),
+    0 4px 16px rgba(10, 10, 15, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  isolation: isolate;
+  transition: all 0.4s ease;
+}
+
+[data-theme="dark"] .industry-network {
+  background: linear-gradient(180deg, rgba(11, 18, 40, 0.96) 0%, rgba(8, 12, 26, 0.92) 100%);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- Central Core - Digital Intelligence Core ---------- */
+.central-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 148px;
+  height: 148px;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  will-change: transform;
+}
+
+.core-ring {
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  border: 1px dashed rgba(10, 102, 255, 0.24);
+  animation: in-ring-rotate 20s linear infinite;
+  will-change: transform;
+}
+
+.core-ring.inner {
+  inset: -8px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(124, 58, 237, 0.18);
+  border-top-color: rgba(10, 102, 255, 0.42);
+  border-right-color: rgba(0, 200, 150, 0.24);
+  animation: in-ring-rotate 14s linear infinite reverse;
+}
+
+.core-dashboard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(120% 120% at 30% 20%, var(--in-hero-surface) 0%, var(--in-surface-2) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 20px 60px rgba(10, 102, 255, 0.18),
+    0 0 0 1px rgba(10, 102, 255, 0.12) inset,
+    0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  overflow: hidden;
+  transition: all 0.5s var(--in-ease);
+}
+
+[data-theme="dark"] .core-dashboard {
+  background: radial-gradient(120% 120% at 30% 20%, #121C36 0%, #0B1020 100%);
+  box-shadow:
+    0 24px 72px rgba(10, 102, 255, 0.28),
+    0 0 0 1px rgba(10, 102, 255, 0.18) inset;
+}
+
+.core-dashboard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(60% 60% at 50% 50%, var(--in-blue-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  animation: in-core-pulse 3s ease-in-out infinite;
+}
+
+.core-status {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--in-blue);
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--in-green);
+  box-shadow: 0 0 10px var(--in-green-glow);
+  animation: in-pulse-dot 1.6s infinite;
+}
+
+.core-metric {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.core-metric strong {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--in-hero-text);
+}
+
+.core-metric span {
+  font-size: 11px;
+  color: var(--in-hero-muted);
+  margin-top: 2px;
+}
+
+.core-bars {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 3px;
+  align-items: end;
+  height: 18px;
+  margin-top: 4px;
+}
+
+.core-bars div {
+  width: 3px;
+  border-radius: 999px;
+  background: var(--in-blue);
+  opacity: 0.7;
+  transition: height 0.4s ease;
+}
+
+.core-bars div:nth-child(1) {
+  height: 6px;
+}
+
+.core-bars div:nth-child(2) {
+  height: 12px;
+  background: var(--in-purple);
+}
+
+.core-bars div:nth-child(3) {
+  height: 8px;
+  background: var(--in-green);
+}
+
+.core-bars div:nth-child(4) {
+  height: 16px;
+}
+
+.core-bars div:nth-child(5) {
+  height: 10px;
+  background: var(--in-orange);
+}
+
+/* Central core glow on sync */
+.central-core.is-syncing .core-dashboard {
+  box-shadow:
+    0 0 0 2px rgba(10, 102, 255, 0.22),
+    0 24px 72px rgba(10, 102, 255, 0.38),
+    0 0 48px var(--in-blue-glow);
+  transform: scale(1.04);
+}
+
+/* ---------- Industry Nodes - 8 sectors around core ---------- */
+.industry-node {
+  position: absolute;
+  width: 132px;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 16px;
+  background: var(--in-hero-surface);
+  border: 1px solid var(--in-hero-border);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(10, 10, 15, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  opacity: 0;
+  transform: translateY(12px) scale(0.96);
+  transition: all 0.6s var(--in-ease-spring);
+  will-change: transform, opacity;
+}
+
+[data-theme="dark"] .industry-node {
+  background: rgba(16, 25, 53, 0.88);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.industry-node.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.industry-node.active {
+  border-color: rgba(10, 102, 255, 0.24);
+  box-shadow:
+    0 16px 48px rgba(10, 10, 15, 0.10),
+    0 0 0 1px rgba(10, 102, 255, 0.14),
+    0 0 24px var(--in-blue-glow);
+  transform: translateY(-2px) scale(1.02);
+}
+
+[data-theme="dark"] .industry-node.active {
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(10, 102, 255, 0.22),
+    0 0 32px rgba(10, 102, 255, 0.22);
+}
+
+.industry-node.is-syncing {
+  animation: in-node-sync 0.6s var(--in-ease) both;
+}
+
+.node-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.node-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.node-icon.blue {
+  background: var(--in-blue-light);
+  color: var(--in-blue);
+}
+
+.node-icon.purple {
+  background: var(--in-purple-light);
+  color: var(--in-purple);
+}
+
+.node-icon.green {
+  background: var(--in-green-glow);
+  color: var(--in-green);
+  background: #E6FFF6;
+}
+
+.node-icon.orange {
+  background: var(--in-orange-light);
+  color: var(--in-orange);
+}
+
+[data-theme="dark"] .node-icon.blue {
+  background: rgba(10, 102, 255, 0.18);
+  color: #6EA8FF;
+}
+
+[data-theme="dark"] .node-icon.purple {
+  background: rgba(124, 58, 237, 0.18);
+  color: #A78BFA;
+}
+
+[data-theme="dark"] .node-icon.green {
+  background: rgba(0, 200, 150, 0.18);
+  color: #34D399;
+}
+
+[data-theme="dark"] .node-icon.orange {
+  background: rgba(255, 107, 28, 0.18);
+  color: #FB923C;
+}
+
+.node-status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--in-border);
+  transition: all 0.4s ease;
+}
+
+.industry-node.active .node-status {
+  background: var(--in-green);
+  box-shadow: 0 0 10px var(--in-green-glow);
+}
+
+.node-label strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--in-hero-text);
+}
+
+.node-label span {
+  display: block;
+  font-size: 11px;
+  color: var(--in-hero-muted);
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
+.node-metric {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--in-blue);
+}
+
+.node-metric .dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* ---------- Positioning - 8 sectors circular ---------- */
+/* Desktop positions - circular distribution around 50%/50% */
+.industry-node.fintech {
+  left: 50%;
+  top: 4%;
+  transform: translateX(-50%) translateY(12px) scale(0.96);
+}
+
+.industry-node.fintech.is-visible {
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.industry-node.fintech.active {
+  transform: translateX(-50%) translateY(-2px) scale(1.02);
+}
+
+.industry-node.healthcare {
+  right: 6%;
+  top: 16%;
+}
+
+.industry-node.government {
+  right: 2%;
+  top: 50%;
+  transform: translateY(-50%) translateY(12px) scale(0.96);
+}
+
+.industry-node.government.is-visible {
+  transform: translateY(-50%) translateY(0) scale(1);
+}
+
+.industry-node.government.active {
+  transform: translateY(-50%) translateY(-2px) scale(1.02);
+}
+
+.industry-node.logistics {
+  right: 8%;
+  bottom: 18%;
+}
+
+.industry-node.education {
+  left: 50%;
+  bottom: 4%;
+  transform: translateX(-50%) translateY(12px) scale(0.96);
+}
+
+.industry-node.education.is-visible {
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.industry-node.education.active {
+  transform: translateX(-50%) translateY(-2px) scale(1.02);
+}
+
+.industry-node.energy {
+  left: 8%;
+  bottom: 18%;
+}
+
+.industry-node.agriculture {
+  left: 2%;
+  top: 50%;
+  transform: translateY(-50%) translateY(12px) scale(0.96);
+}
+
+.industry-node.agriculture.is-visible {
+  transform: translateY(-50%) translateY(0) scale(1);
+}
+
+.industry-node.agriculture.active {
+  transform: translateY(-50%) translateY(-2px) scale(1.02);
+}
+
+.industry-node.retail {
+  left: 6%;
+  top: 16%;
+}
+
+/* ---------- Connection SVG - lines + pulses ---------- */
+.connection-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+}
+
+.connection-path {
+  fill: none;
+  stroke: var(--in-hero-border);
+  stroke-width: 1.2;
+  stroke-dasharray: 5 7;
+  opacity: 0;
+  transition: opacity 0.6s var(--in-ease), stroke 0.4s ease;
+}
+
+.connection-path.is-visible {
+  opacity: 0.62;
+}
+
+[data-theme="dark"] .connection-path {
+  stroke: rgba(255, 255, 255, 0.08);
+}
+
+.connection-pulse {
+  fill: none;
+  stroke: var(--in-blue);
+  stroke-width: 2;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 8px var(--in-blue-glow));
+  stroke-dasharray: 12 240;
+  stroke-dashoffset: 240;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.connection-pulse.is-animating {
+  opacity: 1;
+  animation: in-dash-flow 1.2s linear forwards;
+}
+
+.connection-pulse.green {
+  stroke: var(--in-green);
+  filter: drop-shadow(0 0 8px var(--in-green-glow));
+}
+
+.connection-pulse.purple {
+  stroke: var(--in-purple);
+  filter: drop-shadow(0 0 8px var(--in-purple-glow));
+}
+
+.connection-pulse.orange {
+  stroke: var(--in-orange);
+  filter: drop-shadow(0 0 8px var(--in-orange-glow));
+}
+
+/* Floating cards inside network - secondary info */
+.network-badge {
+  position: absolute;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--in-hero-surface);
+  border: 1px solid var(--in-hero-border);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--in-hero-muted);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 16px rgba(10, 10, 15, 0.06);
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.5s var(--in-ease);
+}
+
+.network-badge.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.network-badge.top {
+  left: 50%;
+  top: 14px;
+  transform: translateX(-50%) translateY(8px);
+}
+
+.network-badge.top.is-visible {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================================================
+   3. SECTORS SECTION - Below-fold industry deep dive
+   Shows how hero network prepares for detailed sector pages
+   ========================================================================== */
+.sectors-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 96px 24px;
+  border-top: 1px solid var(--border);
+}
+
+.sectors-header {
+  margin-bottom: 48px;
+}
+
+.sectors-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sectors-label::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 12px var(--blue-glow);
+}
+
+.sectors-section h2 {
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--text);
+  max-width: 720px;
+}
+
+.sectors-section>p {
+  color: var(--muted);
+  font-size: 17px;
+  max-width: 640px;
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+.sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.sector-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s var(--in-ease);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.sector-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sector-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(10, 10, 15, 0.08);
+  border-color: rgba(10, 102, 255, 0.18);
+}
+
+[data-theme="dark"] .sector-card {
+  background: rgba(11, 16, 32, 0.84);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+[data-theme="dark"] .sector-card:hover {
+  background: rgba(20, 28, 52, 0.94);
+  border-color: rgba(10, 102, 255, 0.22);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.32), 0 0 32px rgba(10, 102, 255, 0.12);
+}
+
+.sector-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.sector-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.sector-tag {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--blue-light);
+  color: var(--blue);
+}
+
+[data-theme="dark"] .sector-tag {
+  background: rgba(10, 102, 255, 0.14);
+  color: #6EA8FF;
+}
+
+.sector-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.sector-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.sector-card ul {
+  margin-top: 16px;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.sector-card ul li::marker {
+  color: var(--blue);
+}
+
+/* Highlight sector when hero node active - bridge effect */
+.sector-card.highlight {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 1px var(--blue), 0 16px 48px var(--blue-glow);
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* ==========================================================================
+   4. ANIMATIONS
+   ========================================================================== */
+@keyframes in-orb-float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(18px, -18px, 0) scale(1.04);
+  }
+
+  100% {
+    transform: translate3d(-10px, 12px, 0) scale(0.98);
+  }
+}
+
+@keyframes in-pulse-dot {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.35);
+    opacity: 0.7;
+  }
+}
+
+@keyframes in-ring-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes in-core-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 0.32;
+  }
+}
+
+@keyframes in-dash-flow {
+  0% {
+    stroke-dashoffset: 240;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes in-node-sync {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 8px 32px rgba(10, 10, 15, 0.06);
+  }
+
+  50% {
+    transform: translateY(-4px) scale(1.06);
+    box-shadow: 0 20px 60px rgba(10, 102, 255, 0.22), 0 0 24px var(--in-blue-glow);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes in-float-slow {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-6px);
+  }
+}
+
+/* ==========================================================================
+   5. RESPONSIVE - Breakpoints from brief
+   ========================================================================== */
+
+/* 1200px+ : 44/56 - default */
+@media (max-width: 1200px) {
+  .hero-container {
+    grid-template-columns: 44% 56%;
+    gap: 32px;
+  }
+}
+
+/* 992px : 48/52 */
+@media (max-width: 992px) {
+  .hero-container {
+    grid-template-columns: 48% 52%;
+    padding: 56px 24px 80px;
+    gap: 28px;
+  }
+
+  .industry-network {
+    height: 560px;
+  }
+
+  .industry-node {
+    width: 122px;
+    padding: 12px;
+  }
+
+  .sectors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 768px : Stacked - visual first */
+@media (max-width: 768px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    grid-template-areas: "visual" "content";
+    padding: 28px 20px 56px;
+    gap: 32px;
+  }
+
+  .hero-visual {
+    grid-area: visual;
+    min-height: 520px;
+  }
+
+  .hero-content {
+    grid-area: content;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .industry-network {
+    height: 520px;
+    max-width: 100%;
+  }
+
+  /* Reposition nodes for tablet */
+  .industry-node.fintech {
+    top: 2%;
+  }
+
+  .industry-node.education {
+    bottom: 2%;
+  }
+
+  .sectors-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 480px : Simplified network - 4 primary sectors only */
+@media (max-width: 480px) {
+  .industries-hero {
+    min-height: auto;
+  }
+
+  .hero-container {
+    padding: 22px 18px 48px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .industry-network {
+    height: 440px;
+    border-radius: 20px;
+  }
+
+  .central-core {
+    width: 112px;
+    height: 112px;
+  }
+
+  .core-metric strong {
+    font-size: 22px;
+  }
+
+  .core-bars {
+    height: 14px;
+  }
+
+  /* Show only 4 primary on mobile - hide others via CSS, JS also handles */
+  .industry-node.energy,
+  .industry-node.agriculture,
+  .industry-node.education,
+  .industry-node.retail {
+    display: none;
+  }
+
+  /* Reposition remaining 4 for mobile diamond */
+  .industry-node.fintech {
+    left: 50%;
+    top: 2%;
+  }
+
+  .industry-node.healthcare {
+    right: 2%;
+    top: 22%;
+  }
+
+  .industry-node.government {
+    right: 2%;
+    bottom: 22%;
+    left: auto;
+    top: auto;
+    transform: translateY(12px) scale(0.96);
+  }
+
+  .industry-node.government.is-visible {
+    transform: translateY(0) scale(1);
+  }
+
+  .industry-node.logistics {
+    left: 50%;
+    bottom: 2%;
+    transform: translateX(-50%) translateY(12px) scale(0.96);
+  }
+
+  .industry-node.logistics.is-visible {
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  .sectors-section {
+    padding: 64px 20px;
+  }
+}
+
+/* Reduced motion - respect user preference */
+@media (prefers-reduced-motion: reduce) {
+
+  .gradient-orb,
+  .core-ring,
+  .core-dashboard::before,
+  .live-dot,
+  .hero-badge::before {
+    animation: none !important;
+  }
+
+  .industry-node,
+  .sector-card {
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+  }
+
+  #industryCanvas {
+    display: none;
+  }
+}

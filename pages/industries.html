@@ -4,17 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>industries The Spotters Company</title>
+  <title>Industries — The Spotters Company | Digital solutions engineered for your industry</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/global.css">
-  <link rel="stylesheet" href="../css/digital-strategy.css">
+  <link rel="stylesheet" href="../css/industries.css">
 </head>
 
 <body>
-  <!-- ====================================================================
-         HEADER SECTION
-         ==================================================================== -->
+  <!-- HEADER  -->
   <header class="header" id="siteHeader">
     <div class="header-inner">
       <a href="../index.html" class="logo">
@@ -35,25 +33,26 @@
         <a class="nav-link" href="works.html">Works</a>
         <a class="nav-link" href="../index.html#academy">Academy</a>
         <a class="nav-link" href="careers.html">Careers</a>
-        <a href="industries.html" style="color: var(--blue);">Industries</a>
+        <a class="nav-link" href="industries.html" style="color: var(--blue);">Industries</a>
         <a class="nav-link" href="about.html">About</a>
         <a class="nav-link" href="../index.html#contact">Contact</a>
         <a class="btn-primary blue" href="../index.html#contact">Start a Project</a>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
           <div class="toggle-thumb" id="toggleThumb">☾</div>
         </button>
       </nav>
       <div style="display:flex; align-items:center; gap:10px;">
-        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <button class="theme-toggle" id="themeToggleMobile" style="display:none;" aria-label="Toggle theme">
+          <div class="toggle-thumb">☾</div>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- ====================================================================
-         DRAWER - Mobile menu for tablet downward
-         Slides from right, contains nav links + CTA + theme row
-         Controlled by main.js PART 2
-         ==================================================================== -->
+  <!-- DRAWER -->
   <div class="drawer-backdrop" id="backdrop"></div>
   <div class="drawer" id="drawer" aria-hidden="true">
     <a class="drawer-link" href="../index.html">Home</a>
@@ -79,31 +78,317 @@
         </button></div>
       <a class="btn-primary blue" href="../index.html#contact" style="width:100%; justify-content:center;">Start a
         Project →</a>
+      <p style="font-size:11px; color:var(--muted-2); text-align:center; margin-top:12px;">Indigenous Nigerian • Since
+        2018</p>
     </div>
   </div>
 
-  <!-- ====================================================================
-       MAIN CONTENT OF INDUSTRIES PAGE
-       ==================================================================== -->
-  <section style="min-height:60vh; display:grid; place-items:center; padding:80px 24px; text-align:center;">
-    <div>
-      <div
-        style="display:inline-flex; padding:6px 14px; border-radius:9999px; background:var(--blue-light); color:var(--blue); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; font-weight:600;">
-        Coming Soon</div>
-      <h1 style="font-size:clamp(32px,5vw,56px); font-weight:800; letter-spacing:-0.03em; margin-top:20px;">Industries
-      </h1>
-      <p style="color:var(--muted); max-width:480px; margin:16px auto 0; line-height:1.6;">This page is using the same
-        synced header, hamburger, light/dark toggle, footer, and back-to-top button as the homepage. Update real soon
-      </p>
-      <a href="web-development.html"
-        style="display:inline-flex; margin-top:24px; padding:12px 20px; background:var(--blue); color:white; border-radius:9999px; font-weight:600; font-size:14px;">See
-        Web development premium example →</a>
+  <!-- INDUSTRIES HERO - Enterprise Intelligence Platform -->
+  <section class="industries-hero" id="industriesHero">
+    <div class="hero-background">
+      <canvas id="industryCanvas"></canvas>
+      <div class="grid-overlay"></div>
+      <div class="gradient-orb blue"></div>
+      <div class="gradient-orb purple"></div>
+      <div class="gradient-orb orange"></div>
+    </div>
+
+    <div class="hero-container">
+      <div class="hero-content">
+        <span class="hero-badge">Industry Solutions</span>
+        <h1>Digital solutions <em>engineered</em> for your industry</h1>
+        <p>From disruptive startups to enterprise leaders, we combine technical excellence with deep industry expertise
+          to build secure, scalable, and high-impact digital solutions across critical sectors.</p>
+
+        <div class="hero-actions">
+          <a class="btn-primary blue" href="#sectors">Explore sectors →</a>
+          <a class="btn-secondary" href="../index.html#contact">Talk to an expert</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>10+ Industry sectors</strong>
+            <span>Finance to agriculture</span>
+          </div>
+          <div class="hero-stat">
+            <strong>Enterprise-grade</strong>
+            <span>Secure architecture</span>
+          </div>
+          <div class="hero-stat">
+            <strong>Real-time intelligence</strong>
+            <span>Data-driven decisions</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="industry-network" id="industryNetwork">
+          <div class="network-badge top">Industry intelligence network • Live</div>
+
+          <div class="central-core" id="centralCore">
+            <div class="core-ring"></div>
+            <div class="core-ring inner"></div>
+            <div class="core-dashboard">
+              <div class="core-status"><span class="live-dot"></span> Live intelligence</div>
+              <div class="core-metric"><strong>1.2k</strong><span>ops/sec</span></div>
+              <div class="core-bars">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="industry-node fintech" data-sector="fintech">
+            <div class="node-header">
+              <div class="node-icon blue">F$</div>
+              <div class="node-status"></div>
+            </div>
+            <div class="node-label"><strong>Finance</strong><span>Secure platforms</span></div>
+            <div class="node-metric"><span class="dot"></span> PCI-DSS • Encrypted</div>
+          </div>
+
+          <div class="industry-node healthcare" data-sector="healthcare">
+            <div class="node-header">
+              <div class="node-icon green">H+</div>
+              <div class="node-status"></div>
+            </div>
+            <div class="node-label"><strong>Healthcare</strong><span>Patient systems</span></div>
+            <div class="node-metric"><span class="dot"></span> HIPAA • 99.9% uptime</div>
+          </div>
+
+          <div class="industry-node government" data-sector="government">
+            <div class="node-header">
+              <div class="node-icon purple">Gv</div>
+              <div class="node-status"></div>
+            </div>
+            <div class="node-label"><strong>Government</strong><span>Digital infrastructure</span></div>
+            <div class="node-metric"><span class="dot"></span> E-services • Citizen portal</div>
+          </div>
+
+          <div class="industry-node logistics" data-sector="logistics">
+            <div class="node-header">
+              <div class="node-icon orange">Lg</div>
+              <div class="node-status"></div>
+            </div>
+            <div class="node-label"><strong>Logistics</strong><span>Real-time operations</span></div>
+            <div class="node-metric"><span class="dot"></span> Tracking • 12% faster</div>
+          </div>
+
+          <div class="industry-node education" data-sector="education">
+            <div class="node-header">
+              <div class="node-icon blue">Ed</div>
+              <div class="node-status"></div>
+            </div>
+            <div class="node-label"><strong>Education</strong><span>Learning platforms</span></div>
+            <div class="node-metric"><span class="dot"></span> studyPod • LMS</div>
+          </div>
+
+          <div class="industry-node energy" data-sector="energy">
+            <div class="node-header">
+              <div class="node-icon orange">En</div>
+              <div class="node-status"></div>
+            </div>
+            <div class="node-label"><strong>Energy</strong><span>Field operations</span></div>
+            <div class="node-metric"><span class="dot"></span> IoT • Monitoring</div>
+          </div>
+
+          <div class="industry-node agriculture" data-sector="agriculture">
+            <div class="node-header">
+              <div class="node-icon green">Ag</div>
+              <div class="node-status"></div>
+            </div>
+            <div class="node-label"><strong>Agriculture</strong><span>Smart farming</span></div>
+            <div class="node-metric"><span class="dot"></span> Yield +22% • Data</div>
+          </div>
+
+          <div class="industry-node retail" data-sector="retail">
+            <div class="node-header">
+              <div class="node-icon purple">Rt</div>
+              <div class="node-status"></div>
+            </div>
+            <div class="node-label"><strong>Retail</strong><span>Commerce engines</span></div>
+            <div class="node-metric"><span class="dot"></span> POS • Inventory</div>
+          </div>
+
+          <svg class="connection-svg" viewBox="0 0 620 620" preserveAspectRatio="none">
+            <path class="connection-path" data-sector="fintech"></path>
+            <path class="connection-path" data-sector="healthcare"></path>
+            <path class="connection-path" data-sector="government"></path>
+            <path class="connection-path" data-sector="logistics"></path>
+            <path class="connection-path" data-sector="education"></path>
+            <path class="connection-path" data-sector="energy"></path>
+            <path class="connection-path" data-sector="agriculture"></path>
+            <path class="connection-path" data-sector="retail"></path>
+            <path class="connection-pulse" data-sector="fintech"></path>
+            <path class="connection-pulse" data-sector="healthcare"></path>
+            <path class="connection-pulse" data-sector="government"></path>
+            <path class="connection-pulse" data-sector="logistics"></path>
+            <path class="connection-pulse" data-sector="education"></path>
+            <path class="connection-pulse" data-sector="energy"></path>
+            <path class="connection-pulse" data-sector="agriculture"></path>
+            <path class="connection-pulse" data-sector="retail"></path>
+          </svg>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ====================================================================
-        FOOTER SECTION
-         ==================================================================== -->
+  <!-- SECTORS SECTION -->
+  <section class="sectors-section" id="sectors">
+    <div class="sectors-header">
+      <div class="sectors-label">Industry Solutions</div>
+      <h2>One intelligence platform. Eight critical sectors.</h2>
+      <p>The animated network above isn't decoration. Each sector below is already introduced visually in the hero. This
+        creates a seamless enterprise narrative.</p>
+    </div>
+
+    <div class="sectors-grid">
+      <div class="sector-card" data-sector="fintech">
+        <div class="sector-card-top">
+          <div class="sector-icon" style="background: var(--blue-light); color: var(--blue);">F$</div><span
+            class="sector-tag">Finance</span>
+        </div>
+        <h3>FinTech & Banking</h3>
+        <p>Secure, compliant platforms for payments, lending, and digital banking. PCI-DSS, encryption at rest, audit
+          logs.</p>
+        <ul>
+          <li>Digital wallets & payment gateways</li>
+          <li>KYC/AML & fraud detection</li>
+          <li>Core banking APIs & ledgers</li>
+        </ul>
+      </div>
+      <div class="sector-card" data-sector="healthcare">
+        <div class="sector-card-top">
+          <div class="sector-icon" style="background: var(--green-light); color: var(--green);">H+</div><span
+            class="sector-tag">Healthcare</span>
+        </div>
+        <h3>Healthcare & HealthTech</h3>
+        <p>Patient systems, EMR, telemedicine, and health data platforms built for reliability and privacy.</p>
+        <ul>
+          <li>EMR/EHR & patient portals</li>
+          <li>Telemedicine & appointment flows</li>
+          <li>HIPAA-ready & 99.9% uptime</li>
+        </ul>
+      </div>
+      <div class="sector-card" data-sector="government">
+        <div class="sector-card-top">
+          <div class="sector-icon" style="background: #EDE9FE; color: #7C3AED;">Gv</div><span
+            class="sector-tag">Government</span>
+        </div>
+        <h3>Government & Public Sector</h3>
+        <p>Digital infrastructure for e-services, citizen engagement, and transparent governance at scale.</p>
+        <ul>
+          <li>E-services & citizen portals</li>
+          <li>Document management & workflows</li>
+          <li>Analytics for policy decisions</li>
+        </ul>
+      </div>
+      <div class="sector-card" data-sector="logistics">
+        <div class="sector-card-top">
+          <div class="sector-icon" style="background: var(--orange-light); color: var(--orange);">Lg</div><span
+            class="sector-tag">Logistics</span>
+        </div>
+        <h3>Logistics & Supply Chain</h3>
+        <p>Real-time operations, tracking, and optimization for moving goods across Africa and beyond.</p>
+        <ul>
+          <li>Fleet tracking & route optimization</li>
+          <li>Warehouse & inventory systems</li>
+          <li>Proof-of-delivery & SLA tracking</li>
+        </ul>
+      </div>
+      <div class="sector-card" data-sector="education">
+        <div class="sector-card-top">
+          <div class="sector-icon" style="background: var(--blue-light); color: var(--blue);">Ed</div><span
+            class="sector-tag">Education</span>
+        </div>
+        <h3>Education & EdTech</h3>
+        <p>Learning platforms, LMS, and studyPod ecosystem that builds the next generation of builders.</p>
+        <ul>
+          <li>studyPod learning management</li>
+          <li>Assessment & certification</li>
+          <li>Community & mentorship</li>
+        </ul>
+      </div>
+      <div class="sector-card" data-sector="energy">
+        <div class="sector-card-top">
+          <div class="sector-icon" style="background: #FFF0E6; color: #FF6B1C;">En</div><span
+            class="sector-tag">Energy</span>
+        </div>
+        <h3>Energy & Utilities</h3>
+        <p>Field operations, IoT monitoring, and smart metering for distributed energy infrastructure.</p>
+        <ul>
+          <li>IoT sensor networks & alerts</li>
+          <li>Field workforce management</li>
+          <li>Usage analytics & billing</li>
+        </ul>
+      </div>
+      <div class="sector-card" data-sector="agriculture">
+        <div class="sector-card-top">
+          <div class="sector-icon" style="background: #E6FFF6; color: #00C896;">Ag</div><span
+            class="sector-tag">Agriculture</span>
+        </div>
+        <h3>Agriculture & AgriTech</h3>
+        <p>Smart farming, yield optimization, and marketplace platforms for farmers and aggregators.</p>
+        <ul>
+          <li>Crop monitoring & advisory</li>
+          <li>Supply chain & marketplace</li>
+          <li>Weather & yield predictions</li>
+        </ul>
+      </div>
+      <div class="sector-card" data-sector="retail">
+        <div class="sector-card-top">
+          <div class="sector-icon" style="background: #EDE9FE; color: #7C3AED;">Rt</div><span
+            class="sector-tag">Retail</span>
+        </div>
+        <h3>Retail & Commerce</h3>
+        <p>POS, inventory, and omnichannel commerce engines for modern retail operations.</p>
+        <ul>
+          <li>POS & inventory sync</li>
+          <li>Customer loyalty & CRM</li>
+          <li>Analytics & demand forecasting</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact-section" id="contact">
+    <div class="section-label reveal">Contact</div>
+    <h2 class="section-title reveal">Let's build something exceptional for your industry.</h2>
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <p>Tell us your sector, your challenge, and your scale. We reply within 24 hours with a sector-specific
+          approach.</p>
+        <div class="contact-meta">
+          <p><strong>Email:</strong> hello@spotters.company</p>
+          <p><strong>Location:</strong> Nigeria (Distributed) — Katsina, Lagos, Abuja</p>
+          <p><strong>Sectors:</strong> Finance, Healthcare, Government, Logistics, Education, Energy, Agriculture,
+            Retail</p>
+        </div>
+      </div>
+      <form class="card contact-form reveal">
+        <input type="text" name="name" placeholder="Your name">
+        <input type="email" name="email" placeholder="Business email">
+        <select name="sector">
+          <option>Select sector</option>
+          <option>FinTech & Banking</option>
+          <option>Healthcare & HealthTech</option>
+          <option>Government & Public Sector</option>
+          <option>Logistics & Supply Chain</option>
+          <option>Education & EdTech</option>
+          <option>Energy & Utilities</option>
+          <option>Agriculture & AgriTech</option>
+          <option>Retail & Commerce</option>
+        </select>
+        <textarea name="message" placeholder="Tell us about your industry challenge" rows="4"></textarea>
+        <button class="btn-primary blue" type="submit">Send Inquiry →</button>
+      </form>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-grid">
@@ -137,11 +422,10 @@
   <button class="back-to-top" id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none"
       stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M18 15l-6-6-6 6" />
-    </svg>
-  </button>
-
+    </svg></button>
   <div class="toast" id="toast"></div>
   <script src="../js/main.js"></script>
+  <script src="../js/industries.js"></script>
 </body>
 
 </html>
