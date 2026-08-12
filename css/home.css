@@ -577,7 +577,7 @@
   margin: 24px auto 96px;
   max-width: 1280px;
   border-radius: var(--radius-xl);
-  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-strong) 35%, var(--green) 70%, var(--orange) 100%);
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-strong, var(--blue-dark)) 35%, var(--green) 70%, var(--orange) 100%);
   padding: 80px 48px;
   color: white;
   text-align: center;

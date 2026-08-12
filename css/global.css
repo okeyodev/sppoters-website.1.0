@@ -167,7 +167,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 .drawer.active { transform: translateX(0); }
 .drawer-link {
-  font-size: 28px; font-weight: 700; letter-spacing: -0.03em;
+  font-size: 20px; font-weight: 700; letter-spacing: -0.03em;
   line-height: 1.1; padding: 14px 0; border-bottom: 1px solid var(--border);
   opacity: 0; transform: translateY(20px); transition: .5s var(--ease-smooth); color: var(--text);
 }

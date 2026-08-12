@@ -25,6 +25,7 @@
   /* ---------- 2. Brand colors ---------- */
   --blue: #0A66FF;           /* Primary - Software / trust */
   --blue-dark: #0549C0;
+  --blue-strong: #0549C0;
   --blue-light: #E8EFFF;
   --blue-glow: rgba(10, 102, 255, 0.15);
   
