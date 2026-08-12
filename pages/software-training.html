@@ -1,98 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Software Training  The Spotters Company</title>
+  <title>Software Training — The Spotters Company | Future Skills Command Center</title>
+  <!-- Fonts — same as index.html for consistency -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- ====================================================================
+       STYLES — EXACT SAME AS INDEX.HTML FOR CONSISTENCY
+       - variables.css = brand tokens (blue #0A66FF dominant > green > orange)
+       - global.css = header, footer, drawer, back-to-top, buttons, toast
+       - software-training.css = ONLY hero + courses (no header/footer override)
+       ==================================================================== -->
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/global.css">
-  <link rel="stylesheet" href="../css/digital-strategy.css">
+  <link rel="stylesheet" href="../css/software-training.css">
 </head>
-
 <body>
   <!-- ====================================================================
-         HEADER - SECTION
-         ==================================================================== -->
+       HEADER — COPIED EXACTLY FROM index.html FOR CONSISTENCY
+       - Sticky, reusable across all pages
+       - Contains: logo + desktop nav + theme toggle + hamburger
+       - Tablet downward: hamburger shows, desktop nav hides
+       - Animation + behavior controlled by js/main.js PART 1-2
+       Edit global.css to change header everywhere
+       ==================================================================== -->
   <header class="header" id="siteHeader">
     <div class="header-inner">
+      <!-- Logo — links to home (../index.html from pages folder) -->
       <a href="../index.html" class="logo">
         <div class="logo-dot"></div>SPOTTERS
       </a>
+
+      <!-- Right side: nav + actions — SAME STRUCTURE AS INDEX.HTML -->
       <nav class="nav-desktop" id="desktopNav">
-        <a class="nav-link" href="../index.html">Home</a>
+        <!-- SERVICES DROPDOWN — Desktop (same as index.html) -->
         <div class="nav-dropdown" id="servicesDropdown">
           <button class="nav-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
           <div class="dropdown-menu">
+            <!-- From pages folder, link to sibling pages -->
             <a href="digital-strategy.html">Digital Strategy</a>
             <a href="app-development.html">App Development</a>
             <a href="web-development.html">Web Development</a>
-            <a href="software-training.html" style="color: var(--blue);">studyPod</a>
+            <a href="software-training.html" style="color: var(--blue);">StudyPod</a>
             <a href="internship.html">Internship Program</a>
           </div>
         </div>
-        <a class="nav-link" href="works.html">Works</a>
-        <a class="nav-link" href="careers.html">Careers</a>
-        <a class="nav-link" href="industries.html">Industries</a>
-        <a class="nav-link" href="about.html">About</a>
+        <!-- Main nav links — point to index.html anchors for consistency with index.html -->
+        <a class="nav-link" href="../index.html#works">Works</a>
+        <a class="nav-link" href="../index.html#academy">Academy</a>
+        <a class="nav-link" href="../index.html#careers">Careers</a>
+        <a class="nav-link" href="../index.html#industries">Industries</a>
+        <a class="nav-link" href="../index.html#about">About</a>
         <a class="nav-link" href="../index.html#contact">Contact</a>
-        <a class="btn-primary blue" href="#contact">Start a Project</a>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <a class="btn-primary blue" href="../index.html#contact">Start a Project</a>
+
+        <!-- Theme toggle — always visible on desktop, also in drawer on mobile -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
           <div class="toggle-thumb" id="toggleThumb">☾</div>
         </button>
       </nav>
+
+      <!-- Mobile actions: theme toggle + hamburger — SAME AS INDEX.HTML -->
       <div style="display:flex; align-items:center; gap:10px;">
-        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <!-- Duplicate toggle for mobile header (hidden on desktop via CSS) -->
+        <button class="theme-toggle" id="themeToggleMobile" style="display:none;" aria-label="Toggle theme">
+          <div class="toggle-thumb">☾</div>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- Drawer - Mobile  -->
+  <!-- ====================================================================
+       DRAWER — Mobile menu for tablet downward — EXACT COPY FROM INDEX.HTML
+       Slides from right, contains nav links + CTA + theme row
+       Controlled by main.js PART 2 (openMenu/closeMenu, backdrop, Escape)
+       ==================================================================== -->
   <div class="drawer-backdrop" id="backdrop"></div>
   <div class="drawer" id="drawer" aria-hidden="true">
-    <a class="drawer-link" href="../index.html">Home</a>
+    <!-- SERVICES DROPDOWN — Mobile Drawer -->
     <div class="drawer-dropdown" id="drawerServices">
-      <button class="drawer-link dropdown-trigger">Services <span>▾</span></button>
+      <button class="drawer-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
       <div class="drawer-submenu">
         <a class="drawer-sublink" href="digital-strategy.html">Digital Strategy</a>
         <a class="drawer-sublink" href="app-development.html">App Development</a>
         <a class="drawer-sublink" href="web-development.html">Web Development</a>
-        <a class="drawer-sublink" href="software-training.html" style="color: var(--blue);">studyPod</a>
+        <a class="drawer-sublink" href="software-training.html" style="color: var(--blue);">StudyPod Training</a>
         <a class="drawer-sublink" href="internship.html">Internship Program</a>
       </div>
     </div>
-    <a class="drawer-link" href="works.html">Works</a>
-    <a class="drawer-link" href="careers.html">Careers</a>
-    <a class="drawer-link" href="industries.html">Industries</a>
-    <a class="drawer-link" href="about.html">About</a>
+    <a class="drawer-link" href="../index.html#works">Works</a>
+    <a class="drawer-link" href="../index.html#academy">Academy</a>
+    <a class="drawer-link" href="../index.html#careers">Careers</a>
+    <a class="drawer-link" href="../index.html#industries">Industries</a>
+    <a class="drawer-link" href="../index.html#about">About</a>
     <a class="drawer-link" href="../index.html#contact">Contact</a>
+
     <div class="drawer-footer">
-      <div class="drawer-theme-row"><span>Theme</span><button class="theme-toggle" id="drawerThemeToggle">
+      <div class="drawer-theme-row">
+        <span>Theme</span>
+        <button class="theme-toggle" id="drawerThemeToggle" aria-label="Toggle theme">
           <div class="toggle-thumb" id="drawerToggleThumb">☾</div>
-        </button></div>
-      <a class="btn-primary blue" href="../index.html#contact" style="width:100%; justify-content:center;">Start a
-        Project →</a>
+        </button>
+      </div>
+      <a class="btn-primary blue" href="../index.html#contact" style="width:100%; justify-content:center;">Start a Project →</a>
+      <p style="font-size:11px; color:var(--muted-2); text-align:center; margin-top:12px;">Indigenous Nigerian • Since 2018</p>
     </div>
   </div>
 
-  <section style="min-height:60vh; display:grid; place-items:center; padding:80px 24px; text-align:center;">
-    <div>
-      <div
-        style="display:inline-flex; padding:6px 14px; border-radius:9999px; background:var(--blue-light); color:var(--blue); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; font-weight:600;">
-        Coming Soon</div>
-      <h1 style="font-size:clamp(32px,5vw,56px); font-weight:800; letter-spacing:-0.03em; margin-top:20px;">Software
-        Training</h1>
-      <p style="color:var(--muted); max-width:480px; margin:16px auto 0; line-height:1.6;">This page is using the same
-        synced header, hamburger, light/dark toggle, footer, and back-to-top button as the homepage. Replace this
-        placeholder with your final content.</p>
-      <a href="digital-strategy.html"
-        style="display:inline-flex; margin-top:24px; padding:12px 20px; background:var(--blue); color:white; border-radius:9999px; font-weight:600; font-size:14px;">See
-        Digital Strategy — premium example →</a>
+  <!-- ====================================================================
+       TRAINING HERO — "The Future Skills Command Center"
+       Design Theme: "This is where future tech professionals are built."
+       NOT a classroom, NOT laptop mockup, NOT floating course cards.
+       Hero itself is living learning ecosystem.
+
+       Layout: Left 42% content / Right 58% visual (desktop per spec)
+       Mobile: Vertically focused (lab centered, nodes as pills below)
+
+       Animation Storyboard 10s loop (from your master spec):
+       Scene 1 0-1s     Digital Awakening — grid fades, glow appears, lab scales 0.85→1
+       Scene 2 1-2.5s   Technology Network — orbit paths draw, 5 nodes appear Python→Data→AI→Security→Java
+       Scene 3 2.5-3.8s Python Activation — code in lab, connection pulse blue
+       Scene 4 3.8-5s    Data Science — dashboard, counter 72→94%, graph rise, green glow
+       Scene 5 5-6.2s    AI / LLM — PROMPT → MODEL → RESPONSE, neural glow, purple #7C3AED
+       Scene 6 6.2-7.4s  Cyber Security — AUTH/NETWORK/THREAT, warning then SECURE, orange
+       Scene 7 7.4-8.6s  Java — BUILD SUCCESS, TEST PASSED, DEPLOY READY + progress bar
+       Scene 8 8.6-10s   Mastery — all nodes glow, SKILLS ACTIVATED checklist, ring expands
+
+       All animations use requestAnimationFrame + strokeDashoffset (per your spec)
+       Cursor parallax desktop only: Background 15px, Orbit 8px, Learning Lab 4px
+       ==================================================================== -->
+  <section class="training-hero" id="trainingHero">
+    <!-- Background system — canvas + grid + orbs (same as digital-strategy/web-dev for consistency) -->
+    <div class="hero-background">
+      <canvas id="trainingGridCanvas"></canvas>
+      <div class="grid-overlay"></div>
+      <div class="gradient-orb blue"></div>
+      <div class="gradient-orb green"></div>
+      <div class="gradient-orb orange"></div>
+    </div>
+
+    <div class="hero-container">
+      <!-- Left Content — 42% (eyebrow, headline, description, CTAs, trust indicators) -->
+      <div class="hero-content">
+        <span class="hero-badge">Software Training</span>
+        <h1>Future-Proof Your Career with <em>Real-World Tech Skills.</em></h1>
+        <p>Learn Python, Data Science, AI (LLM), Cyber Security and Java through hands-on training led by active industry experts. Not theory — production-ready skills.</p>
+
+        <div class="hero-actions">
+          <a class="btn-primary blue" href="#courses">Explore Our Courses →</a>
+          <a class="btn-secondary" href="#enroll">Enroll Now</a>
+        </div>
+
+        <div class="trust-row">
+          <div class="trust-item">
+            <strong>Expert Led</strong>
+            <span>Active industry professionals</span>
+          </div>
+          <div class="trust-item">
+            <strong>Real Projects</strong>
+            <span>Build production-ready work</span>
+          </div>
+          <div class="trust-item">
+            <strong>Industry Ready</strong>
+            <span>Portfolio that gets hired</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Visual — 58% — Learning Visual System -->
+      <div class="learning-visual" id="learningVisual">
+        <!-- Orbit + Connection SVG System — per spec: Use strokeDashoffset for pulse -->
+        <svg class="orbit-system" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <!-- Orbit paths (subtle circles around lab) — draw animation in Scene 2 -->
+          <ellipse class="orbit-path" cx="300" cy="300" rx="220" ry="220" />
+          <ellipse class="orbit-path" cx="300" cy="300" rx="180" ry="180" stroke-dasharray="4 10" />
+          <ellipse class="orbit-path" cx="300" cy="300" rx="260" ry="160" />
+
+          <!-- Connection lines from each node to lab center (300,300) — pulse when node activates -->
+          <path class="connection-line python" d="M 300 60 C 300 150, 300 200, 300 300" />
+          <path class="connection-line ai" d="M 80 190 C 160 230, 220 260, 300 300" />
+          <path class="connection-line java" d="M 520 190 C 440 230, 380 260, 300 300" />
+          <path class="connection-line data" d="M 90 480 C 170 420, 230 350, 300 300" />
+          <path class="connection-line security" d="M 510 480 C 430 420, 370 350, 300 300" />
+        </svg>
+
+        <!-- Tech Nodes — 5 technologies orbiting lab — appear one-by-one in Scene 2 -->
+        <div class="tech-nodes">
+          <!-- Python — top center — order 1 -->
+          <div class="node python" data-tech="python">
+            <span class="node-dot">Py</span>
+            <span>Python</span>
+          </div>
+          <!-- AI — left mid — order 3 -->
+          <div class="node ai" data-tech="ai">
+            <span class="node-dot">AI</span>
+            <span>AI / LLM</span>
+          </div>
+          <!-- Java — right mid — order 5 -->
+          <div class="node java" data-tech="java">
+            <span class="node-dot">Jv</span>
+            <span>Java</span>
+          </div>
+          <!-- Data Science — bottom left — order 2 -->
+          <div class="node data" data-tech="data">
+            <span class="node-dot">DS</span>
+            <span>Data Science</span>
+          </div>
+          <!-- Cyber Security — bottom right — order 4 -->
+          <div class="node security" data-tech="security">
+            <span class="node-dot">CS</span>
+            <span>Cyber Security</span>
+          </div>
+        </div>
+
+        <!-- Learning Lab — central glass card — per spec: blur(24px), border rgba .08, shadow 30/80 -->
+        <div class="learning-lab" id="learningLab">
+          <div class="lab-header">
+            <div class="lab-title">Learning Lab</div>
+            <div class="lab-status"><span class="live-dot"></span> Live • Active</div>
+          </div>
+          <div class="lab-screen">
+            <!-- Default state — replaced by JS per activation (Python, Data, AI, Security, Java, Mastery) -->
+            <div class="lab-content active" data-state="default">
+              <div style="text-align:center; padding: 8px 0;">
+                <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--st-muted-2); font-weight:700; margin-bottom:12px;">Learning Lab • Ready</div>
+                <div style="width:56px; height:56px; border-radius:16px; background:linear-gradient(135deg, var(--st-blue) 0%, var(--st-green) 100%); display:grid; place-items:center; margin:0 auto 14px; color:white; font-weight:800; font-size:22px;">S</div>
+                <div style="font-size:15px; font-weight:700; color:var(--st-text);">Future Skills Lab</div>
+                <div style="font-size:13px; color:var(--st-muted); margin-top:6px;">Select a technology to activate</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator — same as other premium pages -->
+    <div class="scroll-indicator">
+      <span>Scroll to explore</span>
+      <div class="scroll-line"></div>
     </div>
   </section>
 
-  <!-- FOOTER - SECTION -->
+  <!-- ====================================================================
+       MASTERY BRIDGE — Scroll Transition to Body
+       Per spec: "WHAT DO YOU WANT TO MASTER?" + "Master the Skills Powering the Modern World"
+       When scrolling, orbiting technology nodes separate and transition into first course cards
+       Creates seamless visual bridge between hero and courses section
+       ==================================================================== -->
+  <section class="mastery-bridge" id="courses">
+    <div class="mastery-label">What do you want to master?</div>
+    <h2>Master the Skills Powering the Modern World</h2>
+    <p>The hero above isn't decoration. It's a live map of what we teach. Each orbiting technology below becomes a course card — Python, Data Science, AI, Cyber Security, Java — with real projects, expert mentorship, and industry-ready outcomes.</p>
+
+    <div class="courses-grid">
+      <!-- Python — matches node python -->
+      <div class="course-card python" data-tech="python">
+        <div class="course-icon">Py</div>
+        <h3>Python Development</h3>
+        <p>From fundamentals to production. Build automation, APIs, and backend systems used by real users. No todo apps — real-world projects.</p>
+        <div class="course-tags">
+          <span>Automation</span>
+          <span>Backend APIs</span>
+          <span>Django / FastAPI</span>
+        </div>
+      </div>
+
+      <!-- Data Science — matches node data -->
+      <div class="course-card data" data-tech="data">
+        <div class="course-icon">DS</div>
+        <h3>Data Science</h3>
+        <p>Turn data into decisions. Pandas, visualization, model training, and dashboards with 94.2% accuracy tracking. Counter animates 72% → 94%.</p>
+        <div class="course-tags">
+          <span>Python • Pandas</span>
+          <span>Visualization</span>
+          <span>ML Models</span>
+        </div>
+      </div>
+
+      <!-- AI / LLM — matches node ai -->
+      <div class="course-card ai" data-tech="ai">
+        <div class="course-icon">AI</div>
+        <h3>AI & LLM Engineering</h3>
+        <p>Build with modern AI. PROMPT → MODEL → RESPONSE flow, neural network glow, and LLM integration. From prompt engineering to deployment.</p>
+        <div class="course-tags">
+          <span>LLMs</span>
+          <span>Prompt Engineering</span>
+          <span>AI Apps</span>
+        </div>
+      </div>
+
+      <!-- Cyber Security — matches node security -->
+      <div class="course-card security" data-tech="security">
+        <div class="course-icon">CS</div>
+        <h3>Cyber Security</h3>
+        <p>Learn to protect. AUTHENTICATION, NETWORK, THREAT DETECTION — monitor status SECURE. Warning appears then resolves. Hands-on labs.</p>
+        <div class="course-tags">
+          <span>Network Security</span>
+          <span>Threat Detection</span>
+          <span>Ethical Hacking</span>
+        </div>
+      </div>
+
+      <!-- Java — matches node java -->
+      <div class="course-card java" data-tech="java">
+        <div class="course-icon">Jv</div>
+        <h3>Java Enterprise</h3>
+        <p>Enterprise-grade building. BUILD SUCCESS, TEST PASSED, DEPLOY READY — progress bar completes. Spring, microservices, production pipelines.</p>
+        <div class="course-tags">
+          <span>Spring Boot</span>
+          <span>Microservices</span>
+          <span>Enterprise</span>
+        </div>
+      </div>
+
+      <!-- StudyPod — academy platform -->
+      <div class="course-card" style="grid-column: span 1;">
+        <div class="course-icon" style="background: var(--st-blue-light); color: var(--st-blue);">Sp</div>
+        <h3>studyPod by Spotters</h3>
+        <p>Our learning platform. Structured tracks, mentorship, code reviews, portfolio case studies, mock interviews — community that ships together.</p>
+        <div class="course-tags">
+          <span>Mentorship</span>
+          <span>Portfolio</span>
+          <span>Career Support</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       ENROLL / CONTACT — Reuse global contact section for consistency
+       Same layout as index.html #contact for seamless experience
+       ==================================================================== -->
+  <section class="section contact-section" id="enroll">
+    <div class="section-label reveal">Enroll Now</div>
+    <h2 class="section-title reveal">Ready to build future-proof skills?</h2>
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <p>Join studyPod — our hands-on training led by active industry experts. Learn through real projects, get 1:1 code reviews, and graduate with a portfolio that gets interviews. Cohorts start monthly.</p>
+        <div class="contact-meta">
+          <p><strong>Email:</strong> hello@spotters.company</p>
+          <p><strong>Location:</strong> Nigeria (Distributed) — Katsina, Lagos, Abuja</p>
+          <p><strong>Tracks:</strong> Python, Data Science, AI/LLM, Cyber Security, Java</p>
+        </div>
+        <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+          <span style="font-size:12px; padding:6px 12px; border-radius:9999px; background:var(--blue-light); color:var(--blue); font-weight:600;">Expert Led</span>
+          <span style="font-size:12px; padding:6px 12px; border-radius:9999px; background:var(--green-light); color:var(--green); font-weight:600;">Real Projects</span>
+          <span style="font-size:12px; padding:6px 12px; border-radius:9999px; background:var(--orange-light); color:var(--orange); font-weight:600;">Industry Ready</span>
+        </div>
+      </div>
+      <form class="card contact-form reveal" id="enrollForm">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Email address" required>
+        <select name="track">
+          <option>Select Track</option>
+          <option>Python Development</option>
+          <option>Data Science</option>
+          <option>AI / LLM Engineering</option>
+          <option>Cyber Security</option>
+          <option>Java Enterprise</option>
+          <option>Full Stack (Python + Java)</option>
+        </select>
+        <select name="level">
+          <option>Experience Level</option>
+          <option>Beginner — learning basics</option>
+          <option>Intermediate — built 2-3 projects</option>
+          <option>Advanced — seeking mastery</option>
+        </select>
+        <textarea name="message" placeholder="Tell us why you want to master these skills?" rows="4"></textarea>
+        <button class="btn-primary blue" type="submit">Enroll Now →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       FOOTER — EXACT COPY FROM index.html FOR CONSISTENCY
+       Same 4-column grid, same links, same copyright
+       Only paths adjusted for pages folder (Services → ./file.html, Company → ../index.html#anchor)
+       ==================================================================== -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-grid">
@@ -100,37 +390,56 @@
           <div class="logo" style="color:white;">
             <div class="logo-dot"></div>SPOTTERS.
           </div>
-          <p style="opacity:0.6; font-size:14px; margin-top:16px; max-width:300px;">Technology that builds people and
-            businesses. Indigenous Nigerian IT company since 2018.</p>
+          <p style="opacity:0.6; font-size:14px; margin-top:16px; max-width:300px;">Technology that builds people and businesses. Indigenous Nigerian IT company since 2018.</p>
         </div>
         <div>
-          <h4>Services</h4><a href="digital-strategy.html">Digital Strategy</a><a href="app-development.html">App
-            Development</a><a href="web-development.html">Web Development</a><a href="software-training.html">Software
-            Training</a><a href="internship.html">Internship</a>
+          <h4>Services</h4>
+          <a href="digital-strategy.html">Digital Strategy</a>
+          <a href="app-development.html">App Development</a>
+          <a href="web-development.html">Web Development</a>
+          <a href="software-training.html">Software Training</a>
+          <a href="internship.html">Internship</a>
         </div>
         <div>
-          <h4>Company</h4><a href="../index.html#works">Works</a><a href="../index.html#academy">Academy</a><a
-            href="../index.html#industries">Industries</a><a href="../index.html#about">About</a><a
-            href="../index.html#careers">Careers</a>
+          <h4>Company</h4>
+          <a href="../index.html#works">Works</a>
+          <a href="../index.html#academy">Academy</a>
+          <a href="../index.html#industries">Industries</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#careers">Careers</a>
         </div>
         <div>
-          <h4>Connect</h4><a>hello@spotters.company</a><a>Katsina, Nigeria</a><a>LinkedIn / Twitter / GitHub</a>
+          <h4>Connect</h4>
+          <a>hello@spotters.company</a>
+          <a>Katsina, Nigeria</a>
+          <a>LinkedIn / Twitter / GitHub</a>
         </div>
       </div>
-      <p
-        style="margin-top:64px; opacity:0.4; font-size:12px; border-top:1px solid rgba(255,255,255,0.1); padding-top:24px;">
-        © 2026 The Spotters Company.</p>
+      <p style="margin-top:64px; opacity:0.4; font-size:12px; border-top:1px solid rgba(255,255,255,0.1); padding-top:24px;">
+        © 2026 The Spotters Company. Incorporated under the laws of the Federal Republic of Nigeria.</p>
     </div>
   </footer>
-  
-  <button class="back-to-top" id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+
+  <!-- ====================================================================
+       BACK TO TOP — EXACT COPY FROM index.html FOR CONSISTENCY
+       Blue dominant, same SVG icon (path M18 15l-6-6-6 6), same id backToTop
+       Controlled by main.js PART 6: shows after 400px scroll, smooth scroll to top
+       ==================================================================== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M18 15l-6-6-6 6" />
     </svg>
   </button>
 
+  <!-- Toast — same as index.html -->
   <div class="toast" id="toast"></div>
-  <script src="../js/main.js"></script>
-</body>
 
+  <!-- ====================================================================
+       SCRIPTS — SAME AS INDEX.HTML + PAGE-SPECIFIC
+       - main.js = theme, hamburger, drawer, reveal, hero particles, back-to-top, toast (synced)
+       - software-training.js = training hero 10s loop (orbit, lab switcher, nodes, parallax)
+       ==================================================================== -->
+  <script src="../js/main.js"></script>
+  <script src="../js/software-training.js"></script>
+</body>
 </html>
