@@ -713,7 +713,7 @@
 }
 
 /* Below-fold - adaptive */
-.wd-process {
+/* .wd-process {
   max-width: 1280px;
   margin: 0 auto;
   padding: 96px 24px;
@@ -724,7 +724,7 @@
 
 .wd-process-header {
   margin-bottom: 48px;
-}
+} */
 
 /* .wd-process-label {
   font-size: 12px;
@@ -736,17 +736,18 @@
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
+} */
+/* 
 .wd-process-label::before {
   content: '';
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: var(--blue);
-} */
+}
+ */
 
-.wd-process h2 {
+/* .wd-process h2 {
   font-size: clamp(28px, 4vw, 48px);
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -754,7 +755,7 @@
   color: var(--wd-section-text);
   max-width: 720px;
   transition: color 0.4s ease;
-}
+} */
 
 .wd-steps {
   display: grid;

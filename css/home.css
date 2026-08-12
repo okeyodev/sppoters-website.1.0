@@ -68,11 +68,11 @@
 }
 
 .hero-title-new {
-  font-size: clamp(36px, 5vw, 64px);
+  font-size: clamp(45px, 5vw, 70px);
   font-weight: 800;
   letter-spacing: -0.05em;
   line-height: 0.9;
-  margin: 20px 0;
+  margin: 10px 0;
   max-width: 520px;
   color: var(--text);
 }
@@ -82,7 +82,7 @@
 .hero-title-new .accent-orange { color: var(--orange); }
 
 .hero-sub-new {
-  font-size: 17px;
+  font-size: 15px;
   color: var(--muted);
   max-width: 480px;
   line-height: 1.6;

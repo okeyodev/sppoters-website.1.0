@@ -179,55 +179,64 @@
 }
 
 /* Left content */
-.hero-content {
+/* .hero-content {
   display: flex;
   flex-direction: column;
   gap: 24px;
-}
+} */
 
-/* .hero-badge {
-  display:inline-flex; align-items:center; gap:8px;
-  width:fit-content;
-  padding:6px 14px;
-  font-size:11px; letter-spacing:0.16em; text-transform:uppercase; font-weight:600;
+/*  
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 6px 14px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
   color: var(--ds-blue);
   background: var(--ds-blue-light-bg);
-  border:1px solid rgba(10,102,255,0.18);
+  border: 1px solid rgba(10, 102, 255, 0.18);
   border-radius: var(--ds-radius-pill);
   backdrop-filter: blur(8px);
 }
+
 [data-theme="dark"] .hero-badge {
-  background: rgba(10,102,255,0.12);
-  border-color: rgba(10,102,255,0.28);
+  background: rgba(10, 102, 255, 0.12);
+  border-color: rgba(10, 102, 255, 0.28);
   color: #6EA8FF;
 }
-.hero-badge::before {
+ */
+/* .hero-badge::before {
   content:''; width:6px; height:6px; background:var(--ds-blue); border-radius:50%;
   box-shadow:0 0 10px var(--ds-blue-glow);
   animation: ds-pulse-dot 2s infinite;
-}
- */
-.hero-content h1 {
-  font-size: clamp(36px, 4.5vw, 56px);
+} */
+
+/* .hero-content h1 {
+  font-size: clamp(60px, 4.5vw, 50px);
   line-height: 0.95;
   letter-spacing: -0.03em;
   font-weight: 800;
   color: var(--ds-text);
-  max-width: 520px;
+  max-width: 620px;
+  margin: 10px 0;
 }
 
 .hero-content p {
-  font-size: 17px;
+  font-size: 15px;
   line-height: 1.7;
   color: var(--ds-muted);
   max-width: 480px;
-}
+} */
 
-.hero-actions {
+/* .hero-actions {
   display: flex;
   gap: 14px;
   margin-top: 8px;
-}
+} */
 
 .btn-primary.blue {
   background: var(--ds-blue);
@@ -586,17 +595,17 @@
 }
 
 /* ---------- 6. Below-fold Process Sections (narrative continuity) ---------- */
-.ds-process {
+/* .ds-process {
   max-width: 1280px;
   margin: 0 auto;
   padding: 96px 24px;
   border-top: 1px solid var(--ds-border);
   background: var(--bg);
-}
+} */
 
-.ds-process-header {
+/* .ds-process-header {
   margin-bottom: 48px;
-}
+} */
 
 /* .ds-process-label {
   font-size: 12px;
@@ -772,9 +781,9 @@
     grid-area: visual;
   }
 
-  .hero-content {
+  /* .hero-content {
     grid-area: content;
-  }
+  } */
 
   .hero-pillars {
     grid-template-columns: 1fr;
@@ -800,13 +809,13 @@
     padding: 24px 18px 48px;
   }
 
-  .hero-content h1 {
-    font-size: 30px;
-  }
+  /* .hero-content h1 {
+    font-size: 45px;
+  } */
 
-  .hero-actions {
+  /* .hero-actions {
     flex-direction: column;
-  }
+  } */
 
   .btn-primary,
   .btn-secondary {
