@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Software Training — The Spotters Company | Future Skills Command Center</title>
-  <!-- Fonts — same as index.html for consistency -->
+  <title>Software Training  The Spotters Company | Future Skills Command Center</title>
+  <!-- Fonts  same as index.html for consistency -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- ====================================================================
-       STYLES — EXACT SAME AS INDEX.HTML FOR CONSISTENCY
+       STYLES  EXACT SAME AS INDEX.HTML FOR CONSISTENCY
        - variables.css = brand tokens (blue #0A66FF dominant > green > orange)
        - global.css = header, footer, drawer, back-to-top, buttons, toast
        - software-training.css = ONLY hero + courses (no header/footer override)
@@ -20,7 +20,7 @@
 </head>
 <body>
   <!-- ====================================================================
-       HEADER — COPIED EXACTLY FROM index.html FOR CONSISTENCY
+       HEADER  COPIED EXACTLY FROM index.html FOR CONSISTENCY
        - Sticky, reusable across all pages
        - Contains: logo + desktop nav + theme toggle + hamburger
        - Tablet downward: hamburger shows, desktop nav hides
@@ -29,14 +29,14 @@
        ==================================================================== -->
   <header class="header" id="siteHeader">
     <div class="header-inner">
-      <!-- Logo — links to home (../index.html from pages folder) -->
+      <!-- Logo  links to home (../index.html from pages folder) -->
       <a href="../index.html" class="logo">
         <div class="logo-dot"></div>SPOTTERS
       </a>
 
-      <!-- Right side: nav + actions — SAME STRUCTURE AS INDEX.HTML -->
+      <!-- Right side: nav + actions  SAME STRUCTURE AS INDEX.HTML -->
       <nav class="nav-desktop" id="desktopNav">
-        <!-- SERVICES DROPDOWN — Desktop (same as index.html) -->
+        <!-- SERVICES DROPDOWN  Desktop (same as index.html) -->
         <div class="nav-dropdown" id="servicesDropdown">
           <button class="nav-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
           <div class="dropdown-menu">
@@ -44,11 +44,11 @@
             <a href="digital-strategy.html">Digital Strategy</a>
             <a href="app-development.html">App Development</a>
             <a href="web-development.html">Web Development</a>
-            <a href="software-training.html" style="color: var(--blue);">StudyPod</a>
+            <a href="software-training.html" style="color: var(--blue);">Software Training</a>
             <a href="internship.html">Internship Program</a>
           </div>
         </div>
-        <!-- Main nav links — point to index.html anchors for consistency with index.html -->
+        <!-- Main nav links  point to index.html anchors for consistency with index.html -->
         <a class="nav-link" href="../index.html#works">Works</a>
         <a class="nav-link" href="../index.html#academy">Academy</a>
         <a class="nav-link" href="../index.html#careers">Careers</a>
@@ -57,13 +57,13 @@
         <a class="nav-link" href="../index.html#contact">Contact</a>
         <a class="btn-primary blue" href="../index.html#contact">Start a Project</a>
 
-        <!-- Theme toggle — always visible on desktop, also in drawer on mobile -->
+        <!-- Theme toggle  always visible on desktop, also in drawer on mobile -->
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
           <div class="toggle-thumb" id="toggleThumb">☾</div>
         </button>
       </nav>
 
-      <!-- Mobile actions: theme toggle + hamburger — SAME AS INDEX.HTML -->
+      <!-- Mobile actions: theme toggle + hamburger  SAME AS INDEX.HTML -->
       <div style="display:flex; align-items:center; gap:10px;">
         <!-- Duplicate toggle for mobile header (hidden on desktop via CSS) -->
         <button class="theme-toggle" id="themeToggleMobile" style="display:none;" aria-label="Toggle theme">
@@ -77,7 +77,7 @@
   </header>
 
   <!-- ====================================================================
-       DRAWER — Mobile menu for tablet downward — EXACT COPY FROM INDEX.HTML
+       DRAWER  Mobile menu for tablet downward — EXACT COPY FROM INDEX.HTML
        Slides from right, contains nav links + CTA + theme row
        Controlled by main.js PART 2 (openMenu/closeMenu, backdrop, Escape)
        ==================================================================== -->
@@ -90,7 +90,7 @@
         <a class="drawer-sublink" href="digital-strategy.html">Digital Strategy</a>
         <a class="drawer-sublink" href="app-development.html">App Development</a>
         <a class="drawer-sublink" href="web-development.html">Web Development</a>
-        <a class="drawer-sublink" href="software-training.html" style="color: var(--blue);">StudyPod Training</a>
+        <a class="drawer-sublink" href="software-training.html" style="color: var(--blue);">Software Training</a>
         <a class="drawer-sublink" href="internship.html">Internship Program</a>
       </div>
     </div>
@@ -256,14 +256,14 @@
   <section class="mastery-bridge" id="courses">
     <div class="mastery-label">What do you want to master?</div>
     <h2>Master the Skills Powering the Modern World</h2>
-    <p>The hero above isn't decoration. It's a live map of what we teach. Each orbiting technology below becomes a course card — Python, Data Science, AI, Cyber Security, Java — with real projects, expert mentorship, and industry-ready outcomes.</p>
+    <p>The hero above isn't decoration. It's a live map of what we teach. Each orbiting technology below becomes a course card  Python, Data Science, AI, Cyber Security, Java  with real projects, expert mentorship, and industry-ready outcomes.</p>
 
     <div class="courses-grid">
-      <!-- Python — matches node python -->
+      <!-- Python  matches node python -->
       <div class="course-card python" data-tech="python">
         <div class="course-icon">Py</div>
         <h3>Python Development</h3>
-        <p>From fundamentals to production. Build automation, APIs, and backend systems used by real users. No todo apps — real-world projects.</p>
+        <p>From fundamentals to production. Build automation, APIs, and backend systems used by real users. No todo apps  real-world projects.</p>
         <div class="course-tags">
           <span>Automation</span>
           <span>Backend APIs</span>
@@ -271,7 +271,7 @@
         </div>
       </div>
 
-      <!-- Data Science — matches node data -->
+      <!-- Data Science  matches node data -->
       <div class="course-card data" data-tech="data">
         <div class="course-icon">DS</div>
         <h3>Data Science</h3>
@@ -283,7 +283,7 @@
         </div>
       </div>
 
-      <!-- AI / LLM — matches node ai -->
+      <!-- AI / LLM  matches node ai -->
       <div class="course-card ai" data-tech="ai">
         <div class="course-icon">AI</div>
         <h3>AI & LLM Engineering</h3>
@@ -295,11 +295,11 @@
         </div>
       </div>
 
-      <!-- Cyber Security — matches node security -->
+      <!-- Cyber Security  matches node security -->
       <div class="course-card security" data-tech="security">
         <div class="course-icon">CS</div>
         <h3>Cyber Security</h3>
-        <p>Learn to protect. AUTHENTICATION, NETWORK, THREAT DETECTION — monitor status SECURE. Warning appears then resolves. Hands-on labs.</p>
+        <p>Learn to protect. AUTHENTICATION, NETWORK, THREAT DETECTION  monitor status SECURE. Warning appears then resolves. Hands-on labs.</p>
         <div class="course-tags">
           <span>Network Security</span>
           <span>Threat Detection</span>
@@ -307,11 +307,11 @@
         </div>
       </div>
 
-      <!-- Java — matches node java -->
+      <!-- Java  matches node java -->
       <div class="course-card java" data-tech="java">
         <div class="course-icon">Jv</div>
         <h3>Java Enterprise</h3>
-        <p>Enterprise-grade building. BUILD SUCCESS, TEST PASSED, DEPLOY READY — progress bar completes. Spring, microservices, production pipelines.</p>
+        <p>Enterprise-grade building. BUILD SUCCESS, TEST PASSED, DEPLOY READY  progress bar completes. Spring, microservices, production pipelines.</p>
         <div class="course-tags">
           <span>Spring Boot</span>
           <span>Microservices</span>
@@ -319,11 +319,11 @@
         </div>
       </div>
 
-      <!-- StudyPod — academy platform -->
+      <!-- StudyPod  academy platform -->
       <div class="course-card" style="grid-column: span 1;">
         <div class="course-icon" style="background: var(--st-blue-light); color: var(--st-blue);">Sp</div>
         <h3>studyPod by Spotters</h3>
-        <p>Our learning platform. Structured tracks, mentorship, code reviews, portfolio case studies, mock interviews — community that ships together.</p>
+        <p>Our learning platform. Structured tracks, mentorship, code reviews, portfolio case studies, mock interviews  community that ships together.</p>
         <div class="course-tags">
           <span>Mentorship</span>
           <span>Portfolio</span>
@@ -334,7 +334,7 @@
   </section>
 
   <!-- ====================================================================
-       ENROLL / CONTACT — Reuse global contact section for consistency
+       ENROLL / CONTACT  Reuse global contact section for consistency
        Same layout as index.html #contact for seamless experience
        ==================================================================== -->
   <section class="section contact-section" id="enroll">
@@ -342,10 +342,10 @@
     <h2 class="section-title reveal">Ready to build future-proof skills?</h2>
     <div class="contact-layout">
       <div class="contact-info reveal">
-        <p>Join studyPod — our hands-on training led by active industry experts. Learn through real projects, get 1:1 code reviews, and graduate with a portfolio that gets interviews. Cohorts start monthly.</p>
+        <p>Join studyPod  our hands-on training led by active industry experts. Learn through real projects, get 1:1 code reviews, and graduate with a portfolio that gets interviews. Cohorts start monthly.</p>
         <div class="contact-meta">
           <p><strong>Email:</strong> hello@spotters.company</p>
-          <p><strong>Location:</strong> Nigeria (Distributed) — Katsina, Lagos, Abuja</p>
+          <!-- <p><strong>Location:</strong> Nigeria (Distributed)  Katsina, Lagos, Abuja</p> -->
           <p><strong>Tracks:</strong> Python, Data Science, AI/LLM, Cyber Security, Java</p>
         </div>
         <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
@@ -368,9 +368,9 @@
         </select>
         <select name="level">
           <option>Experience Level</option>
-          <option>Beginner — learning basics</option>
-          <option>Intermediate — built 2-3 projects</option>
-          <option>Advanced — seeking mastery</option>
+          <option>Beginner  learning basics</option>
+          <option>Intermediate  built 2-3 projects</option>
+          <option>Advanced  seeking mastery</option>
         </select>
         <textarea name="message" placeholder="Tell us why you want to master these skills?" rows="4"></textarea>
         <button class="btn-primary blue" type="submit">Enroll Now →</button>
@@ -379,7 +379,7 @@
   </section>
 
   <!-- ====================================================================
-       FOOTER — EXACT COPY FROM index.html FOR CONSISTENCY
+       FOOTER  EXACT COPY FROM index.html FOR CONSISTENCY
        Same 4-column grid, same links, same copyright
        Only paths adjusted for pages folder (Services → ./file.html, Company → ../index.html#anchor)
        ==================================================================== -->
@@ -390,7 +390,7 @@
           <div class="logo" style="color:white;">
             <div class="logo-dot"></div>SPOTTERS.
           </div>
-          <p style="opacity:0.6; font-size:14px; margin-top:16px; max-width:300px;">Technology that builds people and businesses. Indigenous Nigerian IT company since 2018.</p>
+          <p style="opacity:0.6; font-size:14px; margin-top:16px; max-width:300px;">Technology that builds people and businesses.</p>
         </div>
         <div>
           <h4>Services</h4>
@@ -411,17 +411,16 @@
         <div>
           <h4>Connect</h4>
           <a>hello@spotters.company</a>
-          <a>Katsina, Nigeria</a>
           <a>LinkedIn / Twitter / GitHub</a>
         </div>
       </div>
       <p style="margin-top:64px; opacity:0.4; font-size:12px; border-top:1px solid rgba(255,255,255,0.1); padding-top:24px;">
-        © 2026 The Spotters Company. Incorporated under the laws of the Federal Republic of Nigeria.</p>
+        © 2026 The Spotters Company.</p>
     </div>
   </footer>
 
   <!-- ====================================================================
-       BACK TO TOP — EXACT COPY FROM index.html FOR CONSISTENCY
+       BACK TO TOP  EXACT COPY FROM index.html FOR CONSISTENCY
        Blue dominant, same SVG icon (path M18 15l-6-6-6 6), same id backToTop
        Controlled by main.js PART 6: shows after 400px scroll, smooth scroll to top
        ==================================================================== -->
@@ -431,11 +430,11 @@
     </svg>
   </button>
 
-  <!-- Toast — same as index.html -->
+  <!-- Toast  same as index.html -->
   <div class="toast" id="toast"></div>
 
   <!-- ====================================================================
-       SCRIPTS — SAME AS INDEX.HTML + PAGE-SPECIFIC
+       SCRIPTS  SAME AS INDEX.HTML + PAGE-SPECIFIC
        - main.js = theme, hamburger, drawer, reveal, hero particles, back-to-top, toast (synced)
        - software-training.js = training hero 10s loop (orbit, lab switcher, nodes, parallax)
        ==================================================================== -->

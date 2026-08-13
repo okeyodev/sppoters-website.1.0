@@ -215,14 +215,14 @@
 }
 
 /* ---------- Left: Content - sells enterprise trust ---------- */
-.hero-content {
+/* .hero-content {
   display: flex;
   flex-direction: column;
   gap: 24px;
   will-change: transform;
-}
+} */
 
-.hero-badge {
+/* .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -253,9 +253,9 @@
   background: rgba(10, 102, 255, 0.12);
   border-color: rgba(10, 102, 255, 0.28);
   color: #6EA8FF;
-}
+} */
 
-.hero-content h1 {
+/* .hero-content h1 {
   font-size: clamp(36px, 4.6vw, 56px);
   line-height: 0.96;
   letter-spacing: -0.03em;
@@ -264,7 +264,7 @@
   max-width: 560px;
   transition: color 0.4s ease;
 }
-
+ */
 .hero-content h1 em {
   font-style: normal;
   background: linear-gradient(90deg, var(--in-blue) 0%, var(--in-purple) 55%, var(--in-green) 100%);
@@ -273,14 +273,14 @@
   background-clip: text;
 }
 
-.hero-content p {
+/* .hero-content p {
   font-size: 17px;
   line-height: 1.72;
   color: var(--in-hero-muted);
   max-width: 500px;
   transition: color 0.4s ease;
 }
-
+ */
 .hero-actions {
   display: flex;
   gap: 14px;
@@ -921,7 +921,7 @@
   border-top: 1px solid var(--border);
 }
 
-.sectors-header {
+/* .sectors-header {
   margin-bottom: 48px;
 }
 
@@ -935,9 +935,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
-}
+} */
 
-.sectors-label::before {
+/* .sectors-label::before {
   content: '';
   width: 8px;
   height: 8px;
@@ -945,7 +945,7 @@
   background: var(--blue);
   box-shadow: 0 0 12px var(--blue-glow);
 }
-
+ */
 .sectors-section h2 {
   font-size: clamp(32px, 4.5vw, 52px);
   font-weight: 800;
@@ -953,6 +953,7 @@
   line-height: 0.95;
   color: var(--text);
   max-width: 720px;
+  margin-bottom: 15px;
 }
 
 .sectors-section>p {
@@ -1066,8 +1067,8 @@
 
 /* Highlight sector when hero node active - bridge effect */
 .sector-card.highlight {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 1px var(--blue), 0 16px 48px var(--blue-glow);
+  /* border-color: var(--blue); */
+  box-shadow: /* 0 0 0 1px var(--blue), */ 0 16px 48px var(--blue-glow);
   transform: translateY(-2px) scale(1.01);
 }
 
@@ -1220,9 +1221,9 @@
     min-height: 520px;
   }
 
-  .hero-content {
+  /* .hero-content {
     grid-area: content;
-  }
+  } */
 
   .hero-stats {
     grid-template-columns: 1fr;
@@ -1258,9 +1259,9 @@
     padding: 22px 18px 48px;
   }
 
-  .hero-content h1 {
+  /* .hero-content h1 {
     font-size: 32px;
-  }
+  } */
 
   .hero-actions {
     flex-direction: column;

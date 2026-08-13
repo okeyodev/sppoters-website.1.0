@@ -752,10 +752,10 @@
   box-shadow: var(--shadow-lg);
 }
 
-.role-card:hover::after {
+/* .role-card:hover::after {
   opacity: 1;
 }
-
+ */
 .role-card h4 {
   font-size: 15px;
   font-weight: 700;

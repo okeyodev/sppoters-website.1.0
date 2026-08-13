@@ -625,21 +625,21 @@
   top: -14px;
   right: 6%;
   transition-delay: 1.3s;
-  border-left: 2px solid var(--wd-blue);
+  border-left: 1px solid var(--wd-blue);
 }
 
 .floating-card.automation {
   bottom: 18%;
   left: -12px;
   transition-delay: 1.5s;
-  border-left: 2px solid var(--wd-green);
+  border-left: 1px solid var(--wd-green);
 }
 
 .floating-card.security {
   bottom: -10px;
   right: 14%;
   transition-delay: 1.7s;
-  border-left: 2px solid var(--wd-orange);
+  border-left: 1px solid var(--wd-orange);
 }
 
 .connection-svg {

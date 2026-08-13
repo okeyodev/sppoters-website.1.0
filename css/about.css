@@ -856,9 +856,9 @@
   border-color: rgba(10, 102, 255, 0.18);
 }
 
-.mv-card:hover::before {
+/* .mv-card:hover::before {
   opacity: 1;
-}
+} */
 
 .mv-card h3 {
   font-size: 20px;
