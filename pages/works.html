@@ -4,25 +4,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Works — The Spotters Company</title>
+  <title>Works  The Spotters Company</title>
+  <!-- Fonts - same as home -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Design tokens - edit here to rebrand entire site -->
   <link rel="stylesheet" href="../css/variables.css">
+  <!-- Global - header, footer, drawer, back-to-top, buttons (synced with index.html) -->
   <link rel="stylesheet" href="../css/global.css">
-  <link rel="stylesheet" href="../css/digital-strategy.css">
+  <!-- Works-specific - hero + portfolio network + selected works -->
+  <link rel="stylesheet" href="../css/works.css">
 </head>
 
 <body>
   <!-- ====================================================================
-           HEADER SECTION
-           ==================================================================== -->
+       HEADER - EXACT SAME AS index.html FOR CONSISTENCY
+       Contains: logo + desktop nav + theme toggle + hamburger
+       Tablet downward: hamburger shows, desktop nav hides
+       Controlled by main.js PART 2
+       ==================================================================== -->
   <header class="header" id="siteHeader">
     <div class="header-inner">
       <a href="../index.html" class="logo">
         <div class="logo-dot"></div>SPOTTERS
       </a>
+
+      <!-- Right side: nav + actions -->
       <nav class="nav-desktop" id="desktopNav">
-        <a class="nav-link" href="../index.html">Home</a>
-        <div class="nav-dropdown" id="servicesDropdown">          
+        <!-- SERVICES DROPDOWN - Desktop - same as index.html -->
+        <div class="nav-dropdown" id="servicesDropdown">
           <button class="nav-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
           <div class="dropdown-menu">
             <a href="digital-strategy.html">Digital Strategy</a>
@@ -32,33 +41,43 @@
             <a href="internship.html">Internship Program</a>
           </div>
         </div>
-        <a class="nav-link" href="../index.html#academy">Academy</a>
+        <!-- Works active - blue highlight like other pages -->
         <a class="nav-link" href="works.html" style="color: var(--blue);">Works</a>
+        <a class="nav-link" href="../index.html#academy">Academy</a>
         <a class="nav-link" href="careers.html">Careers</a>
         <a class="nav-link" href="industries.html">Industries</a>
         <a class="nav-link" href="about.html">About</a>
         <a class="nav-link" href="../index.html#contact">Contact</a>
         <a class="btn-primary blue" href="../index.html#contact">Start a Project</a>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+
+        <!-- Theme toggle - exact same as index.html -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
           <div class="toggle-thumb" id="toggleThumb">☾</div>
         </button>
       </nav>
+
+      <!-- Mobile actions: theme toggle + hamburger - same as index.html -->
       <div style="display:flex; align-items:center; gap:10px;">
-        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <button class="theme-toggle" id="themeToggleMobile" style="display:none;" aria-label="Toggle theme">
+          <div class="toggle-thumb">☾</div>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
 
   <!-- ====================================================================
-           DRAWER - Mobile menu for tablet downward
-           Slides from right, contains nav links + CTA + theme row
-           Controlled by main.js PART 2
-           ==================================================================== -->
+       DRAWER - Mobile menu, EXACT SAME AS index.html
+       Slides from right, contains nav links + CTA + theme row
+       Controlled by main.js PART 2
+       ==================================================================== -->
   <div class="drawer-backdrop" id="backdrop"></div>
   <div class="drawer" id="drawer" aria-hidden="true">
-    <a class="drawer-link" href="../index.html">Home</a>
-    <div class="drawer-dropdown" id="drawerServices">      
-      <button class="drawer-link dropdown-trigger">Services <span>▾</span></button>
+    <!-- SERVICES DROPDOWN - Mobile Drawer - same as index.html -->
+    <div class="drawer-dropdown" id="drawerServices">
+      <button class="drawer-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
       <div class="drawer-submenu">
         <a class="drawer-sublink" href="digital-strategy.html">Digital Strategy</a>
         <a class="drawer-sublink" href="app-development.html">App Development</a>
@@ -67,41 +86,299 @@
         <a class="drawer-sublink" href="internship.html">Internship Program</a>
       </div>
     </div>
-    <a class="drawer-link" href="../index.html#academy">Academy</a>
     <a class="drawer-link" href="works.html" style="color: var(--blue);">Works</a>
+    <a class="drawer-link" href="../index.html#academy">Academy</a>
     <a class="drawer-link" href="careers.html">Careers</a>
     <a class="drawer-link" href="industries.html">Industries</a>
     <a class="drawer-link" href="about.html">About</a>
     <a class="drawer-link" href="../index.html#contact">Contact</a>
+
     <div class="drawer-footer">
-      <div class="drawer-theme-row"><span>Theme</span><button class="theme-toggle" id="drawerThemeToggle">
+      <div class="drawer-theme-row">
+        <span>Theme</span>
+        <button class="theme-toggle" id="drawerThemeToggle" aria-label="Toggle theme">
           <div class="toggle-thumb" id="drawerToggleThumb">☾</div>
-        </button></div>
-      <a class="btn-primary blue" href="../index.html#contact" style="width:100%; justify-content:center;">Start a
-        Project →</a>
+        </button>
+      </div>
+      <a class="btn-primary blue" href="../index.html#contact" style="width:100%; justify-content:center;">Start a Project →</a>
+      <p style="font-size:11px; color:var(--muted-2); text-align:center; margin-top:12px;">Since 2018</p>
     </div>
   </div>
 
   <!-- ====================================================================
-         MAIN CONTENT OF WORKS PAGE
-         ==================================================================== -->
-  <section style="min-height:60vh; display:grid; place-items:center; padding:80px 24px; text-align:center;">
-    <div>
-      <div
-        style="display:inline-flex; padding:6px 14px; border-radius:9999px; background:var(--blue-light); color:var(--blue); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; font-weight:600;">
-        Coming Soon</div>
-      <h1 style="font-size:clamp(32px,5vw,56px); font-weight:800; letter-spacing:-0.03em; margin-top:20px;">Works</h1>
-      <p style="color:var(--muted); max-width:480px; margin:16px auto 0; line-height:1.6;">This page is using the same
-      synced header, hamburger, light/dark toggle, footer, and back-to-top button as the homepage. Update real soon</p>
-      <a href="app-development.html"
-        style="display:inline-flex; margin-top:24px; padding:12px 20px; background:var(--blue); color:white; border-radius:9999px; font-weight:600; font-size:14px;">See
-        App Development  premium example →</a>
+       WORKS HERO - "Ideas become infrastructure"
+       From works.v2.html - hundreds deployed, 5 flagship showcased
+       Left 44% content / Right 56% portfolio network
+       ==================================================================== -->
+  <section class="works-hero" id="worksHero">
+    <!-- Background system - 2 canvases + grid + orbs (same as other premium pages) -->
+    <div class="hero-background">
+      <canvas id="portfolioCanvas"></canvas>
+      <canvas id="hundredsCanvas"></canvas>
+      <div class="grid-overlay"></div>
+      <div class="gradient-orb blue"></div>
+      <div class="gradient-orb purple"></div>
+      <div class="gradient-orb orange"></div>
+    </div>
+
+    <div class="hero-container">
+      <!-- LEFT CONTENT - same structure as other pages for consistency -->
+      <div class="hero-content">
+        <!-- Badge - live dot + hundreds concept -->
+        <div class="hero-badge">
+          <span class="live-dot"></span>
+          Hundreds Deployed • 5 Flagship Showcased
+        </div>
+
+        <!-- Headline - edit text here -->
+        <h1>Ideas become <em>infrastructure.</em></h1>
+
+        <!-- Description -->
+        <p>
+          We've deployed <strong>hundreds of digital products</strong> across education, healthcare, finance and
+          government.
+          <strong> 5 flagship</strong> prove ideas become resilient infrastructure — production-ready, scalable &
+          secure.
+        </p>
+
+        <!-- CTAs - button magnet handled by main.js PART 4 -->
+        <div class="hero-actions">
+          <a class="btn-primary blue" href="#selected-works">View Flagship Cases →</a>
+          <a class="btn-secondary" href="../index.html#about">Our Process</a>
+        </div>
+
+        <!-- Stats - credibility strip -->
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>100+ projects</strong>
+            <span>Successfully deployed</span>
+          </div>
+          <div class="stat">
+            <strong>5 flagship</strong>
+            <span>Featured here</span>
+          </div>
+          <div class="stat">
+            <strong>Production-ready</strong>
+            <span>Scalable & secure</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT VISUAL - Portfolio network with hundreds concept -->
+      <div class="hero-visual">
+        <div class="portfolio-network">
+          <!-- Network header - live status -->
+          <div class="network-header">
+            <div style="display:flex; align-items:center; gap:6px; font-weight:600;">
+              <span class="live-dot"></span>
+              Deployment Network • Live
+            </div>
+            <span class="deploy-counter" id="deployCounter">100 Deployed</span>
+          </div>
+
+          <!-- SVG connections - dashed lines center to 5 cards -->
+          <svg class="connection-svg" viewBox="0 0 560 580" preserveAspectRatio="none">
+            <path d="M280 290 L280 80" stroke="rgba(10,102,255,0.18)" stroke-width="1" stroke-dasharray="6 6" fill="none" />
+            <path d="M280 290 L480 160" stroke="rgba(10,102,255,0.18)" stroke-width="1" stroke-dasharray="6 6" fill="none" />
+            <path d="M280 290 L490 380" stroke="rgba(10,102,255,0.18)" stroke-width="1" stroke-dasharray="6 6" fill="none" />
+            <path d="M280 290 L70 380" stroke="rgba(10,102,255,0.18)" stroke-width="1" stroke-dasharray="6 6" fill="none" />
+            <path d="M280 290 L280 520" stroke="rgba(10,102,255,0.18)" stroke-width="1" stroke-dasharray="6 6" fill="none" />
+          </svg>
+
+          <!-- Hundreds background - ambient canvas -->
+          <div class="hundreds-bg">
+            <canvas id="hundredsCanvas2" style="position:absolute; inset:0; width:100%; height:100%; opacity:0.6;"></canvas>
+          </div>
+
+          <!-- Mini projects layer - 30 dots for hundreds concept -->
+          <div class="mini-projects-layer" id="miniProjectsLayer"></div>
+
+          <!-- Central deployment core -->
+          <div class="central-deployment">
+            <div class="deployment-ring"></div>
+            <div class="deployment-ring ring-2"></div>
+            <div class="core-halo"></div>
+            <div class="deployment-core">
+              <!-- Progress circle -->
+              <svg class="core-progress" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(10,102,255,0.12)" stroke-width="6" />
+                <circle id="coreProgressCircle" cx="50" cy="50" r="45" fill="none" stroke="var(--blue)" stroke-width="6"
+                  stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="283" />
+              </svg>
+              <div class="core-inner">
+                <div class="core-status">Live</div>
+                <div class="core-label" id="coreLabel">100%</div>
+                <div class="core-metric">Uptime</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project cards - 5 flagship diamond layout -->
+          <!-- Card 1: StudyPod top center -->
+          <div class="project-card studypod" data-index="0">
+            <div class="card-top">
+              <div class="card-icon" style="background:#E8EFFF; color:#0A66FF;">S</div>
+              <span class="card-status">Live</span>
+            </div>
+            <div class="card-title">StudyPod</div>
+            <div class="card-cat">EdTech Platform</div>
+            <div class="build">
+              <div class="build-line"><div class="build-fill" style="width:100%;"></div></div>
+            </div>
+            <div class="metrics">
+              <div class="metric"><strong>45k+</strong><span>Users</span></div>
+              <div class="metric"><strong>98%</strong><span>Uptime</span></div>
+            </div>
+            <div class="card-flag">1 of 100+ Flagship</div>
+          </div>
+
+          <!-- Card 2: Telecare right top -->
+          <div class="project-card telecare" data-index="1">
+            <div class="card-top">
+              <div class="card-icon" style="background:#E0F2FE; color:#0284C7;">T</div>
+              <span class="card-status">Live</span>
+            </div>
+            <div class="card-title">Telecare</div>
+            <div class="card-cat">HealthTech</div>
+            <div class="build">
+              <div class="build-line"><div class="build-fill" style="width:100%;"></div></div>
+            </div>
+            <div class="metrics">
+              <div class="metric"><strong>12k+</strong><span>Sessions</span></div>
+              <div class="metric"><strong>24/7</strong><span>Care</span></div>
+            </div>
+            <div class="card-flag">2 of 100+ Flagship</div>
+          </div>
+
+          <!-- Card 3: FinTech Gateway right bottom -->
+          <div class="project-card fintech" data-index="2">
+            <div class="card-top">
+              <div class="card-icon" style="background:#EDE9FE; color:#7C3AED;">F</div>
+              <span class="card-status">Live</span>
+            </div>
+            <div class="card-title">FinTech Gateway</div>
+            <div class="card-cat">Finance Infra</div>
+            <div class="build">
+              <div class="build-line"><div class="build-fill" style="width:100%;"></div></div>
+            </div>
+            <div class="metrics">
+              <div class="metric"><strong>$2M+</strong><span>Volume</span></div>
+              <div class="metric"><strong>0.2s</strong><span>Latency</span></div>
+            </div>
+            <div class="card-flag">3 of 100+ Flagship</div>
+          </div>
+
+          <!-- Card 4: ICAN USA left bottom -->
+          <div class="project-card ican" data-index="3">
+            <div class="card-top">
+              <div class="card-icon" style="background:#FFF0E6; color:#FF6B1C;">I</div>
+              <span class="card-status">Live</span>
+            </div>
+            <div class="card-title">ICAN USA</div>
+            <div class="card-cat">Non-Profit System</div>
+            <div class="build">
+              <div class="build-line"><div class="build-fill" style="width:100%;"></div></div>
+            </div>
+            <div class="metrics">
+              <div class="metric"><strong>8k+</strong><span>Members</span></div>
+              <div class="metric"><strong>Live</strong><span>Portal</span></div>
+            </div>
+            <div class="card-flag">4 of 100+ Flagship</div>
+          </div>
+
+          <!-- Card 5: IUFMP bottom center -->
+          <div class="project-card iufmp" data-index="4">
+            <div class="card-top">
+              <div class="card-icon" style="background:#E6FFF6; color:#00C896;">G</div>
+              <span class="card-status">Live</span>
+            </div>
+            <div class="card-title">IUFMP</div>
+            <div class="card-cat">GovTech Platform</div>
+            <div class="build">
+              <div class="build-line"><div class="build-fill" style="width:100%;"></div></div>
+            </div>
+            <div class="metrics">
+              <div class="metric"><strong>Gov</strong><span>Portal</span></div>
+              <div class="metric"><strong>Live</strong><span>System</span></div>
+            </div>
+            <div class="card-flag">5 of 100+ Flagship</div>
+          </div>
+
+          <!-- Deployment timeline - bottom bar -->
+          <div class="deployment-timeline">
+            <span>Deployment Progress</span>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <div class="timeline-bar">
+                <div class="timeline-fill" id="timelineFill" style="width:0%;"></div>
+              </div>
+              <span style="font-weight:600;" id="timelinePercent">0%</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ====================================================================
-         fOOTER SECTION
-         ==================================================================== -->
+       SELECTED WORKS SECTION - Three flagship from hundreds shipped
+       From works.v2.html - grid 3 images with live badges
+       WORKS-SECTION: Edit cards here for new case studies
+       ==================================================================== -->
+  <section class="works-section" id="selected-works">
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue);">
+        Selected Works</div>
+      <h2 style="font-size:clamp(28px, 4vw, 42px); font-weight:800; letter-spacing:-0.03em; line-height:0.95; color:var(--text);">
+        Three flagship from hundreds shipped.</h2>
+      <p style="font-size:15px; color:var(--muted); max-width:560px; line-height:1.6;">
+        Every product below is live in production. They represent the 5 featured from 100+ deployed across sectors.</p>
+    </div>
+
+    <div class="works-grid">
+      <!-- Work Card 1: StudyPod Learning OS -->
+      <div class="work-card">
+        <div class="work-media">
+          <img src="../images/studypod.webp" alt="StudyPod dashboard mockup" loading="lazy">
+          <span class="work-badge">Live • EdTech</span>
+        </div>
+        <div class="work-content">
+          <div class="work-meta">StudyPod • 2024</div>
+          <h3>StudyPod Learning OS</h3>
+          <p>45k+ learners, course management, assessments and progress analytics for modern education.</p>
+        </div>
+      </div>
+
+      <!-- Work Card 2: Telecare Remote Health -->
+      <div class="work-card">
+        <div class="work-media">
+          <img src="../images/telecare.webp" alt="Telecare dashboard UI" loading="lazy">
+          <span class="work-badge">Live • HealthTech</span>
+        </div>
+        <div class="work-content">
+          <div class="work-meta">Telecare • 2024</div>
+          <h3>Telecare Remote Health</h3>
+          <p>HIPAA-ready video consults, scheduling and patient records deployed in 12 clinics.</p>
+        </div>
+      </div>
+
+      <!-- Work Card 3: FinTech Gateway -->
+      <div class="work-card">
+        <div class="work-media">
+          <img src="../images/fintech.webp" alt="Fintech gateway dashboard" loading="lazy">
+          <span class="work-badge">Live • FinTech</span>
+        </div>
+        <div class="work-content">
+          <div class="work-meta">FinTech Gateway • 2023</div>
+          <h3>FinTech Gateway</h3>
+          <p>Secure transaction processing, $2M+ monthly volume, 0.2s median latency at scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       FOOTER - EXACT SAME AS index.html FOR CONSISTENCY
+       ==================================================================== -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-grid">
@@ -110,34 +387,48 @@
             <div class="logo-dot"></div>SPOTTERS.
           </div>
           <p style="opacity:0.6; font-size:14px; margin-top:16px; max-width:300px;">Technology that builds people and
-            businesses.</p>
+            businesses. IT company since 2018.</p>
         </div>
         <div>
-          <h4>Services</h4><a href="digital-strategy.html">Digital Strategy</a><a href="app-development.html">App
-            Development</a><a href="web-development.html">Web Development</a><a href="software-training.html">Software
-            Training</a><a href="internship.html">Internship</a>
+          <h4>Services</h4>
+          <a href="digital-strategy.html">Digital Strategy</a>
+          <a href="app-development.html">App Development</a>
+          <a href="web-development.html">Web Development</a>
+          <a href="software-training.html">Software Training</a>
+          <a href="internship.html">Internship</a>
         </div>
         <div>
-          <h4>Company</h4><a href="../index.html#works">Works</a><a href="../index.html#academy">Academy</a><a
-            href="../index.html#industries">Industries</a><a href="../index.html#about">About</a><a
-            href="../index.html#careers">Careers</a>
+          <h4>Company</h4><a href="works.html">Works</a><a href="../index.html#academy">Academy</a><a
+            href="industries.html">Industries</a><a href="about.html">About</a><a href="careers.html">Careers</a>
         </div>
         <div>
-          <h4>Connect</h4><a>hello@spotters.company</a>
+          <h4>Connect</h4>
+          <a>hello@spotters.company</a>
           <a>LinkedIn / Twitter / GitHub</a>
         </div>
       </div>
-      <p
-        style="margin-top:64px; opacity:0.4; font-size:12px; border-top:1px solid rgba(255,255,255,0.1); padding-top:24px;">
-        © 2026 The Spotters Company.</p>
+      <p style="margin-top:64px; opacity:0.4; font-size:12px; border-top:1px solid rgba(255,255,255,0.1); padding-top:24px;">
+        © 2026 The Spotters Company. Hundreds deployed. 5 flagship • Production-ready</p>
     </div>
   </footer>
-  <button class="back-to-top" id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+
+  <!-- ====================================================================
+       BACK TO TOP BUTTON - EXACT SAME AS index.html
+       Blue dominant, shared across pages, controlled by main.js
+       ==================================================================== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+      stroke-linejoin="round">
       <path d="M18 15l-6-6-6 6" />
-    </svg></button>
+    </svg>
+  </button>
+
+  <!-- Toast for demo - same as index.html -->
   <div class="toast" id="toast"></div>
+
+  <!-- Scripts - main.js for header/footer/theme/hamburger/back-to-top/magnet + works.js for hero -->
   <script src="../js/main.js"></script>
+  <script src="../js/works.js"></script>
 </body>
 
 </html>

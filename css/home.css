@@ -494,7 +494,133 @@
 }
 
 /* Works grid */
+.works-section {
+  background: var(--bg);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+  border-top: 1px solid var(--border);
+}
+
 .works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.work-card {
+  background: var(--card-bg, rgba(255, 255, 255, 0.84));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(12px);
+  position: relative;
+}
+
+.work-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), #7C3AED);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+}
+
+.work-card:hover::before {
+  opacity: 1;
+}
+
+.work-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(10, 10, 15, 0.08);
+  border-color: rgba(10, 102, 255, 0.18);
+}
+
+.work-media {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  background: var(--ghost);
+}
+
+.work-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.8s ease;
+  display: block;
+}
+
+.work-card:hover .work-media img {
+  transform: scale(1.05);
+}
+
+.work-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.04));
+  pointer-events: none;
+}
+
+[data-theme="dark"] .work-media::after {
+  background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.2));
+}
+
+.work-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  padding: 6px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue);
+  border: 1px solid rgba(10, 102, 255, 0.18);
+  z-index: 1;
+}
+
+.work-content {
+  padding: 16px;
+}
+
+.work-meta {
+  font-size: 11px;
+  color: var(--muted-2);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.work-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.work-content p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+
+
+
+/* .works-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
@@ -542,6 +668,7 @@
   letter-spacing: 0.06em;
   margin-bottom: 6px;
 }
+ */
 
 /* Industries */
 .industries {

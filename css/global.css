@@ -146,6 +146,10 @@ button {
   max-width: 480px;
 }
 
+/* [data-theme="dark"] .works-hero .hero-content p {
+  color: rgba(255, 255, 255, 0.68);
+} */
+
 /* .hero-content h1 em {
   font-style: normal;
   color: var(--ab-blue);
