@@ -29,10 +29,18 @@
           <button class="nav-link dropdown-trigger" aria-expanded="true">Services <span>▾</span></button>
           <div class="dropdown-menu">
             <a href="digital-strategy.html">Digital Strategy</a>
-            <a href="app-development.html">App Development</a>
-            <a href="web-development.html">Web Development</a>
+            <div class="dropdown-group">
+              <button class="dropdown-link dropdown-trigger" aria-expanded="false">
+                Software Development <span>▾</span>
+              </button>
+              <div class="dropdown-submenu">
+                <a href="app-development.html">App Development</a>
+                <a href="web-development.html">Web Development</a>
+              </div>
+            </div>
+            <a href="erp-solution.html">ERP Solution</a>
             <a href="software-training.html">Software Training</a>
-            <a href="internship.html" style="color: var(--blue);">Internship Program</a>
+            <a href="internship.html"  style="color:var(--blue); font-weight:600;">Internship Program</a>
           </div>
         </div>
         <a class="nav-link" href="works.html">Works</a>
@@ -58,12 +66,24 @@
   <div class="drawer-backdrop" id="backdrop"></div>
   <div class="drawer" id="drawer" aria-hidden="true">
     <a class="drawer-link" href="../index.html">Home</a>
-    <div class="drawer-dropdown open" id="drawerServices">      
-      <button class="drawer-link dropdown-trigger" aria-expanded="true">Services <span>▾</span></button>
-      <div class="drawer-submenu">
-        <a class="drawer-sublink" href="digital-strategy.html">Digital Strategy</a>
-        <a class="drawer-sublink" href="app-development.html">App Development</a>
-        <a class="drawer-sublink" href="web-development.html">Web Development</a>
+    <div class="nav-dropdown open" id="servicesDropdown">
+      <button class="nav-link dropdown-trigger" aria-expanded="true">Services <span>▾</span></button>
+      <div class="dropdown-menu">
+        <a href="digital-strategy.html">Digital Strategy</a>
+        <div class="dropdown-group">
+          <button class="dropdown-link dropdown-trigger" aria-expanded="false">
+            Software Development <span>▾</span>
+          </button>
+          <div class="dropdown-submenu">
+            <a href="app-development.html">App Development</a>
+            <a href="web-development.html">Web Development</a>
+          </div>
+        </div>
+        <a href="erp-solution.html">ERP Solution</a>
+        <a href="software-training.html">Software Training</a>
+        <a href="internship.html" style="color:var(--blue); font-weight:600;">Internship Program</a>
+      </div>
+    </div>
         <a class="drawer-sublink" href="software-training.html">Software Training</a>
         <a class="drawer-sublink" href="internship.html" style="color:var(--blue);">Internship Program</a>
       </div>

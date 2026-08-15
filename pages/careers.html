@@ -20,19 +20,27 @@
       </a>
       <nav class="nav-desktop" id="desktopNav">
         <a class="nav-link" href="../index.html">Home</a>
-        <div class="nav-dropdown" id="servicesDropdown">
-          <button class="nav-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
+        <div class="nav-dropdown open" id="servicesDropdown">
+          <button class="nav-link dropdown-trigger" aria-expanded="true">Services <span>▾</span></button>
           <div class="dropdown-menu">
             <a href="digital-strategy.html">Digital Strategy</a>
-            <a href="app-development.html">App Development</a>
-            <a href="web-development.html">Web Development</a>
+            <div class="dropdown-group">
+              <button class="dropdown-link dropdown-trigger" aria-expanded="false">
+                Software Development <span>▾</span>
+              </button>
+              <div class="dropdown-submenu">
+                <a href="app-development.html">App Development</a>
+                <a href="web-development.html">Web Development</a>
+              </div>
+            </div>
+            <a href="erp-solution.html">ERP Solution</a>
             <a href="software-training.html">Software Training</a>
             <a href="internship.html">Internship Program</a>
           </div>
         </div>
         <a class="nav-link" href="works.html">Works</a>
         <a class="nav-link" href="index.html#academy">Academy</a>
-        <a class="nav-link" href="careers.html" style="color: var(--blue);">Careers</a>
+        <a class="nav-link" href="careers.html" style="color: var(--blue);font-weight:600;">Careers</a>
         <a class="nav-link" href="industries.html">Industries</a>
         <a class="nav-link" href="about.html">About</a>
         <a class="nav-link" href="../index.html#contact">Contact</a>
@@ -55,19 +63,26 @@
   <div class="drawer-backdrop" id="backdrop"></div>
   <div class="drawer" id="drawer" aria-hidden="true">
     <a class="drawer-link" href="../index.html">Home</a>
-    <div class="drawer-dropdown" id="drawerServices">
-      <button class="drawer-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
+    <div class="drawer-dropdown open" id="drawerServices">
+      <button class="drawer-link dropdown-trigger" aria-expanded="true">Services <span>▾</span></button>
       <div class="drawer-submenu">
-        <a class="nav-link" href="digital-strategy.html">Digital Strategy</a>
-        <a class="nav-link" href="app-development.html">App Development</a>
-        <a class="nav-link" href="web-development.html">Web Development</a>
-        <a class="nav-link" href="software-training.html">Software Training</a>
-        <a class="nav-link" href="internship.html">Internship Program</a>
+        <a class="drawer-sublink" href="digital-strategy.html">Digital Strategy</a>
+        <div class="drawer-dropdown nested" id="drawerSoftwareDevelopment">
+          <button class="drawer-link dropdown-trigger" aria-expanded="false">Software Development
+            <span>▾</span></button>
+          <div class="drawer-submenu nested">
+            <a class="drawer-sublink" href="app-development.html">App Development</a>
+            <a class="drawer-sublink" href="web-development.html">Web Development</a>
+          </div>
+        </div>
+        <a class="drawer-sublink" href="erp-solution.html">ERP Solution</a>
+        <a class="drawer-sublink" href="software-training.html">Software Training</a>
+        <a class="drawer-sublink" href="internship.html">Internship Program</a>
       </div>
     </div>
     <a class="drawer-link" href="works.html">Works</a>
     <a class="drawer-link" href="../index.html#academy">Academy</a>
-    <a class="drawer-link" href="careers.html" style="color: var(--blue);">Careers</a>
+    <a class="drawer-link" href="careers.html" style="color: var(--blue);font-weight:600;">Careers</a>
     <a class="drawer-link" href="industries.html">Industries</a>
     <a class="drawer-link" href="about.html">About</a>
     <a class="drawer-link" href="../index.html#contact">Contact</a>
@@ -77,7 +92,7 @@
           <div class="toggle-thumb" id="drawerToggleThumb">☾</div>
         </button></div>
       <a class="btn-primary blue" href="#open-roles" style="width:100%; justify-content:center;">Start a Project →</a>
-      <p style="font-size:11px; color:var(--muted-2); text-align:center; margin-top:12px;">Indigenous Nigerian • Since
+      <p style="font-size:11px; color:var(--muted-2); text-align:center; margin-top:12px;"> • Since
         2018</p>
     </div>
   </div>
@@ -227,25 +242,33 @@
     </div>
   </section>
 
-  <section class="contact-section" id="contact">
+  <!-- CONTACT -->
+  <section class="section contact-section" id="contact">
+    <div class="section-label reveal">Contact</div>
+    <h2 class="section-title reveal">Let's build something exceptional.</h2>
     <div class="contact-layout">
       <div class="contact-info reveal">
-        <div class="section-label">Apply in 60 seconds</div>
-        <h2 class="section-title" style="font-size:clamp(28px,4vw,44px);">This feels like a company people want to join.
-        </h2>
-        <p>Send us a short note, portfolio or GitHub, and which role excites you. We reply within 48 hours.</p>
+        <p>Inquiry form, office details, consultation booking, social links built for
+          businesses and students alike.</p>
+        <div class="contact-meta">
+          <p><strong>Email:</strong> info@spotters.com.ng</p>
+          <p><strong>Response:</strong> Within 24 hours</p>
+        </div>
       </div>
-      <form class="card contact-form reveal" id="careerForm"><input type="text" required placeholder="Your name"><input
-          type="email" required placeholder="Business email"><select>
-          <option>React Developer — Remote</option>
-          <option>Web Developer — Hybrid</option>
-          <option>App Developer — Remote</option>
-          <option>UI/UX Designer — Remote</option>
-          <option>Product Strategist</option>
-          <option>Project Manager</option>
-        </select><input type="url" placeholder="Portfolio / GitHub / LinkedIn URL"><textarea rows="3"
-          placeholder="Why Spotters? (1-2 sentences)"></textarea><button class="btn-primary blue" type="submit"
-          style="justify-content:center;">Send application →</button></form>
+      <form class="card contact-form reveal">
+        <input type="text" name="name" placeholder="Your name">
+        <input type="email" name="email" placeholder="Business email">
+        <select name="service">
+          <option>Digital Strategy</option>
+          <option>App Development</option>
+          <option>Web Development</option>
+          <option>Software Training</option>
+          <option>Internship</option>
+          <option>ERP Solution</option>
+        </select>
+        <textarea name="message" placeholder="Tell us about your project" rows="5"></textarea>
+        <button class="btn-primary blue" type="submit">Send Inquiry →</button>
+      </form>
     </div>
   </section>
 
@@ -263,9 +286,17 @@
             businesses.</p>
         </div>
         <div>
-          <h4>Services</h4><a href="digital-strategy.html">Digital Strategy</a><a href="app-development.html">App
-            Development</a><a href="web-development.html">Web Development</a><a href="software-training.html">Software
-            Training</a><a href="internship.html">Internship Program</a>
+          <h4>Services</h4>
+          <a href="digital-strategy.html">Digital Strategy</a>
+          <div class="footer-link-group">
+            <span class="footer-link-group-title" style="display:block; font-size:14px; opacity:0.7; padding:6px 0;">Software Development</span>
+            <div class="footer-sublinks">
+              <a href="app-development.html">App Development</a>
+              <a href="web-development.html">Web Development</a>
+            </div>
+          </div>
+          <a href="software-training.html">Software Training</a>
+          <a href="internship.html">Internship Program</a>
         </div>
         <div>
           <h4>Company</h4><a href="index.html#works">Works</a><a href="index.html#academy">Academy</a><a

@@ -263,9 +263,14 @@ button {
 .dropdown-trigger {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 4px;  /* Space between "Services" text and ▾ arrow */
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
+/* DROPDOWN MENU - Hidden by default, shows on hover (desktop) or .open class (mobile) */
 .dropdown-menu {
   position: absolute;
   top: calc(100% + 12px);
@@ -285,6 +290,7 @@ button {
   z-index: 110;
 }
 
+/* Show menu on: desktop hover, mobile .open class, or focus-within */
 .nav-dropdown:hover .dropdown-menu,
 .nav-dropdown.open .dropdown-menu,
 .nav-dropdown:focus-within .dropdown-menu {
@@ -294,17 +300,22 @@ button {
   transform: translateX(-50%) translateY(0);
 }
 
-.dropdown-menu a {
+.dropdown-menu a,
+.dropdown-link {
   display: block;
+  width: 100%;
   padding: 10px 12px;
   font-size: 13px;
   font-weight: 500;
   color: var(--muted);
   border-radius: 8px;
+  text-align: left;
+  background: transparent;
   transition: all .2s ease;
 }
 
-.dropdown-menu a:hover {
+.dropdown-menu a:hover,
+.dropdown-link:hover {
   background: var(--ghost);
   color: var(--text);
   transform: translateX(2px);
@@ -313,6 +324,44 @@ button {
 .dropdown-menu a:first-child:hover {
   background: var(--blue-light);
   color: var(--blue);
+}
+
+.dropdown-link {
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.dropdown-group {
+  position: relative;
+}
+
+/* NESTED SUBMENU - Slides down when parent .dropdown-group has .open class */
+.dropdown-submenu {
+  max-height: 0;  /* Start closed */
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .32s var(--ease-smooth);
+  margin-top: 4px;
+  padding-left: 10px;
+  border-left: 1px solid var(--border);
+}
+
+/* Show nested menu when parent is opened */
+.dropdown-group.open > .dropdown-submenu,
+.dropdown-group:focus-within > .dropdown-submenu {
+  max-height: 160px;  /* Expanded to show all items */
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown-submenu a {
+  padding-left: 12px;
+  margin-top: 4px;
 }
 
 [data-theme="dark"] .dropdown-menu {
@@ -481,10 +530,10 @@ button {
 }
 
 .drawer-link {
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
   padding: 14px 0;
   border-bottom: 1px solid var(--border);
   opacity: 0;
@@ -544,16 +593,24 @@ button {
 .drawer-dropdown .dropdown-trigger {
   width: 100%;
   justify-content: space-between;
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-size: 18px;
+  font-weight: 500;  /* Normal weight - same as other drawer items */
+  letter-spacing: -0.02em;
+  line-height: 1.2;
   padding: 14px 0;
   border-bottom: 1px solid var(--border);
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: var(--text);
 }
 
+/* MOBILE DRAWER SUBMENU - Slides down on mobile when parent is opened */
 .drawer-submenu {
-  max-height: 0;
+  max-height: 0;  /* Start closed */
   overflow: hidden;
   opacity: 0;
   transition: all .36s var(--ease-smooth);
@@ -562,8 +619,11 @@ button {
   margin: 8px 0 8px 8px;
 }
 
-.drawer-dropdown.open .drawer-submenu {
-  max-height: 300px;
+/* Show mobile submenu when parent .drawer-dropdown has .open class */
+.drawer-dropdown.open > .drawer-submenu,
+.drawer-dropdown:focus-within > .drawer-submenu,
+.drawer-submenu.nested.open {
+  max-height: 300px;  /* Expanded to show all nested items */
   opacity: 1;
   margin-bottom: 16px;
 }
@@ -575,6 +635,11 @@ button {
   font-weight: 500;
   color: var(--muted);
   transition: color .2s;
+}
+
+.drawer-submenu.nested {
+  margin-top: 10px;
+  margin-bottom: 8px;
 }
 
 .drawer-sublink:hover {
@@ -655,6 +720,23 @@ button {
 
 .footer a:hover {
   opacity: 1;
+}
+
+.footer-link-group {
+  margin: 8px 0;
+}
+
+.footer-sublinks {
+  margin-top: 6px;
+  margin-left: 12px;
+  padding-left: 12px;
+  border-left: 1px solid rgba(255,255,255,0.12);
+}
+
+.footer-sublinks a {
+  font-size: 13px;
+  opacity: 0.8;
+  padding: 5px 0;
 }
 
 /* Shared section primitives */

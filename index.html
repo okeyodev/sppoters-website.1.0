@@ -27,11 +27,21 @@
       <nav class="nav-desktop" id="desktopNav">
         <!-- SERVICES DROPDOWN - Desktop -->
         <div class="nav-dropdown" id="servicesDropdown">
-          <button class="nav-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
+          <button class="nav-link dropdown-trigger" aria-expanded="false">
+            Services <span>▾</span>
+          </button>
           <div class="dropdown-menu">
             <a href="pages/digital-strategy.html">Digital Strategy</a>
-            <a href="pages/app-development.html">App Development</a>
-            <a href="pages/web-development.html">Web Development</a>
+            <div class="dropdown-group">
+              <button class="dropdown-link dropdown-trigger" aria-expanded="false">
+                Software Development <span>▾</span>
+              </button>
+              <div class="dropdown-submenu">
+                <a href="pages/app-development.html">App Development</a>
+                <a href="pages/web-development.html">Web Development</a>
+              </div>
+            </div>
+            <a href="pages/erp-solution.html">ERP Solution</a>
             <a href="pages/software-training.html">Software Training</a>
             <a href="pages/internship.html">Internship Program</a>
           </div>
@@ -75,8 +85,15 @@
       <button class="drawer-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
       <div class="drawer-submenu">
         <a class="drawer-sublink" href="pages/digital-strategy.html">Digital Strategy</a>
-        <a class="drawer-sublink" href="pages/app-development.html">App Development</a>
-        <a class="drawer-sublink" href="pages/web-development.html">Web Development</a>
+        <div class="drawer-dropdown nested" id="drawerSoftwareDevelopment">
+          <button class="drawer-link dropdown-trigger" aria-expanded="false">Software Development
+            <span>▾</span></button>
+          <div class="drawer-submenu nested">
+            <a class="drawer-sublink" href="pages/app-development.html">App Development</a>
+            <a class="drawer-sublink" href="pages/web-development.html">Web Development</a>
+          </div>
+        </div>
+        <a class="drawer-sublink" href="pages/erp-solution.html">ERP Solution</a>
         <a class="drawer-sublink" href="pages/software-training.html">Software Training</a>
         <a class="drawer-sublink" href="pages/internship.html">Internship Program</a>
       </div>
@@ -327,13 +344,19 @@
         <p>Real client projects, mentorship, and a path to employment.</p><span
           style="color: var(--green); font-weight:600; font-size:14px;">Explore →</span>
       </a>
+      <a href="pages/erp-solution.html" class="card reveal" style="grid-column: span 4;">
+        <div class="card-icon" style="background: var(--orange-light); color: var(--orange);">◒</div>
+        <h3>ERP Solution</h3>
+        <p>One platform to run your entire business — finance, inventory, HR, sales & operations unified.</p><span
+          style="color: var(--orange); font-weight:600; font-size:14px;">Explore →</span>
+      </a>
     </div>
   </section>
 
   <!-- ====================================================================
        WORKS - Featured projects
        ==================================================================== -->
-  <section class="works-section" id="selected-works" >
+  <section class="works-section" id="selected-works">
     <div style="display:flex; flex-direction:column; gap:12px;" id="works">
       <div style="font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue);">
         Selected Works</div>
@@ -341,10 +364,10 @@
         style="font-size:clamp(28px, 4vw, 42px); font-weight:800; letter-spacing:-0.03em; line-height:0.95; color:var(--text);">
         Three flagship from hundreds shipped.</h2>
       <p style="font-size:15px; color:var(--muted); max-width:560px; line-height:1.6;">
-        Every product below is live in production. They represent the 5 featured from 100+ deployed across sectors.</p><span
-          style="color: var(--blue); font-weight:600; font-size:14px;">Explore →</span>
+        Every product below is live in production. They represent the 5 featured from 100+ deployed across sectors.</p>
+      <span style="color: var(--blue); font-weight:600; font-size:14px;">Explore →</span>
     </div>
-  
+
     <div class="works-grid">
       <!-- Work Card 1: StudyPod Learning OS -->
       <a href="https://studypod.com.ng" class="work-card">
@@ -355,14 +378,17 @@
         <div class="work-content">
           <div class="work-meta">StudyPod • 2024</div>
           <h3>StudyPod Learning OS</h3>
-          <p>An all-in-one learning platform connecting tutors and students on a single system  course creation and management,
-          quiz and certificate generation, live class hosting, and progress tracking, all built to make teaching and learning
-          simpler for both sides. Educators can manage their own courses and students while learners access study materials, live
-          sessions, and assessments in one place.</p>
+          <p>An all-in-one learning platform connecting tutors and students on a single system course creation and
+            management,
+            quiz and certificate generation, live class hosting, and progress tracking, all built to make teaching and
+            learning
+            simpler for both sides. Educators can manage their own courses and students while learners access study
+            materials, live
+            sessions, and assessments in one place.</p>
           <span style="color: var(--blue); font-weight:600; font-size:14px;">Explore →</span>
         </div>
       </a>
-  
+
       <!-- Work Card 2: Telecare Remote Health -->
       <a href="https://telecare.com.ng" class="work-card">
         <div class="work-media">
@@ -372,15 +398,19 @@
         <div class="work-content">
           <div class="work-meta">Telecare • 2024</div>
           <h3>Telecare Remote Health</h3>
-          <p>24/7 virtual care connecting patients with doctors, nurses, and carers built to make quality healthcare accessible
-          anytime, anywhere. The platform covers primary care and preventative checkups, mental health support through licensed
-          therapists and psychiatrists, and condition management for diabetes, hypertension, and weight, plus specialty
-          consultations for more complex cases. Patients can also request licensed practical nurses and trained carers for ongoing
-          personal care needs.</p>
+          <p>24/7 virtual care connecting patients with doctors, nurses, and carers built to make quality healthcare
+            accessible
+            anytime, anywhere. The platform covers primary care and preventative checkups, mental health support through
+            licensed
+            therapists and psychiatrists, and condition management for diabetes, hypertension, and weight, plus
+            specialty
+            consultations for more complex cases. Patients can also request licensed practical nurses and trained carers
+            for ongoing
+            personal care needs.</p>
           <span style="color: var(--blue); font-weight:600; font-size:14px;">Explore →</span>
         </div>
       </a>
-  
+
       <!-- Work Card 3: FinTech Gateway -->
       <a href="pages/works.html#work-fintech" class="work-card">
         <div class="work-media">
@@ -394,47 +424,12 @@
           <span style="color: var(--blue); font-weight:600; font-size:14px;">Explore →</span>
         </div>
       </a>
-      <p>More of our works in details<span style="color: var(--blue); font-weight:600; font-size:14px; margin-left: 6px;"><a href="pages/works.html">Explore</a></span> here</p>
+      <p>More of our works in details<span
+          style="color: var(--blue); font-weight:600; font-size:14px; margin-left: 6px;"><a
+            href="pages/works.html">Explore</a></span> here</p>
     </div>
   </section>
 
-
-  <!-- <section class="section" id="works">
-    <div class="section-label reveal">Works</div>
-    <h2 class="section-title reveal">Selected works that shipped.</h2>
-    <div class="works-grid">
-      <a href="./pages/works.html" class="work-card reveal">
-        <div class="work-media">
-          <div class="work-media-bg" style="background: var(--gradient-blue);"></div>
-        </div>
-        <div class="work-content">
-          <div class="work-meta">Fintech • 2024</div>
-          <h3>PayFlow Banking App</h3>
-          <span style="color: var(--blue); font-weight:600; font-size:14px;">Explore →</span>
-        </div>
-      </a>
-      <a href="./pages/works.html" class="work-card reveal">
-        <div class="work-media">
-          <div class="work-media-bg" style="background: var(--gradient-green);"></div>
-        </div>
-        <div class="work-content">
-          <div class="work-meta">Sports • 2024</div>
-          <h3>StatZone Analytics</h3>
-          <span style="color: var(--green); font-weight:600; font-size:14px;">Explore →</span>
-        </div>
-      </a>
-      <a href="./pages/works.html" class="work-card reveal">
-        <div class="work-media">
-          <div class="work-media-bg" style="background: var(--gradient-orange);"></div>
-        </div>
-        <div class="work-content">
-          <div class="work-meta">Healthcare • 2023</div>
-          <h3>MediCare Portal</h3>
-          <span style="color: var(--orange); font-weight:600; font-size:14px;">Explore →</span>
-        </div>
-      </a>
-    </div>
-  </section> -->
 
   <!-- ====================================================================
        ACADEMY - StudyPod training
@@ -492,7 +487,7 @@
        ==================================================================== -->
   <section class="section" id="about">
     <div class="section-label reveal">About</div>
-    <h2 class="section-title reveal">An enterprise building for Africa and the world.</h2>
+    <h2 class="section-title reveal">Solving Complex Problems With Custom Software.</h2>
     <p class="section-desc reveal" style="max-width:720px;">Incorporated founded in 2018. Focused on software
       application development and technology training. We operate as a
       distributed team of creative and passionate problem solvers improving efficiency, engagement and transformation.
@@ -535,10 +530,39 @@
     <div class="contact-layout">
       <div class="contact-info reveal">
         <p>Inquiry form, office details, consultation booking, social links built for
+        businesses and students alike.</p>
+        <div class="contact-meta">
+          <p><strong>Email:</strong> info@spotters.com.ng</p>
+          <p><strong>Response:</strong> Within 24 hours</p>
+        </div>
+      </div>
+      <form class="card contact-form reveal">
+        <input type="text" name="name" placeholder="Your name">
+        <input type="email" name="email" placeholder="Business email">
+        <select name="service">
+          <option>Digital Strategy</option>
+          <option>App Development</option>
+          <option>Web Development</option>
+          <option>Software Training</option>
+          <option>Internship</option>
+          <option>ERP Solution</option>
+        </select>
+        <textarea name="message"
+          placeholder="Tell us about your project" rows="5"></textarea>
+        <button class="btn-primary blue" type="submit">Send Inquiry →</button>
+      </form>
+    </div>
+  </section>
+
+ <!--  <section class="section contact-section" id="contact">
+    <div class="section-label reveal">Contact</div>
+    <h2 class="section-title reveal">Let's build something exceptional.</h2>
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <p>Inquiry form, office details, consultation booking, social links built for
           businesses and students alike.</p>
         <div class="contact-meta">
           <p><strong>Email:</strong> hello@spotters.company</p>
-          <!-- <p><strong>Location:</strong> Nigeria (Distributed) Katsina, Lagos, Abuja</p> -->
         </div>
       </div>
       <form class="card contact-form reveal">
@@ -556,7 +580,8 @@
       </form>
     </div>
   </section>
-
+ -->
+  
   <!-- ====================================================================
        CTA SECTION - Final call to action
        ==================================================================== -->
@@ -584,8 +609,15 @@
         <div>
           <h4>Services</h4>
           <a href="pages/digital-strategy.html">Digital Strategy</a>
-          <a href="pages/app-development.html">App Development</a>
-          <a href="pages/web-development.html">Web Development</a>
+          <div class="footer-link-group">
+            <span class="footer-link-group-title"
+              style="display:block; font-size:14px; opacity:0.7; padding:6px 0;">Software Development</span>
+            <div class="footer-sublinks">
+              <a href="pages/app-development.html">App Development</a>
+              <a href="pages/web-development.html">Web Development</a>
+            </div>
+          </div>
+          <a href="pages/erp-solution.html">ERP Solution</a>
           <a href="pages/software-training.html">Software Training</a>
           <a href="pages/internship.html">Internship</a>
         </div>

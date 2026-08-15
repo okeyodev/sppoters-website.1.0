@@ -25,12 +25,20 @@
       </a>
       <nav class="nav-desktop" id="desktopNav">
         <a class="nav-link" href="../index.html">Home</a>
-        <div class="nav-dropdown" id="servicesDropdown">
-          <button class="nav-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
+        <div class="nav-dropdown open" id="servicesDropdown">
+          <button class="nav-link dropdown-trigger" aria-expanded="true">Services <span>▾</span></button>
           <div class="dropdown-menu">
             <a href="digital-strategy.html">Digital Strategy</a>
-            <a href="app-development.html">App Development</a>
-            <a href="web-development.html">Web Development</a>
+            <div class="dropdown-group">
+              <button class="dropdown-link dropdown-trigger" aria-expanded="false">
+                Software Development <span>▾</span>
+              </button>
+              <div class="dropdown-submenu">
+                <a href="app-development.html">App Development</a>
+                <a href="web-development.html">Web Development</a>
+              </div>
+            </div>
+            <a href="erp-solution.html">ERP Solution</a>
             <a href="software-training.html">Software Training</a>
             <a href="internship.html">Internship Program</a>
           </div>
@@ -39,7 +47,7 @@
         <a class="nav-link" href="../index.html#academy">Academy</a>
         <a class="nav-link" href="careers.html">Careers</a>
         <a class="nav-link" href="industries.html">Industries</a>
-        <a href="about.html" style="color:var(--blue)">About</a>
+        <a href="about.html" style="color:var(--blue); font-weight:600;">About</a>
         <a class="nav-link" href="../index.html#contact">Contact</a>
         <a class="btn-primary blue" href="#contact">Start a Project</a>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
@@ -62,8 +70,15 @@
       <button class="drawer-link dropdown-trigger" aria-expanded="true">Services <span>▾</span></button>
       <div class="drawer-submenu">
         <a class="drawer-sublink" href="digital-strategy.html">Digital Strategy</a>
-        <a class="drawer-sublink" href="app-development.html">App Development</a>
-        <a class="drawer-sublink" href="web-development.html">Web Development</a>
+        <div class="drawer-dropdown nested" id="drawerSoftwareDevelopment">
+          <button class="drawer-link dropdown-trigger" aria-expanded="false">Software Development
+            <span>▾</span></button>
+          <div class="drawer-submenu nested">
+            <a class="drawer-sublink" href="app-development.html">App Development</a>
+            <a class="drawer-sublink" href="web-development.html">Web Development</a>
+          </div>
+        </div>
+        <a class="drawer-sublink" href="erp-solution.html">ERP Solution</a>
         <a class="drawer-sublink" href="software-training.html">Software Training</a>
         <a class="drawer-sublink" href="internship.html">Internship Program</a>
       </div>
@@ -72,7 +87,7 @@
     <a class="drawer-link" href="../index.html#academy">Academy</a>
     <a class="drawer-link" href="careers.html">Careers</a>
     <a class="drawer-link" href="industries.html">Industries</a>
-    <a class="drawer-link" href="about.html" style="color:var(--blue)">About</a>
+    <a class="drawer-link" href="about.html" style="color:var(--blue); font-weight:600;">About</a>
     <a class="drawer-link" href="../index.html#contact">Contact</a>
     <div class="drawer-footer">
       <div class="drawer-theme-row">
@@ -209,7 +224,7 @@
        ==================================================================== -->
   <section class="about-section" id="mission">
     <div class="about-label">Our story</div>
-    <h2>An enterprise for Africa and the world.</h2>
+    <h2>Solving Complex Problems With Custom Software.</h2>
     <p class="lead">Incorporated and founded in 2018. We operate as a
       distributed team of creative and passionate problem solvers improving efficiency, engagement, and transformation 
       not just shipping code, but building people.</p>
@@ -289,11 +304,11 @@
     <h2 class="section-title reveal">Let's build something exceptional.</h2>
     <div class="contact-layout">
       <div class="contact-info reveal">
-        <p>Inquiry form, office details, consultation booking, social links  built for businesses and students alike.
-        </p>
+        <p>Inquiry form, office details, consultation booking, social links built for
+          businesses and students alike.</p>
         <div class="contact-meta">
-          <p><strong>Email:</strong> hello@spotters.company</p>
-          <!-- <p><strong>Location:</strong> Nigeria (Distributed)  Katsina, Lagos, Abuja</p> -->
+          <p><strong>Email:</strong> info@spotters.com.ng</p>
+          <p><strong>Response:</strong> Within 24 hours</p>
         </div>
       </div>
       <form class="card contact-form reveal">
@@ -305,9 +320,9 @@
           <option>Web Development</option>
           <option>Software Training</option>
           <option>Internship</option>
-          <option>About / Partnership</option>
+          <option>ERP Solution</option>
         </select>
-        <textarea name="message" placeholder="Tell us about your project" rows="4"></textarea>
+        <textarea name="message" placeholder="Tell us about your project" rows="5"></textarea>
         <button class="btn-primary blue" type="submit">Send Inquiry →</button>
       </form>
     </div>

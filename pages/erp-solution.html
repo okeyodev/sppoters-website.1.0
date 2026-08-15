@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERP Solution | The Spotters Company | One platform to run your entire business</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/erp-solution.css">
+</head>
+
+<body>
+  <!-- ====================================================================
+       HEADER - Exact same as other pages - DRY via global.css + main.js
+       Contains: logo + desktop nav + theme toggle + hamburger
+       ==================================================================== -->
+  <header class="header" id="siteHeader">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-dot"></div>SPOTTERS
+      </a>
+      <nav class="nav-desktop" id="desktopNav">
+        <a class="nav-link" href="../index.html">Home</a>
+        <div class="nav-dropdown open" id="servicesDropdown">
+          <button class="nav-link dropdown-trigger" aria-expanded="true">Services <span>▾</span></button>
+          <div class="dropdown-menu">
+            <a href="digital-strategy.html">Digital Strategy</a>
+            <div class="dropdown-group">
+              <button class="dropdown-link dropdown-trigger" aria-expanded="false">
+                Software Development <span>▾</span>
+              </button>
+              <div class="dropdown-submenu">
+                <a href="app-development.html">App Development</a>
+                <a href="web-development.html">Web Development</a>
+              </div>
+            </div>
+            <a href="erp-solution.html" style="color:var(--blue); font-weight:600;">ERP Solution</a>
+            <a href="software-training.html">Software Training</a>
+            <a href="internship.html">Internship Program</a>
+          </div>
+        </div>
+        <a class="nav-link" href="works.html">Works</a>
+        <a class="nav-link" href="software-training.html">Academy</a>
+        <a class="nav-link" href="careers.html">Careers</a>
+        <a class="nav-link" href="industries.html">Industries</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="../index.html#contact">Contact</a>
+        <a class="btn-primary blue" href="#contact">Start a Project</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
+          <div class="toggle-thumb" id="toggleThumb">☾</div>
+        </button>
+      </nav>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Drawer - Mobile - Exact same logic as other pages -->
+  <div class="drawer-backdrop" id="backdrop"></div>
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <a class="drawer-link" href="../index.html">Home</a>
+    <div class="drawer-dropdown open" id="drawerServices">
+      <button class="drawer-link dropdown-trigger" aria-expanded="true">Services <span>▾</span></button>
+      <div class="drawer-submenu">
+        <a class="drawer-sublink" href="digital-strategy.html">Digital Strategy</a>
+        <div class="drawer-dropdown nested" id="drawerSoftwareDevelopment">
+          <button class="drawer-link dropdown-trigger" aria-expanded="false">Software Development
+            <span>▾</span></button>
+          <div class="drawer-submenu nested">
+            <a class="drawer-sublink" href="app-development.html">App Development</a>
+            <a class="drawer-sublink" href="web-development.html">Web Development</a>
+          </div>
+        </div>
+        <a class="drawer-sublink" href="erp-solution.html" style="color:var(--blue); font-weight:600;">ERP Solution</a>
+        <a class="drawer-sublink" href="software-training.html">Software Training</a>
+        <a class="drawer-sublink" href="internship.html">Internship Program</a>
+      </div>
+    </div>
+    <a class="drawer-link" href="works.html">Works</a>
+    <a class="drawer-link" href="software-training.html">Academy</a>
+    <a class="drawer-link" href="careers.html">Careers</a>
+    <a class="drawer-link" href="industries.html">Industries</a>
+    <a class="drawer-link" href="about.html">About</a>
+    <a class="drawer-link" href="#contact">Contact</a>
+    <div class="drawer-footer">
+      <div class="drawer-theme-row">
+        <span>Theme</span>
+        <button class="theme-toggle" id="drawerThemeToggle" aria-label="Toggle theme">
+          <div class="toggle-thumb" id="drawerToggleThumb">☾</div>
+        </button>
+      </div>
+      <a class="btn-primary blue" href="#contact" style="width:100%; justify-content:center;">Start a Project →</a>
+      <p style="font-size:11px; color:var(--muted-2); text-align:center; margin-top:12px;">Indigenous Nigerian • Since
+        2018</p>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       ERP HERO - One platform to run your entire business
+       Same background system as web-dev: canvas + orbs + grid
+       ==================================================================== -->
+  <section class="erp-hero">
+    <div class="hero-background">
+      <canvas id="erpGridCanvas"></canvas>
+      <div class="grid-overlay"></div>
+      <div class="gradient-orb blue"></div>
+      <div class="gradient-orb green"></div>
+      <div class="gradient-orb orange"></div>
+    </div>
+
+    <div class="hero-container">
+      <!-- LEFT: Content -->
+      <div class="hero-content">
+        <span class="hero-badge">ERP SOLUTION</span>
+        <h1>One platform to <em>run your entire</em> business</h1>
+        <p>We design and implement custom ERP systems that unify finance, inventory, HR, sales, procurement and
+          operations into a single source of truth — no more spreadsheet chaos, no more silos.</p>
+
+        <div class="hero-actions">
+          <a class="btn-primary blue" href="#contact">Request ERP Demo →</a>
+          <a class="btn-secondary" href="#modules">View modules</a>
+        </div>
+
+        <div class="hero-pillars">
+          <div class="pillar">
+            <strong>Finance & Accounting</strong>
+            <span>Real-time ledger</span>
+          </div>
+          <div class="pillar">
+            <strong>Inventory & Procurement</strong>
+            <span>Stock + vendors</span>
+          </div>
+          <div class="pillar">
+            <strong>HR & Payroll</strong>
+            <span>People + pay</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Visual - ERP Dashboard Browser -->
+      <div class="hero-visual">
+        <!-- Connection SVG for integration pulse -->
+        <svg class="connection-svg">
+          <path class="connection-pulse" d="M 80 100 Q 200 50 320 120"></path>
+          <path class="connection-pulse" d="M 80 200 Q 180 220 320 180"></path>
+        </svg>
+
+        <div class="browser-window">
+          <div class="browser-header">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-title">spotters-erp.app • Production</div>
+            <div style="width:40px;"></div>
+          </div>
+          <div class="browser-body">
+            <div class="browser-sidebar">
+              <div class="sidebar-module active"><span class="mod-dot"
+                  style="background:var(--erp-blue);"></span>Dashboard</div>
+              <div class="sidebar-module"><span class="mod-dot"></span>Finance</div>
+              <div class="sidebar-module"><span class="mod-dot"></span>Inventory</div>
+              <div class="sidebar-module"><span class="mod-dot"></span>Sales & CRM</div>
+              <div class="sidebar-module"><span class="mod-dot"></span>HR & Payroll</div>
+              <div class="sidebar-module"><span class="mod-dot"></span>Procurement</div>
+              <div class="sidebar-module"><span class="mod-dot"></span>Manufacturing</div>
+              <div class="sidebar-module"><span class="mod-dot"></span>Reports</div>
+            </div>
+            <div class="browser-main">
+              <div class="dashboard-top">
+                <div class="metric-card">
+                  <div class="metric-label">Revenue (MTD)</div>
+                  <div class="metric-value">$124,580</div>
+                  <div class="metric-trend">↗ +12.4% vs last month</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Stock Value</div>
+                  <div class="metric-value" data-static="true">$89.2k</div>
+                  <div class="metric-trend">1,248 SKUs • 98% in stock</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-label">Payroll</div>
+                  <div class="metric-value">42</div>
+                  <div class="metric-trend">Staff • 3 pending leave</div>
+                </div>
+              </div>
+              <div class="chart-area">
+                <div class="chart-header">
+                  <span class="chart-title">Operations Overview</span>
+                  <span style="font-size:10px; color:var(--erp-muted-2);">Last 7 days</span>
+                </div>
+                <div class="chart-bars">
+                  <div class="chart-bar" style="height:40%;"></div>
+                  <div class="chart-bar active" style="height:68%;"></div>
+                  <div class="chart-bar" style="height:52%;"></div>
+                  <div class="chart-bar active" style="height:85%;"></div>
+                  <div class="chart-bar" style="height:60%;"></div>
+                  <div class="chart-bar active" style="height:92%;"></div>
+                  <div class="chart-bar" style="height:74%;"></div>
+                </div>
+                <div class="workflow-row">
+                  <div class="workflow-node">◐</div>
+                  <div class="workflow-line"></div>
+                  <div class="workflow-node">◑</div>
+                  <div class="workflow-line"></div>
+                  <div class="workflow-node">◒</div>
+                  <div class="workflow-line"></div>
+                  <div class="workflow-node">◓</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating cards - same animation system -->
+        <div class="floating-card inventory">
+          <div class="fc-icon" style="background:var(--erp-blue);">📦</div>
+          <div class="fc-content"><strong>Inventory Synced</strong><span>1,248 items • 0 low stock</span></div>
+        </div>
+        <div class="floating-card finance">
+          <div class="fc-icon" style="background:var(--erp-green);">$</div>
+          <div class="fc-content"><strong>Invoice #2847 Paid</strong><span>$12,500 • Acme Corp</span></div>
+        </div>
+        <div class="floating-card hr">
+          <div class="fc-icon" style="background:var(--erp-orange);">👥</div>
+          <div class="fc-content"><strong>Payroll Processed</strong><span>42 staff • Today 14:00</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator"><span>scroll to explore modules</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       MODULES - 6 Core ERP Modules
+       ==================================================================== -->
+  <section class="erp-process" id="modules">
+    <div class="process-header">
+      <div class="process-label">Modules</div>
+      <h2>Everything you run spreadsheets for, now in one system.</h2>
+      <p class="lead">Modular ERP — start with what you need, scale to full enterprise. Each module shares the same data
+        layer, permissions, and audit logs. No more duplicate entry.</p>
+    </div>
+
+    <div class="erp-modules">
+      <div class="erp-module finance">
+        <div class="erp-module-num"><span>Module 01 • Finance</span><span style="color:var(--erp-blue);">●</span></div>
+        <div class="erp-module-icon">💰</div>
+        <h3>Finance & Accounting</h3>
+        <p>Real-time ledger, automated invoicing, expense tracking and financial reporting that closes your month-end in
+          hours, not days.</p>
+        <ul>
+          <li>Chart of accounts, journal, P&L, balance sheet</li>
+          <li>Automated invoicing & payment reconciliation</li>
+          <li>Multi-currency & tax compliance</li>
+          <li>Role-based approval for expenses</li>
+        </ul>
+      </div>
+
+      <div class="erp-module inventory">
+        <div class="erp-module-num"><span>Module 02 • Inventory</span><span style="color:var(--erp-green);">●</span>
+        </div>
+        <div class="erp-module-icon">📦</div>
+        <h3>Inventory & Warehouse</h3>
+        <p>Track stock across locations, set reorder levels, manage batches and expiry — with barcode scanning and stock
+          audit built-in.</p>
+        <ul>
+          <li>Multi-warehouse stock tracking</li>
+          <li>Low stock alerts & auto-reorder</li>
+          <li>Batch, serial, expiry management</li>
+          <li>Barcode + stock count app</li>
+        </ul>
+      </div>
+
+      <div class="erp-module hr">
+        <div class="erp-module-num"><span>Module 03 • HR & Payroll</span><span style="color:var(--erp-orange);">●</span>
+        </div>
+        <div class="erp-module-icon">👥</div>
+        <h3>HR & Payroll</h3>
+        <p>From onboarding to payroll — manage employees, leave, attendance, performance and payslips in one compliant
+          system.</p>
+        <ul>
+          <li>Employee database & document vault</li>
+          <li>Leave, attendance, shifts</li>
+          <li>Payroll with taxes & deductions</li>
+          <li>Payslip portal for staff</li>
+        </ul>
+      </div>
+
+      <div class="erp-module sales">
+        <div class="erp-module-num"><span>Module 04 • Sales & CRM</span><span style="color:var(--erp-blue);">●</span>
+        </div>
+        <div class="erp-module-icon">📈</div>
+        <h3>Sales & CRM</h3>
+        <p>Pipeline, quotes, orders and customer history in one place. Sales sees inventory, finance sees payments,
+          support sees tickets.</p>
+        <ul>
+          <li>Leads, deals, pipeline stages</li>
+          <li>Quotes, orders, delivery tracking</li>
+          <li>Customer 360° history</li>
+          <li>Automated follow-ups & reminders</li>
+        </ul>
+      </div>
+
+      <div class="erp-module procurement">
+        <div class="erp-module-num"><span>Module 05 • Procurement</span><span style="color:var(--erp-green);">●</span>
+        </div>
+        <div class="erp-module-icon">🤝</div>
+        <h3>Procurement & Vendors</h3>
+        <p>Vendor management, purchase requests, approvals, POs and goods receipt — with 3-way matching to stop
+          overpayment.</p>
+        <ul>
+          <li>Vendor database & performance score</li>
+          <li>PR → Approval → PO → GRN flow</li>
+          <li>3-way matching (PO, GRN, Invoice)</li>
+          <li>Spend analysis & budgeting</li>
+        </ul>
+      </div>
+
+      <div class="erp-module manufacturing">
+        <div class="erp-module-num"><span>Module 06 • Operations</span><span style="color:var(--erp-orange);">●</span>
+        </div>
+        <div class="erp-module-icon">⚙️</div>
+        <h3>Manufacturing & Ops</h3>
+        <p>Bill of materials, work orders, production tracking and quality checks — built for small factories and
+          assembly teams.</p>
+        <ul>
+          <li>BOM & work order management</li>
+          <li>Production planning & tracking</li>
+          <li>Quality checks & rejection flow</li>
+          <li>Costing per unit & variance</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       BENEFITS - Why custom ERP over off-the-shelf
+       ==================================================================== -->
+  <section class="erp-benefits">
+    <div>
+      <div class="process-label">Why Custom ERP</div>
+      <h2>Off-the-shelf ERPs force you to change. We build ERP around how you already work.</h2>
+      <p style="color:var(--erp-muted); font-size:16px; line-height:1.7; margin-top:16px;">SAP and Oracle cost $150k+
+        and 12 months. Spreadsheets cost you 20 hours/week and errors. We deliver a custom ERP in 6-10 weeks that your
+        team actually adopts — because it matches your process, not the other way around.</p>
+      <div style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn-primary blue" href="#contact">Build my ERP →</a>
+        <a class="btn-secondary" href="../index.html#works"
+          style="padding:12px 22px; border-radius:9999px; border:1px solid var(--erp-border); text-decoration:none; font-weight:600; font-size:14px; color:var(--erp-text);">See
+          live ERPs we shipped</a>
+      </div>
+    </div>
+    <div class="erp-benefit-list">
+      <div class="erp-benefit">
+        <div class="erp-benefit-icon" style="background:var(--erp-blue-light); color:var(--erp-blue);">⚡</div>
+        <div>
+          <h4>Built in 6-10 weeks, not 12 months</h4>
+          <p>We use our ERP boilerplate + your workflows. No starting from zero. MVP in 3 weeks, full rollout in 10.</p>
+        </div>
+      </div>
+      <div class="erp-benefit">
+        <div class="erp-benefit-icon" style="background:var(--erp-green-light); color:var(--erp-green);">🔗</div>
+        <div>
+          <h4>One data layer, zero duplicate entry</h4>
+          <p>Sales creates order → inventory reserves stock → finance creates invoice → warehouse ships. One flow, no
+            retyping.</p>
+        </div>
+      </div>
+      <div class="erp-benefit">
+        <div class="erp-benefit-icon" style="background:var(--erp-orange-light); color:var(--erp-orange);">🔒</div>
+        <div>
+          <h4>You own your data, on your terms</h4>
+          <p>Hosted in Nigeria or your cloud. Full export, audit logs, role permissions. No vendor lock-in, no per-seat
+            extortion.</p>
+        </div>
+      </div>
+      <div class="erp-benefit">
+        <div class="erp-benefit-icon" style="background:var(--erp-blue-light); color:var(--erp-blue);">🎓</div>
+        <div>
+          <h4>Training via StudyPod, adoption guaranteed</h4>
+          <p>Every ERP includes video training, documentation and 30-day hypercare. We build people while we build
+            software.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       PROCESS - How we deliver ERP
+       ==================================================================== -->
+  <section class="erp-process" id="process">
+    <div class="process-header">
+      <div class="process-label">Delivery Process</div>
+      <h2>From process mapping to go-live in 4 phases.</h2>
+      <p class="lead">We don't code first. We map your current process, then design the ERP around it.</p>
+    </div>
+    <div class="erp-modules">
+      <div class="erp-module finance">
+        <div class="erp-module-num"><span>Phase 01 • Discovery</span><span style="color:var(--erp-blue);">●</span></div>
+        <h3>Process mapping</h3>
+        <p>We shadow your team for 3-5 days, map every spreadsheet, approval and handoff.</p>
+        <ul>
+          <li>Stakeholder interviews & current SOP audit</li>
+          <li>Spreadsheet & tool inventory</li>
+          <li>Pain points & bottlenecks map</li>
+          <li>ERP readiness score</li>
+        </ul>
+      </div>
+      <div class="erp-module inventory">
+        <div class="erp-module-num"><span>Phase 02 • Blueprint</span><span style="color:var(--erp-green);">●</span>
+        </div>
+        <h3>Blueprint & prototype</h3>
+        <p>Figma prototype of your ERP with real data structure. You click through before we code.</p>
+        <ul>
+          <li>Data model & permission matrix</li>
+          <li>Clickable Figma prototype</li>
+          <li>Module priority & phasing</li>
+          <li>Integration plan (existing tools)</li>
+        </ul>
+      </div>
+      <div class="erp-module hr">
+        <div class="erp-module-num"><span>Phase 03 • Build & Migrate</span><span
+            style="color:var(--erp-orange);">●</span></div>
+        <h3>Build + data migration</h3>
+        <p>We build in sprints, migrate your historical data, and run parallel with old system.</p>
+        <ul>
+          <li>Agile sprints with demo every week</li>
+          <li>Historical data cleaning & migration</li>
+          <li>API integrations (bank, accounting, etc.)</li>
+          <li>Parallel run with spreadsheets</li>
+        </ul>
+      </div>
+      <div class="erp-module sales">
+        <div class="erp-module-num"><span>Phase 04 • Train & Go-live</span><span style="color:var(--erp-blue);">●</span>
+        </div>
+        <h3>Training & hypercare</h3>
+        <p>Go-live with on-site training, StudyPod videos, and 30-day support where we fix anything same-day.</p>
+        <ul>
+          <li>Role-based training (sales, warehouse, finance)</li>
+          <li>Video library via StudyPod</li>
+          <li>30-day hypercare & SLA</li>
+          <li>Continuous improvement backlog</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       CONTACT - Exact same as other pages - DRY via global.css
+       ==================================================================== -->
+  <section class="section contact-section" id="contact">
+    <div class="section-label reveal">Contact</div>
+    <h2 class="section-title reveal">Let's build your ERP.</h2>
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <p>Tell us how you currently run your business — spreadsheets, tools, team size — and we'll propose an ERP
+          roadmap in 48 hours. Built for Nigerian SMEs and scaling enterprises.</p>
+        <div class="contact-meta">
+          <p><strong>Email:</strong> info@spotters.com.ng</p>
+          <p><strong>Response:</strong> Within 24 hours</p>
+          <p><strong>Timeline:</strong> MVP in 3 weeks, full ERP in 6-10 weeks</p>
+        </div>
+      </div>
+      <form class="card contact-form reveal">
+        <input type="text" name="name" placeholder="Your name">
+        <input type="email" name="email" placeholder="Business email">
+        <select name="service">
+          <option selected>ERP Solution</option>
+          <option>Digital Strategy</option>
+          <option>App Development</option>
+          <option>Web Development</option>
+          <option>Software Training</option>
+          <option>Internship</option>
+        </select>
+        <textarea name="message"
+          placeholder="Describe your current process - e.g., 'We track inventory in Excel, sales in WhatsApp, finance in QuickBooks'"
+          rows="5"></textarea>
+        <button class="btn-primary blue" type="submit">Request ERP Demo →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer - EXACT same as other pages - DRY -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="color:white;">
+            <div class="logo-dot"></div>SPOTTERS.
+          </div>
+          <p style="opacity:0.6; font-size:14px; margin-top:16px; max-width:300px;">Technology that builds people and
+            businesses.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <a href="digital-strategy.html">Digital Strategy</a>
+          <div class="footer-link-group">
+            <span class="footer-link-group-title"
+              style="display:block; font-size:14px; opacity:0.7; padding:6px 0;">Software Development</span>
+            <div class="footer-sublinks">
+              <a href="app-development.html">App Development</a>
+              <a href="web-development.html">Web Development</a>
+            </div>
+          </div>
+          <a href="erp-solution.html" style="color:white; opacity:1; font-weight:600;">ERP Solution</a>
+          <a href="software-training.html">Software Training</a>
+          <a href="internship.html">Internship</a>
+        </div>
+        <div>
+          <h4>Company</h4><a href="../index.html#works">Works</a><a href="../index.html#academy">Academy</a><a
+            href="../index.html#industries">Industries</a><a href="../index.html#about">About</a><a
+            href="../index.html#careers">Careers</a>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <a>info@spotters.com.ng</a>
+          <a>LinkedIn / Twitter / GitHub</a>
+        </div>
+      </div>
+      <p
+        style="margin-top:64px; opacity:0.4; font-size:12px; border-top:1px solid rgba(255,255,255,0.1); padding-top:24px;">
+        © 2026 The Spotters Company.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button - Blue dominant, exact same as other pages -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6" />
+    </svg>
+  </button>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/erp-solution.js"></script>
+</body>
+
+</html>

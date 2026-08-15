@@ -38,14 +38,21 @@
       <nav class="nav-desktop" id="desktopNav">
         <!-- SERVICES DROPDOWN  Desktop (same as index.html) -->
         <a class="nav-link" href="../index.html">Home</a>
-        <div class="nav-dropdown" id="servicesDropdown">
-          <button class="nav-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
+        <div class="nav-dropdown open" id="servicesDropdown">
+          <button class="nav-link dropdown-trigger" aria-expanded="true">Services <span>▾</span></button>
           <div class="dropdown-menu">
-            <!-- From pages folder, link to sibling pages -->
             <a href="digital-strategy.html">Digital Strategy</a>
-            <a href="app-development.html">App Development</a>
-            <a href="web-development.html">Web Development</a>
-            <a href="software-training.html" style="color: var(--blue);">Software Training</a>
+            <div class="dropdown-group">
+              <button class="dropdown-link dropdown-trigger" aria-expanded="false">
+                Software Development <span>▾</span>
+              </button>
+              <div class="dropdown-submenu">
+                <a href="app-development.html">App Development</a>
+                <a href="web-development.html">Web Development</a>
+              </div>
+            </div>
+            <a href="erp-solution.html">ERP Solution</a>
+            <a href="software-training.html" style="color:var(--blue); font-weight:600;">Software Training</a>
             <a href="internship.html">Internship Program</a>
           </div>
         </div>
@@ -86,13 +93,20 @@
   <div class="drawer" id="drawer" aria-hidden="true">
     <!-- SERVICES DROPDOWN — Mobile Drawer -->
     <a class="drawer-link" href="../index.html">Home</a>
-    <div class="drawer-dropdown" id="drawerServices">
-      <button class="drawer-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
+    <div class="drawer-dropdown open" id="drawerServices">
+      <button class="drawer-link dropdown-trigger" aria-expanded="true">Services <span>▾</span></button>
       <div class="drawer-submenu">
         <a class="drawer-sublink" href="digital-strategy.html">Digital Strategy</a>
-        <a class="drawer-sublink" href="app-development.html">App Development</a>
-        <a class="drawer-sublink" href="web-development.html">Web Development</a>
-        <a class="drawer-sublink" href="software-training.html" style="color: var(--blue);">Software Training</a>
+        <div class="drawer-dropdown nested" id="drawerSoftwareDevelopment">
+          <button class="drawer-link dropdown-trigger" aria-expanded="false">Software Development
+            <span>▾</span></button>
+          <div class="drawer-submenu nested">
+            <a class="drawer-sublink" href="app-development.html">App Development</a>
+            <a class="drawer-sublink" href="web-development.html">Web Development</a>
+          </div>
+        </div>
+        <a class="drawer-sublink" href="erp-solution.html">ERP Solution</a>
+        <a class="drawer-sublink" href="software-training.html" style="color:var(--blue); font-weight:600;">Software Training</a>
         <a class="drawer-sublink" href="internship.html">Internship Program</a>
       </div>
     </div>
@@ -216,8 +230,13 @@
           </div>
           <!-- Cyber Security — bottom right — order 4 -->
           <div class="node security" data-tech="security">
-            <span class="node-dot">CS</span>
-            <span>Cyber Security</span>
+            <span class="node-dot">SA</span>
+            <span>Scrum & Agile</span>
+          </div>
+          <!-- The Open Group Architecture Framework — bottom center — order 6-->
+          <div class="node security" data-tech="TOGF">
+            <span class="node-dot">TOGF</span>
+            <span>The Open Group Architecture Framework</span>
           </div>
         </div>
 
@@ -297,15 +316,16 @@
         </div>
       </div>
 
-      <!-- Cyber Security  matches node security -->
+      <!-- Scrum & Agile  matches node security -->
       <div class="course-card security" data-tech="security">
-        <div class="course-icon">CS</div>
-        <h3>Cyber Security</h3>
-        <p>Learn to protect. AUTHENTICATION, NETWORK, THREAT DETECTION  monitor status SECURE. Warning appears then resolves. Hands-on labs.</p>
+        <div class="course-icon">SA</div>
+        <h3>Scrum & Agile </h3>
+        <p>Learn to adapt. SPRINT, BACKLOG, DAILY STANDUP monitor progress COLLABORATE. Blockers appear then resolve. Team
+        retrospectives.</p>
         <div class="course-tags">
-          <span>Network Security</span>
-          <span>Threat Detection</span>
-          <span>Ethical Hacking</span>
+          <span>Sprint Delivery</span>
+          <span>Impediment Removal</span>
+          <span>Continuous Improvement</span>
         </div>
       </div>
 
@@ -318,6 +338,19 @@
           <span>Spring Boot</span>
           <span>Microservices</span>
           <span>Enterprise</span>
+        </div>
+      </div>
+
+      <!-- Open Group Architecture Framework java -->
+      <div class="course-card TOGF" data-tech="java">
+        <div class="course-icon-TOGF">TOGAF</div>
+        <h3> Open Group Architecture Framework 10th</h3>
+        <p>Learn to align. GOVERNANCE, REPOSITORIES, CONTENT METAMODEL monitor status STABLE. Target state designs then implements.
+        Hands-on case studies.</p>
+        <div class="course-tags">
+          <span>Architecture Development Method</span>
+          <span>Enterprise Governance</span>
+          <span>Architecture Repository</span>
         </div>
       </div>
 
@@ -397,8 +430,13 @@
         <div>
           <h4>Services</h4>
           <a href="digital-strategy.html">Digital Strategy</a>
-          <a href="app-development.html">App Development</a>
-          <a href="web-development.html">Web Development</a>
+          <div class="footer-link-group">
+            <span class="footer-link-group-title" style="display:block; font-size:14px; opacity:0.7; padding:6px 0;">Software Development</span>
+            <div class="footer-sublinks">
+              <a href="app-development.html">App Development</a>
+              <a href="web-development.html">Web Development</a>
+            </div>
+          </div>
           <a href="software-training.html">Software Training</a>
           <a href="internship.html">Internship</a>
         </div>

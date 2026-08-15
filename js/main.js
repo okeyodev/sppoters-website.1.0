@@ -13,24 +13,34 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   /* ------------------------------------------------------------------------
-     PART 1: THEME TOGGLE - Light/Dark mode
+     PART 1: THEME TOGGLE - Shared helper logic across all pages
      ------------------------------------------------------------------------ */
   const htmlEl = document.documentElement;
-  const themeToggle = document.getElementById("themeToggle");
-  const toggleThumb = document.getElementById("toggleThumb");
-  const drawerThemeToggle = document.getElementById("drawerThemeToggle");
+  const themeToggles = document.querySelectorAll(".theme-toggle");
+  const toggleThumbs = [
+    document.getElementById("toggleThumb"),
+    document.getElementById("drawerToggleThumb"),
+  ].filter(Boolean);
+
+  function syncThemeIcons(theme) {
+    const isDark = theme === "dark";
+    toggleThumbs.forEach((thumb) => {
+      if (thumb) thumb.textContent = isDark ? "☀" : "☾";
+    });
+  }
 
   function applyTheme(theme) {
-    if (theme === "dark") {
-      htmlEl.setAttribute("data-theme", "dark");
-      if (toggleThumb) toggleThumb.textContent = "☀";
-    } else {
-      htmlEl.removeAttribute("data-theme");
-      if (toggleThumb) toggleThumb.textContent = "☾";
-    }
+    const isDark = theme === "dark";
+    if (isDark) htmlEl.setAttribute("data-theme", "dark");
+    else htmlEl.removeAttribute("data-theme");
+
+    syncThemeIcons(theme);
     localStorage.setItem("spotters-theme", theme);
-    const drawerThumb = document.getElementById("drawerToggleThumb");
-    if (drawerThumb) drawerThumb.textContent = theme === "dark" ? "☀" : "☾";
+  }
+
+  function toggleTheme() {
+    const isDark = htmlEl.getAttribute("data-theme") === "dark";
+    applyTheme(isDark ? "light" : "dark");
   }
 
   const savedTheme = localStorage.getItem("spotters-theme");
@@ -43,14 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
     applyTheme("dark");
   }
 
-  function toggleTheme() {
-    const isDark = htmlEl.getAttribute("data-theme") === "dark";
-    applyTheme(isDark ? "light" : "dark");
-  }
-
-  if (themeToggle) themeToggle.addEventListener("click", toggleTheme);
-  if (drawerThemeToggle)
-    drawerThemeToggle.addEventListener("click", toggleTheme);
+  themeToggles.forEach((toggle) => {
+    toggle.addEventListener("click", toggleTheme);
+  });
 
   /* ------------------------------------------------------------------------
      PART 2: HAMBURGER + DRAWER + SERVICES DROPDOWN
@@ -120,72 +125,163 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* --- Services Dropdown - Desktop + Mobile --- */
-  // Desktop dropdown
-  const servicesDropdown = document.getElementById("servicesDropdown");
-  if (servicesDropdown) {
-    const trigger = servicesDropdown.querySelector(".dropdown-trigger");
-    if (trigger) {
-      trigger.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const isOpen = servicesDropdown.classList.contains("open");
-        servicesDropdown.classList.toggle("open", !isOpen);
-        trigger.setAttribute("aria-expanded", String(!isOpen));
-      });
-    }
-  }
+  /* --- PART 2B: DROPDOWN MENUS (Services, Software Development) --- */
+  // Unified dropdown logic for both desktop and mobile
+  // 
+  // Menu Structure:
+  // - Desktop: .nav-dropdown (Services menu in header)
+  // - Desktop nested: .dropdown-group (Software Development submenu)
+  // - Mobile: .drawer-dropdown (Services in hamburger menu)
+  // - Mobile nested: .drawer-dropdown.nested (Software Development)
+  //
+  // Behavior:
+  // - Click trigger (▾ arrow) to toggle dropdown open/close
+  // - Only one dropdown open at a time (others auto-close)
+  // - Click outside any dropdown to close all
+  // - Full keyboard accessibility with aria-expanded attribute
+  //
+  // CSS Handling:
+  // - .open class shows the menu (CSS changes opacity/visibility/max-height)
+  // - aria-expanded="true/false" for screen readers
+  // - Desktop: Also uses :hover for mouse users
+  // - Mobile: Only uses .open class (hover doesn't work on touch)
+  
+  const allDropdowns = document.querySelectorAll(
+    ".nav-dropdown, .drawer-dropdown, .dropdown-group",
+  );
 
-  // Mobile drawer dropdown
-  const drawerServices = document.getElementById("drawerServices");
-  if (drawerServices) {
-    const trigger = drawerServices.querySelector(".dropdown-trigger");
-    if (trigger) {
-      trigger.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const isOpen = drawerServices.classList.contains("open");
-        drawerServices.classList.toggle("open", !isOpen);
-        trigger.setAttribute("aria-expanded", String(!isOpen));
-      });
-    }
-  }
+  /**
+   * closeDropdown(dropdown) - Helper function to close any dropdown
+   * @param {HTMLElement} dropdown - The dropdown container to close
+   * 
+   * Does two things:
+   * 1. Removes .open class (triggers CSS animation to hide menu)
+   * 2. Sets aria-expanded="false" on all trigger buttons (accessibility)
+   */
+  const closeDropdown = (dropdown) => {
+    if (!dropdown) return;
+    dropdown.classList.remove("open");
+    dropdown.querySelectorAll(".dropdown-trigger").forEach((trigger) => {
+      trigger.setAttribute("aria-expanded", "false");
+    });
+  };
 
-  // Close dropdowns when clicking outside
+  /**
+   * UNIFIED CLICK EVENT HANDLER - Handles all dropdown interactions
+   * 
+   * This single listener (using event delegation) handles:
+   * 1. Clicking a dropdown trigger button (▾)
+   * 2. Clicking anywhere else on the page
+   * 
+   * Event Delegation Benefit:
+   * - Only one listener instead of attaching to every trigger
+   * - Works even if new dropdowns added dynamically
+   * - Better performance
+   */
   document.addEventListener("click", (e) => {
-    if (servicesDropdown && !servicesDropdown.contains(e.target)) {
-      servicesDropdown.classList.remove("open");
-      const trig = servicesDropdown.querySelector(".dropdown-trigger");
-      if (trig) trig.setAttribute("aria-expanded", "false");
+    // Check if clicked element is a dropdown trigger
+    const trigger = e.target.closest(".dropdown-trigger");
+
+    if (trigger) {
+      // ===== USER CLICKED A DROPDOWN TRIGGER (e.g., "Services ▾") =====
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Find which dropdown this trigger belongs to
+      const item =
+        trigger.closest(".dropdown-group") ||        // Nested (Software Dev)
+        trigger.closest(".nav-dropdown") ||         // Desktop Services
+        trigger.closest(".drawer-dropdown");        // Mobile Services
+
+      if (!item) return;
+
+      // Check if this dropdown is already open
+      const isOpen = item.classList.contains("open");
+
+      // Close all OTHER dropdowns (only one open at a time)
+      allDropdowns.forEach((dropdown) => {
+        if (dropdown !== item) closeDropdown(dropdown);
+      });
+
+      // Toggle CURRENT dropdown
+      if (isOpen) {
+        // Already open → close it (same trigger click closes)
+        closeDropdown(item);
+      } else {
+        // Closed → open it
+        item.classList.add("open");
+        trigger.setAttribute("aria-expanded", "true");
+      }
+    } else {
+      // ===== USER CLICKED OUTSIDE ALL DROPDOWNS =====
+      // Close any open dropdowns
+      allDropdowns.forEach((dropdown) => {
+        if (!dropdown.contains(e.target)) {
+          closeDropdown(dropdown);
+        }
+      });
     }
   });
 
-  /* ------------------------------------------------------------------------
-     PART 3: REVEAL ON SCROLL
-     ------------------------------------------------------------------------ */
+  /* --- PART 3: SCROLL REVEAL ANIMATIONS --- */
+  // Fade-in elements as they enter the viewport using IntersectionObserver
+  // Performance optimized: only runs when element becomes visible
+  //
+  // How to Use:
+  // 1. Add class="reveal" to any HTML element:
+  //    <h2 class="reveal">Title fades in as you scroll</h2>
+  //    <p class="reveal">Paragraph fades in on scroll</p>
+  //
+  // 2. CSS handles the animation:
+  //    .reveal { opacity: 0; transform: translateY(24px); }
+  //    .reveal.in { opacity: 1; transform: translateY(0); }
+  //
+  // 3. When this script runs, IntersectionObserver watches all .reveal elements
+  // 4. When 15% of element enters viewport, .in class is added
+  // 5. CSS transition animates from initial state to .in state
+  // 6. Element is unobserved after animation (runs only once)
+  //
+  // Browser Support: Modern browsers only (IE not supported)
+  
   const reveals = document.querySelectorAll(".reveal");
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          // Element became visible - add .in class to trigger animation
           entry.target.classList.add("in");
+          // Stop watching this element (animation runs once per scroll)
           observer.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.15 },
+    { threshold: 0.15 },  // Trigger when 15% of element is in viewport
   );
   reveals.forEach((el) => observer.observe(el));
 
-  /* ------------------------------------------------------------------------
-     PART 4: BUTTON MAGNET EFFECT
-     ------------------------------------------------------------------------ */
+  /* --- PART 4: BUTTON MAGNET EFFECT --- */
+  // Premium micro-interaction: buttons subtly follow cursor on hover
+  // Creates engaging, natural feeling without being distracting
+  //
+  // How it works:
+  // 1. On mousemove: Calculate vector from button center to cursor
+  // 2. Apply dampened transform (0.15x damping, 0.35y damping)
+  // 3. On mouseleave: Reset transform to center
+  //
+  // Effect: Max movement ~15px horizontal, ~20px vertical
+  // Performance: GPU-accelerated CSS transforms (smooth, efficient)
+  
   document.querySelectorAll(".btn-primary, .btn-secondary").forEach((btn) => {
     btn.addEventListener("mousemove", (e) => {
       const rect = btn.getBoundingClientRect();
+      // Distance from button center to cursor
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
+      // Dampened translation creates subtle "pull" effect
       btn.style.transform = `translate(${x * 0.15}px, ${y * 0.35}px)`;
     });
     btn.addEventListener("mouseleave", () => {
+      // Reset to center when mouse leaves
       btn.style.transform = "translate(0,0)";
     });
   });

@@ -20,12 +20,20 @@
       </a>
       <nav class="nav-desktop" id="desktopNav">
         <a class="nav-link" href="../index.html">Home</a>
-        <div class="nav-dropdown" id="servicesDropdown">
-          <button class="nav-link dropdown-trigger" aria-expanded="false">Services <span>▾</span></button>
+        <div class="nav-dropdown open" id="servicesDropdown">
+          <button class="nav-link dropdown-trigger" aria-expanded="true">Services <span>▾</span></button>
           <div class="dropdown-menu">
             <a href="digital-strategy.html">Digital Strategy</a>
-            <a href="app-development.html">App Development</a>
-            <a href="web-development.html">Web Development</a>
+            <div class="dropdown-group">
+              <button class="dropdown-link dropdown-trigger" aria-expanded="false">
+                Software Development <span>▾</span>
+              </button>
+              <div class="dropdown-submenu">
+                <a href="app-development.html">App Development</a>
+                <a href="web-development.html">Web Development</a>
+              </div>
+            </div>
+            <a href="erp-solution.html" style="color:var(--blue); font-weight:600;">ERP Solution</a>
             <a href="software-training.html">Software Training</a>
             <a href="internship.html">Internship Program</a>
           </div>
@@ -33,7 +41,7 @@
         <a class="nav-link" href="works.html">Works</a>
         <a class="nav-link" href="../index.html#academy">Academy</a>
         <a class="nav-link" href="careers.html">Careers</a>
-        <a class="nav-link" href="industries.html" style="color: var(--blue);">Industries</a>
+        <a class="nav-link" href="industries.html" style="color: var(--blue);font-weight:600;">Industries</a>
         <a class="nav-link" href="about.html">About</a>
         <a class="nav-link" href="../index.html#contact">Contact</a>
         <a class="btn-primary blue" href="../index.html#contact">Start a Project</a>
@@ -56,12 +64,19 @@
   <div class="drawer-backdrop" id="backdrop"></div>
   <div class="drawer" id="drawer" aria-hidden="true">
     <a class="drawer-link" href="../index.html">Home</a>
-    <div class="drawer-dropdown" id="drawerServices">
-      <button class="drawer-link dropdown-trigger">Services <span>▾</span></button>
+    <div class="drawer-dropdown open" id="drawerServices">
+      <button class="drawer-link dropdown-trigger" aria-expanded="true">Services <span>▾</span></button>
       <div class="drawer-submenu">
         <a class="drawer-sublink" href="digital-strategy.html">Digital Strategy</a>
-        <a class="drawer-sublink" href="app-development.html">App Development</a>
-        <a class="drawer-sublink" href="web-development.html">Web Development</a>
+        <div class="drawer-dropdown nested" id="drawerSoftwareDevelopment">
+          <button class="drawer-link dropdown-trigger" aria-expanded="false">Software Development
+            <span>▾</span></button>
+          <div class="drawer-submenu nested">
+            <a class="drawer-sublink" href="app-development.html">App Development</a>
+            <a class="drawer-sublink" href="web-development.html">Web Development</a>
+          </div>
+        </div>
+        <a class="drawer-sublink" href="erp-solution.html">ERP Solution</a>
         <a class="drawer-sublink" href="software-training.html">Software Training</a>
         <a class="drawer-sublink" href="internship.html">Internship Program</a>
       </div>
@@ -69,7 +84,7 @@
     <a class="drawer-link" href="works.html">Works</a>
     <a class="drawer-link" href="../index.html#academy">Academy</a>
     <a class="drawer-link" href="careers.html">Careers</a>
-    <a class="drawer-link" href="industries.html" style="color: var(--blue);">Industries</a>
+    <a class="drawer-link" href="industries.html" style="color: var(--blue);font-weight:600;">Industries</a>
     <a class="drawer-link" href="about.html">About</a>
     <a class="drawer-link" href="../index.html#contact">Contact</a>
     <div class="drawer-footer">
@@ -78,7 +93,7 @@
         </button></div>
       <a class="btn-primary blue" href="../index.html#contact" style="width:100%; justify-content:center;">Start a
         Project →</a>
-      <p style="font-size:11px; color:var(--muted-2); text-align:center; margin-top:12px;">Indigenous Nigerian • Since
+      <p style="font-size:11px; color:var(--muted-2); text-align:center; margin-top:12px;"> • Since
         2018</p>
     </div>
   </div>
@@ -357,32 +372,28 @@
   <!-- CONTACT -->
   <section class="section contact-section" id="contact">
     <div class="section-label reveal">Contact</div>
-    <h2 class="section-title reveal">Let's build something exceptional for your industry.</h2>
+    <h2 class="section-title reveal">Let's build something exceptional.</h2>
     <div class="contact-layout">
       <div class="contact-info reveal">
-        <p>Tell us your sector, your challenge, and your scale. We reply within 24 hours with a sector-specific
-          approach.</p>
+        <p>Inquiry form, office details, consultation booking, social links built for
+          businesses and students alike.</p>
         <div class="contact-meta">
-          <p><strong>Email:</strong> hello@spotters.company</p>
-          <p><strong>Sectors:</strong> Finance, Healthcare, Government, Logistics, Education, Energy, Agriculture,
-            Retail</p>
+          <p><strong>Email:</strong> info@spotters.com.ng</p>
+          <p><strong>Response:</strong> Within 24 hours</p>
         </div>
       </div>
       <form class="card contact-form reveal">
         <input type="text" name="name" placeholder="Your name">
         <input type="email" name="email" placeholder="Business email">
-        <select name="sector">
-          <option>Select sector</option>
-          <option>FinTech & Banking</option>
-          <option>Healthcare & HealthTech</option>
-          <option>Government & Public Sector</option>
-          <option>Logistics & Supply Chain</option>
-          <option>Education & EdTech</option>
-          <option>Energy & Utilities</option>
-          <option>Agriculture & AgriTech</option>
-          <option>Retail & Commerce</option>
+        <select name="service">
+          <option>Digital Strategy</option>
+          <option>App Development</option>
+          <option>Web Development</option>
+          <option>Software Training</option>
+          <option>Internship</option>
+          <option>ERP Solution</option>
         </select>
-        <textarea name="message" placeholder="Tell us about your industry challenge" rows="4"></textarea>
+        <textarea name="message" placeholder="Tell us about your project" rows="5"></textarea>
         <button class="btn-primary blue" type="submit">Send Inquiry →</button>
       </form>
     </div>
@@ -399,9 +410,17 @@
             businesses.</p>
         </div>
         <div>
-          <h4>Services</h4><a href="digital-strategy.html">Digital Strategy</a><a href="app-development.html">App
-            Development</a><a href="web-development.html">Web Development</a><a href="software-training.html">Software
-            Training</a><a href="internship.html">Internship</a>
+          <h4>Services</h4>
+          <a href="digital-strategy.html">Digital Strategy</a>
+          <div class="footer-link-group">
+            <span class="footer-link-group-title" style="display:block; font-size:14px; opacity:0.7; padding:6px 0;">Software Development</span>
+            <div class="footer-sublinks">
+              <a href="app-development.html">App Development</a>
+              <a href="web-development.html">Web Development</a>
+            </div>
+          </div>
+          <a href="software-training.html">Software Training</a>
+          <a href="internship.html">Internship</a>
         </div>
         <div>
           <h4>Company</h4><a href="../index.html#works">Works</a><a href="../index.html#academy">Academy</a><a

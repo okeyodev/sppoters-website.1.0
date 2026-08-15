@@ -1,14 +1,6 @@
-/* ==========================================================================
-   VARIABLES.CSS - Design tokens for The Spotters Company
-   This file holds all colors, shadows, radii, fonts.
-   Edit here to rebrand the entire site.
-   
-   Structure:
-   1. Core palette (white, black, grays)
-   2. Brand colors (blue, green, orange) - light/dark variants
-   3. Theme tokens (light = default, dark = [data-theme="dark"])
-   4. Gradients, shadows, radii, easing
-   ========================================================================== */
+/* ==========================================================================\n   VARIABLES.CSS - SINGLE SOURCE OF TRUTH FOR ALL DESIGN TOKENS\n   \n   🎯 THIS IS THE MOST IMPORTANT FILE - EDIT HERE TO REBRAND THE ENTIRE SITE\n   \n   Purpose:\n   Define all colors, fonts, spacing, shadows, animations in one place.\n   Every other CSS file imports and uses these variables.\n   Change a color here → changes everywhere automatically.\n   \n   How to Use:\n   - All CSS files start with: @import 'variables.css';\n   - Reference tokens in CSS: background: var(--blue);\n   - Dark mode: Automatically handled by [data-theme=\"dark\"] selector\n   - js/main.js toggles [data-theme=\"dark\"] on <html> element\n   \n   Naming Convention:\n   --group-property or --group-property-variant\n   Examples:\n   --blue, --blue-dark, --blue-light, --blue-glow\n   --shadow-sm, --shadow-md, --shadow-lg\n   --radius-sm, --radius-md, --radius-lg\n   \n   To Rebrand in 30 Seconds:\n   1. Change --blue to your primary color\n   2. Change --green to your secondary color  \n   3. Change --orange to your accent color\n   4. Save and reload browser\n   5. Done! Entire site uses your brand colors.\n   \n   Structure (Sections Below):\n   1. Core neutrals: white, black, gray scale (9 shades)\n   2. Brand colors: blue, green, orange (with light/dark/glow variants)\n   3. Hero aliases: map purple → green for consistency\n   4. Theme tokens: light=default, dark=[data-theme=\"dark\"]\n   5. Gradients: multi-color blends for visual interest\n   6. Shadows: from subtle to prominent with glow effects\n   7. Radii: consistent border-radius across component sizes\n   8. Typography: font stacks for display and body text\n   9. Easing: cubic-bezier functions for premium motion\n   10. Web-specific: DRY aliases for web development page\n   ========================================================================== */
+
+/* ==========================================================================\n   VARIABLES.CSS - SINGLE SOURCE OF TRUTH FOR ALL DESIGN TOKENS\n   \n   🎯 THIS IS THE MOST IMPORTANT FILE - EDIT HERE TO REBRAND THE ENTIRE SITE\n   \n   Purpose:\n   Define all colors, fonts, spacing, shadows, animations in one place.\n   Every other CSS file imports and uses these variables.\n   Change a color here → changes everywhere automatically.\n   \n   How to Use:\n   - All CSS files start with: @import 'variables.css';\n   - Reference tokens in CSS: background: var(--blue);\n   - Dark mode: Automatically handled by [data-theme=\"dark\"] selector\n   - js/main.js toggles [data-theme=\"dark\"] on <html> element\n   \n   Naming Convention:\n   --group-property or --group-property-variant\n   Examples:\n   --blue, --blue-dark, --blue-light, --blue-glow\n   --shadow-sm, --shadow-md, --shadow-lg\n   --radius-sm, --radius-md, --radius-lg\n   \n   To Rebrand in 30 Seconds:\n   1. Change --blue to your primary color\n   2. Change --green to your secondary color  \n   3. Change --orange to your accent color\n   4. Save and reload browser\n   5. Done! Entire site uses your brand colors.\n   \n   Structure (Sections Below):\n   1. Core neutrals: white, black, gray scale (9 shades)\n   2. Brand colors: blue, green, orange (with light/dark/glow variants)\n   3. Hero aliases: map purple → green for consistency\n   4. Theme tokens: light=default, dark=[data-theme=\"dark\"]\n   5. Gradients: multi-color blends for visual interest\n   6. Shadows: from subtle to prominent with glow effects\n   7. Radii: consistent border-radius across component sizes\n   8. Typography: font stacks for display and body text\n   9. Easing: cubic-bezier functions for premium motion\n   10. Web-specific: DRY aliases for web development page\n   ========================================================================== */
 
 :root {
   /* ---------- 1. Core neutrals ---------- */
@@ -21,20 +13,23 @@
   --gray-500: #6B7280;
   --gray-300: #D1D5DB;
   --gray-100: #F3F4F6;
-  
+
   /* ---------- 2. Brand colors ---------- */
-  --blue: #0A66FF;           /* Primary - Software / trust */
+  --blue: #0A66FF;
+  /* Primary - Software / trust */
   --blue-dark: #0549C0;
   --blue-strong: #0549C0;
   --blue-light: #E8EFFF;
   --blue-glow: rgba(10, 102, 255, 0.15);
-  
-  --green: #00C896;          /* Secondary - Training / growth (used as purple in hero) */
+
+  --green: #00C896;
+  /* Secondary - Training / growth (used as purple in hero) */
   --green-dark: #009975;
   --green-light: #E6FFF6;
   --green-glow: rgba(0, 200, 150, 0.15);
-  
-  --orange: #FF6B1C;          /* Accent - Human / transformation */
+
+  --orange: #FF6B1C;
+  /* Accent - Human / transformation */
   --orange-dark: #E05A12;
   --orange-light: #FFF0E6;
   --orange-glow: rgba(255, 107, 28, 0.15);
@@ -50,11 +45,11 @@
   --text: var(--black);
   --muted: var(--gray-700);
   --muted-2: var(--gray-500);
-  --border: rgba(10,10,15,0.08);
-  --card-bg: rgba(255,255,255,0.84);
-  --visual-bg: rgba(248,249,252,0.72);
-  --header-bg: rgba(255,255,255,0.82);
-  --canvas-line: 10,10,15;
+  --border: rgba(10, 10, 15, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.84);
+  --visual-bg: rgba(248, 249, 252, 0.72);
+  --header-bg: rgba(255, 255, 255, 0.82);
+  --canvas-line: 10, 10, 15;
 
   /* ---------- 4. Gradients ---------- */
   --gradient-bgo: linear-gradient(135deg, var(--green) 0%, var(--blue) 80%, var(--orange) 100%);
@@ -65,17 +60,17 @@
   /* ---------- 5. Typography ---------- */
   --font-display: 'Geist', 'Inter', -apple-system, sans-serif;
   --font-body: 'Inter', -apple-system, sans-serif;
-  
+
   /* ---------- 6. Radii & Shadows ---------- */
   --radius-sm: 12px;
   --radius-md: 16px;
   --radius-lg: 24px;
   --radius-xl: 32px;
   --radius-full: 9999px;
-  
-  --shadow-sm: 0 1px 2px rgba(10,10,15,0.04), 0 4px 12px rgba(10,10,15,0.04);
-  --shadow-md: 0 8px 24px rgba(10,10,15,0.06), 0 2px 8px rgba(10,10,15,0.04);
-  --shadow-lg: 0 16px 48px rgba(10,10,15,0.08), 0 4px 16px rgba(10,10,15,0.04);
+
+  --shadow-sm: 0 1px 2px rgba(10, 10, 15, 0.04), 0 4px 12px rgba(10, 10, 15, 0.04);
+  --shadow-md: 0 8px 24px rgba(10, 10, 15, 0.06), 0 2px 8px rgba(10, 10, 15, 0.04);
+  --shadow-lg: 0 16px 48px rgba(10, 10, 15, 0.08), 0 4px 16px rgba(10, 10, 15, 0.04);
   --shadow-glow-blue: 0 8px 32px var(--blue-glow);
   --shadow-glow-green: 0 8px 32px var(--green-glow);
   --shadow-glow-orange: 0 8px 32px var(--orange-glow);
@@ -90,27 +85,188 @@
   --bg: #050816;
   --bg-2: #0B1020;
   --text: #E6E8EF;
-  --muted: rgba(255,255,255,0.68);
-  --muted-2: rgba(255,255,255,0.42);
-  --border: rgba(255,255,255,0.10);
-  --card-bg: rgba(11,16,32,0.84);
-  --visual-bg: rgba(8,12,26,0.62);
-  --header-bg: rgba(5,8,22,0.78);
-  --canvas-line: 255,255,255;
+  --muted: rgba(255, 255, 255, 0.68);
+  --muted-2: rgba(255, 255, 255, 0.42);
+  --border: rgba(255, 255, 255, 0.10);
+  --card-bg: rgba(11, 16, 32, 0.84);
+  --visual-bg: rgba(8, 12, 26, 0.62);
+  --header-bg: rgba(5, 8, 22, 0.78);
+  --canvas-line: 255, 255, 255;
   --ghost: #12131A;
-  --gray-100: rgba(255,255,255,0.08);
-  --gray-300: rgba(255,255,255,0.14);
+  --gray-100: rgba(255, 255, 255, 0.08);
+  --gray-300: rgba(255, 255, 255, 0.14);
   --off-white: #0B1020;
 }
+
 body.dark {
   --bg: #050816;
   --bg-2: #0B1020;
   --text: #E6E8EF;
-  --muted: rgba(255,255,255,0.68);
-  --muted-2: rgba(255,255,255,0.42);
-  --border: rgba(255,255,255,0.10);
-  --card-bg: rgba(11,16,32,0.84);
-  --visual-bg: rgba(8,12,26,0.62);
-  --header-bg: rgba(5,8,22,0.78);
-  --canvas-line: 255,255,255;
+  --muted: rgba(255, 255, 255, 0.68);
+  --muted-2: rgba(255, 255, 255, 0.42);
+  --border: rgba(255, 255, 255, 0.10);
+  --card-bg: rgba(11, 16, 32, 0.84);
+  --visual-bg: rgba(8, 12, 26, 0.62);
+  --header-bg: rgba(5, 8, 22, 0.78);
+  --canvas-line: 255, 255, 255;
+}
+
+/* --------------------------------------------------------------------------
+   Shared aliases: local page tokens should map here instead of being redefined.
+   Keep one source of truth for the site palette and reuse across page modules.
+   -------------------------------------------------------------------------- */
+:root {
+  --surface: var(--bg);
+  --surface-alt: var(--bg-2);
+  --surface-panel: var(--card-bg);
+  --surface-border: var(--border);
+  --text-soft: var(--muted);
+  --shadow-card: var(--shadow-md);
+  --radius-card: var(--radius-lg);
+
+  --wd-blue: var(--blue);
+  --wd-blue-dark: var(--blue-dark);
+  --wd-blue-light: var(--blue-light);
+  --wd-blue-glow: var(--blue-glow);
+  --wd-blue-light-bg: var(--blue-light);
+  --wd-green: var(--green);
+  --wd-green-glow: var(--green-glow);
+  --wd-green-light: var(--green-light);
+  --wd-orange: var(--orange);
+  --wd-orange-glow: var(--orange-glow);
+  --wd-orange-light: var(--orange-light);
+  --wd-bg: var(--bg);
+  --wd-surface: var(--card-bg);
+  --wd-surface-2: var(--ghost);
+  --wd-surface-3: var(--gray-100);
+  --wd-border: var(--border);
+  --wd-border-strong: rgba(10, 10, 15, 0.12);
+  --wd-text: var(--text);
+  --wd-muted: var(--muted);
+  --wd-muted-2: var(--muted-2);
+  --wd-card-bg: var(--card-bg);
+  --wd-shadow: var(--shadow-lg);
+  --wd-shadow-card: var(--shadow-md);
+  --wd-grid-line: rgba(10, 10, 15, 0.06);
+  --wd-grid-dot: rgba(10, 102, 255, 0.08);
+  --wd-radius: var(--radius-sm);
+  --wd-radius-lg: var(--radius-lg);
+  --wd-radius-xl: var(--radius-xl);
+  --wd-radius-pill: var(--radius-full);
+  --wd-ease: var(--ease-smooth);
+  --wd-ease-spring: var(--ease-spring);
+  --wd-section-bg: var(--bg);
+  --wd-section-text: var(--text);
+  --wd-section-muted: var(--muted);
+  --wd-section-border: var(--border);
+
+  --ds-blue: var(--blue);
+  --ds-blue-light: var(--blue-light);
+  --ds-blue-glow: var(--blue-glow);
+  --ds-green: var(--green);
+  --ds-green-light: var(--green-light);
+  --ds-green-glow: var(--green-glow);
+  --ds-orange: var(--orange);
+  --ds-orange-light: var(--orange-light);
+  --ds-orange-glow: var(--orange-glow);
+
+  --ab-blue: var(--blue);
+  --ab-blue-dark: var(--blue-dark);
+  --ab-blue-light: var(--blue-light);
+  --ab-blue-glow: var(--blue-glow);
+  --ab-green: var(--green);
+  --ab-green-light: var(--green-light);
+  --ab-green-glow: var(--green-glow);
+  --ab-orange: var(--orange);
+  --ab-orange-light: var(--orange-light);
+  --ab-orange-glow: var(--orange-glow);
+  --erp-blue: var(--blue);
+  --erp-blue-dark: var(--blue-dark);
+  --erp-blue-light: var(--blue-light);
+  --erp-blue-glow: var(--blue-glow);
+  --erp-green: var(--green);
+  --erp-green-light: var(--green-light);
+  --erp-green-glow: var(--green-glow);
+  --erp-orange: var(--orange);
+  --erp-orange-light: var(--orange-light);
+  --erp-orange-glow: var(--orange-glow);
+  --erp-bg: var(--bg);
+  --erp-surface: var(--card-bg);
+  --erp-surface-2: var(--ghost);
+  --erp-surface-3: var(--gray-100);
+  --erp-border: var(--border);
+  --erp-border-strong: rgba(10, 10, 15, 0.12);
+  --erp-text: var(--text);
+  --erp-muted: var(--muted);
+  --erp-muted-2: var(--muted-2);
+  --erp-card-bg: var(--card-bg);
+  --erp-shadow: var(--shadow-lg);
+  --erp-shadow-card: var(--shadow-md);
+  --erp-grid-line: rgba(10, 10, 15, 0.06);
+  --erp-grid-dot: rgba(10, 102, 255, 0.08);
+  --erp-radius: var(--radius-sm);
+  --erp-radius-lg: var(--radius-lg);
+  --erp-radius-xl: var(--radius-xl);
+  --erp-radius-pill: var(--radius-full);
+  --erp-ease: var(--ease-smooth);
+  --erp-ease-spring: var(--ease-spring);
+  --erp-section-bg: var(--bg);
+  --erp-section-text: var(--text);
+  --erp-section-muted: var(--muted);
+  --erp-section-border: var(--border);
+
+}
+
+[data-theme="dark"] {
+  --surface: #0B1020;
+  --surface-alt: #121A32;
+  --surface-panel: rgba(11, 16, 32, 0.84);
+  --surface-border: rgba(255, 255, 255, 0.10);
+  --text-soft: rgba(255, 255, 255, 0.68);
+
+  --wd-bg: #050816;
+  --wd-surface: #0B1020;
+  --wd-surface-2: #121A32;
+  --wd-surface-3: #1A2443;
+  --wd-border: rgba(255, 255, 255, 0.08);
+  --wd-border-strong: rgba(255, 255, 255, 0.14);
+  --wd-text: #E6E8EF;
+  --wd-muted: rgba(255, 255, 255, 0.68);
+  --wd-muted-2: rgba(255, 255, 255, 0.42);
+  --wd-card-bg: rgba(11, 16, 32, 0.84);
+  --wd-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  --wd-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --wd-grid-line: rgba(255, 255, 255, 0.06);
+  --wd-grid-dot: rgba(255, 255, 255, 0.08);
+  --wd-section-bg: #050816;
+  --wd-section-text: #E6E8EF;
+  --wd-section-muted: rgba(255, 255, 255, 0.68);
+  --wd-section-border: rgba(255, 255, 255, 0.10);
+  --erp-bg: #050816;
+  --erp-surface: #0B1020;
+  --erp-surface-2: #121A32;
+  --erp-surface-3: #1A2443;
+  --erp-border: rgba(255, 255, 255, 0.08);
+  --erp-border-strong: rgba(255, 255, 255, 0.14);
+  --erp-text: #E6E8EF;
+  --erp-muted: rgba(255, 255, 255, 0.68);
+  --erp-muted-2: rgba(255, 255, 255, 0.42);
+  --erp-card-bg: rgba(11, 16, 32, 0.84);
+  --erp-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  --erp-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --erp-grid-line: rgba(255, 255, 255, 0.06);
+  --erp-grid-dot: rgba(255, 255, 255, 0.08);
+  --erp-section-bg: #050816;
+  --erp-section-text: #E6E8EF;
+  --erp-section-muted: rgba(255, 255, 255, 0.68);
+  --erp-section-border: rgba(255, 255, 255, 0.10);
+
+}
+
+body.dark {
+  --surface: #0B1020;
+  --surface-alt: #121A32;
+  --surface-panel: rgba(11, 16, 32, 0.84);
+  --surface-border: rgba(255, 255, 255, 0.10);
+  --text-soft: rgba(255, 255, 255, 0.68);
 }

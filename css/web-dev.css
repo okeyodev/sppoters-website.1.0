@@ -1,11 +1,13 @@
 /* ==========================================================================
-   FILE: css/web-dev.css
-   PURPOSE: Premium enterprise hero - NOW WITH LIGHT + DARK MODE
-   - Light: white browser, dark text, subtle grid, lower orb opacity
-   - Dark: dark browser #0B1020, light text, glowing orbs
-   - Toggle via #themeToggle -> data-theme="dark" on html
+   WEB DEV STYLES
+   Purpose:
+   - page-level hero and browser UI styling
+   - shared token aliases from the main design system
+   - light/dark adjustments for the premium web development landing page
 
-   STRUCTURE: same as before, but all colors use var(--wd-*) which switch
+   Notes:
+   - keep page-specific design here without repeating global brand values
+   - responsive rules live at the bottom of this file for easy maintenance
    ========================================================================== */
 
 .web-hero {

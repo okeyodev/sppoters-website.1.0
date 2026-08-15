@@ -1,71 +1,55 @@
 /* ==========================================================================
-   FILE: css/web-variables.css
-   PURPOSE: Design tokens for Web Development hero - NOW WITH LIGHT + DARK
-   - Light mode: default (no data-theme or data-theme="light") = #FBFDFF bg, dark text
-   - Dark mode: [data-theme="dark"] = #050816 bg, light text
-   - Toggle via header button #themeToggle (synced with home via main.js)
-
-   EDIT HERE: To change hero background, orb colors, borders for each theme
+   WEB VARIABLES
+   Purpose:
+   - lightweight alias layer for the web development page
+   - keeps site tokens centralized in the main variables.css file
+   - avoids repeating the brand system on every page
    ========================================================================== */
 :root {
-  /* Brand mapping - synced with site */
   --wd-blue: var(--blue);
-  /* #0A66FF */
   --wd-blue-dark: var(--blue-dark);
-  --wd-blue-light: #3B82F6;
-  --wd-blue-glow: rgba(10, 102, 255, 0.35);
+  --wd-blue-light: var(--blue-light);
+  --wd-blue-glow: var(--blue-glow);
   --wd-blue-light-bg: var(--blue-light);
-  --wd-green: var(--green);
-  /* #00C896 replaces purple */
-  --wd-green-glow: rgba(0, 200, 150, 0.30);
-  --wd-green-light: var(--green-light);
-  --wd-orange: var(--orange);
-  /* #FF6B1C */
-  --wd-orange-glow: rgba(255, 107, 28, 0.35);
-  --wd-orange-light: var(--orange-light);
 
-  /* ---------- LIGHT MODE (default) - premium light enterprise ---------- */
-  --wd-bg: #FBFDFF;
-  /* Light hero bg - like digital-strategy */
-  --wd-surface: #FFFFFF;
-  /* Browser window white */
-  --wd-surface-2: #F6F7FB;
-  /* Sidebar */
-  --wd-surface-3: #EEF1F8;
-  /* Cards hover */
-  --wd-border: rgba(10, 10, 15, 0.08);
+  --wd-green: var(--green);
+  --wd-green-light: var(--green-light);
+  --wd-green-glow: var(--green-glow);
+
+  --wd-orange: var(--orange);
+  --wd-orange-light: var(--orange-light);
+  --wd-orange-glow: var(--orange-glow);
+
+  --wd-bg: var(--bg);
+  --wd-surface: var(--card-bg);
+  --wd-surface-2: var(--ghost);
+  --wd-surface-3: var(--gray-100);
+  --wd-border: var(--border);
   --wd-border-strong: rgba(10, 10, 15, 0.12);
-  --wd-text: #0A0A0F;
-  /* Dark text for light mode */
-  --wd-muted: #374151;
-  --wd-muted-2: #6B7280;
-  --wd-card-bg: rgba(255, 255, 255, 0.84);
-  --wd-shadow: 0 20px 60px rgba(10, 10, 15, 0.08);
-  --wd-shadow-card: 0 8px 32px rgba(10, 10, 15, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --wd-text: var(--text);
+  --wd-muted: var(--muted);
+  --wd-muted-2: var(--muted-2);
+  --wd-card-bg: var(--card-bg);
+  --wd-shadow: var(--shadow-lg);
+  --wd-shadow-card: var(--shadow-md);
   --wd-grid-line: rgba(10, 10, 15, 0.06);
-  /* Grid lines dark on light */
   --wd-grid-dot: rgba(10, 102, 255, 0.08);
 
-  --wd-radius: 16px;
-  --wd-radius-lg: 20px;
-  --wd-radius-xl: 28px;
-  --wd-radius-pill: 9999px;
-  --wd-ease: var(--ease-smooth, cubic-bezier(0.16, 1, 0.3, 1));
-  --wd-ease-spring: var(--ease-spring, cubic-bezier(0.175, 0.885, 0.32, 1.275));
-
-  /* Section below hero - adaptive */
+  --wd-radius: var(--radius-sm);
+  --wd-radius-lg: var(--radius-lg);
+  --wd-radius-xl: var(--radius-xl);
+  --wd-radius-pill: var(--radius-full);
+  --wd-ease: var(--ease-smooth);
+  --wd-ease-spring: var(--ease-spring);
   --wd-section-bg: var(--bg);
   --wd-section-text: var(--text);
   --wd-section-muted: var(--muted);
   --wd-section-border: var(--border);
 }
 
-/* ---------- DARK MODE - premium dark enterprise (when toggle clicked) ---------- */
 [data-theme="dark"] {
   --wd-bg: #050816;
-  /* Dark hero bg - enterprise platform */
   --wd-surface: #0B1020;
-  /* Browser dark */
   --wd-surface-2: #121A32;
   --wd-surface-3: #1A2443;
   --wd-border: rgba(255, 255, 255, 0.08);
@@ -77,9 +61,7 @@
   --wd-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
   --wd-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   --wd-grid-line: rgba(255, 255, 255, 0.06);
-  /* Grid lines light on dark */
   --wd-grid-dot: rgba(255, 255, 255, 0.08);
-
   --wd-section-bg: #050816;
   --wd-section-text: #E6E8EF;
   --wd-section-muted: rgba(255, 255, 255, 0.68);

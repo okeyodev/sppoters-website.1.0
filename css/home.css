@@ -291,23 +291,6 @@
   100% { transform: translateY(36px) }
 }
 
-/* ---------- Responsive hero ---------- */
-@media (max-width:980px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 24px; }
-  .visual-wrap { height: 520px; }
-  .scroll-hint { display: none; }
-}
-
-@media (max-width:600px) {
-  .visual-wrap { height: 460px; }
-  .card-float { width: 150px !important; padding: 8px; }
-  .card-float-1 { left: 4%; top: 6%; }
-  .card-float-2 { right: 2%; top: 4%; }
-  .card-float-3 { left: 4%; top: 48%; }
-  .card-float-4 { right: 4%; bottom: 8%; }
-  .hero-stats-new { gap: 20px; }
-}
-
 /* ==========================================================================
    2. Marquee - Scrolling tech stack
    ========================================================================== */
@@ -742,4 +725,20 @@
   .works-grid { grid-template-columns: 1fr; }
   .section { padding: 64px 20px; }
   .cta-section { margin: 64px 20px; padding: 48px 24px; }
+}
+
+@media (max-width:980px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+  .visual-wrap { height: 520px; }
+  .scroll-hint { display: none; }
+}
+
+@media (max-width:600px) {
+  .visual-wrap { height: 460px; }
+  .card-float { width: 150px !important; padding: 8px; }
+  .card-float-1 { left: 4%; top: 6%; }
+  .card-float-2 { right: 2%; top: 4%; }
+  .card-float-3 { left: 4%; top: 48%; }
+  .card-float-4 { right: 4%; bottom: 8%; }
+  .hero-stats-new { gap: 20px; }
 }
