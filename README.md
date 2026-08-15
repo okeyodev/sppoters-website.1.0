@@ -31,6 +31,7 @@ sppoters-0.23/
 │   ├── software-training.html
 │   ├── web-development.html
 │   └── works.html
+│   └── erp-solution.html
 ├── css/
 │   ├── variables.css              # 🎯 SINGLE SOURCE OF TRUTH - All colors, fonts, spacing
 │   ├── global.css                 # Shared header, footer, buttons, dropdowns, responsive
